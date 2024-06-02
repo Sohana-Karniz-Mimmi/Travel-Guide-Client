@@ -1,0 +1,15 @@
+.subMenuItem {
+    list-style: none;
+    top: unset;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: .3s;
+    visibility: hidden;
+}
+
+ul.mainMenuItem li:hover ul.subMenuItem {
+    visibility: visible;
+    transform: scaleY(1);
+}
+
+/* #fe9703 */
