@@ -1,9 +1,10 @@
 import { Helmet } from 'react-helmet-async'
-import useAuth from '../../../hooks/useAuth'
-import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import { useQuery } from '@tanstack/react-query'
-import BookingDataRow from '../../../components/Dashboard/TableRows/BookingDataRow'
-import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
+import useAuth from '../../../Hook/useAuth'
+import useAxiosSecure from '../../../Hook/useAxiosSecure'
+import LoadingSpinner from '../../../Components/Shared/LoadingSpinner'
+// import BookingDataRow from '../../../components/Dashboard/TableRows/BookingDataRow'
+
 
 const ManageBookings = () => {
   const { user } = useAuth()
@@ -78,13 +79,13 @@ const ManageBookings = () => {
                 <tbody>
                   {' '}
                   {/* Table Row Data */}
-                  {bookings.map(booking => (
+                  {/* {bookings.map(booking => (
                     <BookingDataRow
                       key={booking._id}
                       booking={booking}
                       refetch={refetch}
                     />
-                  ))}
+                  ))} */}
                 </tbody>
               </table>
             </div>

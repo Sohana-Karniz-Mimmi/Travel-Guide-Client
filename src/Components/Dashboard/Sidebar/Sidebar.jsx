@@ -1,35 +1,37 @@
 import { useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
-import { BsFingerprint, BsFillHouseAddFill } from 'react-icons/bs'
-import { GrUserAdmin } from 'react-icons/gr'
-import { MdHomeWork } from 'react-icons/md'
+// import { BsFingerprint, BsFillHouseAddFill } from 'react-icons/bs'
+// import { GrUserAdmin } from 'react-icons/gr'
+// import { MdHomeWork } from 'react-icons/md'
+// import { NavLink } from 'react-router-dom'
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
-import { NavLink } from 'react-router-dom'
-import useAuth from '../../../hooks/useAuth'
 import { Link } from 'react-router-dom'
-import useRole from '../../../hooks/useRole'
+// import useRole from '../../../hooks/useRole'
+// import HostMenu from './Menu/HostMenu'
+// import AdminMenu from './Menu/AdminMenu'
+// import ToggleBtn from '../../Shared/Button/ToggleBtn'
 import MenuItem from './Menu/MenuItem'
-import HostMenu from './Menu/HostMenu'
-import AdminMenu from './Menu/AdminMenu'
 import GuestMenu from './Menu/GuestMenu'
-import ToggleBtn from '../../Shared/Button/ToggleBtn'
+import useAuth from '../../../Hook/useAuth'
+import AdminMenu from './Menu/AdminMenu'
+import HostMenu from './Menu/HostMenu'
 
 const Sidebar = () => {
   const { logOut } = useAuth()
   const [isActive, setActive] = useState(false)
-  const [toggle, setToggle] = useState(true)
-  const [role, isLoading] = useRole()
-  console.log(role, isLoading)
+  // const [toggle, setToggle] = useState(true)
+  // const [role, isLoading] = useRole()
+  // console.log(role, isLoading)
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive)
   }
 
-  const toggleHandler = event => {
-    setToggle(event.target.checked)
-  }
+  // const toggleHandler = event => {
+  //   setToggle(event.target.checked)
+  // }
   return (
     <>
       {/* Small Screen Navbar */}
@@ -80,19 +82,23 @@ const Sidebar = () => {
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
             {/* Conditional toggle button here.. */}
-            {role === 'host' && (
+            {/* {role === 'host' && (
               <ToggleBtn toggleHandler={toggleHandler} toggle={toggle} />
-            )}
+            )} */}
 
             {/*  Menu Items */}
             <nav>
               {/* Statistics */}
               <MenuItem
-                label='Statistics'
+                label='My Profile'
                 address='/dashboard'
                 icon={BsGraphUp}
               />
-              {role === 'guest' && <GuestMenu />}
+              <GuestMenu></GuestMenu>
+              <HostMenu></HostMenu>
+              <AdminMenu></AdminMenu>
+
+              {/* {role === 'guest' && <GuestMenu />}
               {role === 'host' ? (
                 toggle ? (
                   <HostMenu />
@@ -100,21 +106,13 @@ const Sidebar = () => {
                   <GuestMenu />
                 )
               ) : undefined}
-              {role === 'admin' && <AdminMenu />}
+              {role === 'admin' && <AdminMenu />} */}
             </nav>
           </div>
         </div>
 
         <div>
           <hr />
-
-          {/* Profile Menu */}
-          <MenuItem
-            label='Profile'
-            address='/dashboard/profile'
-            icon={FcSettings}
-          />
-
           <button
             onClick={logOut}
             className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
@@ -127,6 +125,7 @@ const Sidebar = () => {
       </div>
     </>
   )
+ 
 }
 
 export default Sidebar

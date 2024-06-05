@@ -4,6 +4,18 @@ import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import AllTourists from "../Pages/AllTourists";
+import Gallery from "../Pages/Gallery";
+import GuideProfileDetails from "../Pages/GuideProfileDetails";
+import CountriesData from "../Pages/CountriesData";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import Statistics from "../Pages/Dashboard/Common/Statistics";
+import AddJob from "../Pages/AddJob";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
+import BidRequests from "../Pages/Dashboard/Admin/BidRequests";
+import ManageBookings from "../Pages/Dashboard/Host/ManageBookings";
+import MyBookings from "../Pages/Dashboard/Guest/MyBookings";
+import MyListings from "../Pages/Dashboard/Host/MyListings";
 
 
 const router = createBrowserRouter([
@@ -24,6 +36,22 @@ const router = createBrowserRouter([
                 path: "/register",
                 element: <Register></Register>
             },
+            {
+                path: "/all-packages",
+                element: <AllTourists></AllTourists>
+            },
+            {
+                path: "/packages-details/:id",
+                element: <Gallery></Gallery>
+            },
+            {
+                path: "/guide-profile-details/:id",
+                element: <GuideProfileDetails></GuideProfileDetails>
+            },
+            {
+                path: "/match-type-details",
+                element: <CountriesData></CountriesData>
+            },
             
             // {
             //     path: "/job/:id",
@@ -37,6 +65,80 @@ const router = createBrowserRouter([
             // },
         ]
     },
+    {
+        path: '/dashboard',
+        element: (
+            <DashboardLayout />
+        ),
+        children: [
+          {
+            index: true,
+            element: (
+                <Statistics />
+
+            ),
+          },
+          {
+            path: 'add-package',
+            element: (
+                // <HostRoute>
+                  <AddJob />
+                // </HostRoute>
+
+            ),
+          },
+          {
+            path: 'wishlist',
+            element: (
+                // <HostRoute>
+                  <MyListings />
+                // </HostRoute>
+
+            ),
+          },
+          {
+            path: 'manage-users',
+            element: (
+                // <AdminRoute>
+                  <ManageUsers />
+                // </AdminRoute>
+
+            ),
+          },
+          {
+            // path: 'manage-users',
+            element: (
+                // <AdminRoute>
+                  <BidRequests />
+                // </AdminRoute>
+
+            ),
+          },
+          {
+            path: 'my-bookings',
+            element: (
+                <MyBookings />
+
+            ),
+          },
+          {
+            path: 'manage-bookings',
+            element: (
+                // <HostRoute>
+                  <ManageBookings />
+                // </HostRoute>
+
+            ),
+          },
+        //   {
+        //     path: 'profile',
+        //     element: (
+        //         <Profile />
+
+        //     ),
+        //   },
+        ],
+      },
 ]);
 
 export default router;

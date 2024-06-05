@@ -2,14 +2,14 @@ import { Helmet } from "react-helmet-async";
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import useAuth from "../Hook/useAuth";
 // import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
-import AddJobBanner from "../Components/AddJobBanner";
+// import AddJobBanner from "../Components/AddJobBanner";
+import useAuth from "../Hook/useAuth";
 
 const AddJob = () => {
     const { user } = useAuth()
@@ -17,47 +17,6 @@ const AddJob = () => {
 
     const [postedDate, setPostDate] = useState(new Date())
     const [deadline, setDeadline] = useState(new Date())
-
-    // const postedDate = format(postDate, 'dd-MM-yyyy');
-    // const deadline = format(applicationDeadline, 'dd-MM-yyyy');
-
-    // const handleFormSubmit = async e => {
-    //     e.preventDefault()
-    //     const form = e.target
-    //     const job_title = form.job_title.value
-    //     const email = form.email.value
-    //     const deadline = startDate
-    //     const category = form.category.value
-    //     const min_price = parseFloat(form.min_price.value)
-    //     const max_price = parseFloat(form.max_price.value)
-    //     const description = form.description.value
-
-    //     // const jobData = {
-    //     //     job_title,
-    //     //     deadline,
-    //     //     category,
-    //     //     min_price,
-    //     //     max_price,
-    //     //     description,
-    //     //     buyer: {
-    //     //         email,
-    //     //         name: user?.displayName,
-    //     //         photo: user?.photoURL,
-    //     //     },
-    //     //     bid_count: 0,
-    //     // }
-    //     // try {
-    //     //     const { data } = await axios.post(
-    //     //         `${import.meta.env.VITE_API_URL}/job`,
-    //     //         jobData
-    //     //     )
-    //     //     console.log(data)
-    //     //     toast.success('Job Data Updated Successfully!')
-    //     //     navigate('/my-posted-jobs')
-    //     // } catch (err) {
-    //     //     console.log(err)
-    //     // }
-    // }
 
     // React Hook Form
     const {
@@ -120,14 +79,14 @@ const AddJob = () => {
             <title>Add Job - Job-Portal</title>
         </Helmet>
 
-            <div>
+            {/* <div>
                 <AddJobBanner></AddJobBanner>
-            </div>
+            </div> */}
             <section className=" p-6 barlow-condensed-regular dark:text-gray-900">
                 <form onSubmit={handleSubmit(handleSubmitForm)} className="lato container mx-auto flex justify-center space-y-12">
                     <fieldset className=" py-5 md:px-[30px] px-5 rounded-md shadow-xl dark:bg-white mt-5">
                         <div className="py-[10px] border-b mb-6 flex justify-between items-center">
-                            <h3 className="rubik text-xl font-medium">POST A JOB</h3>
+                            <h3 className="rubik text-xl font-medium">POST A PACKAGE</h3>
                         </div>
                         <div className="lato lg:w-[848px] md:w-[680px] w-[300px] grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
 

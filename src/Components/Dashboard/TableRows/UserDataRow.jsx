@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import UpdateUserModal from '../../Modal/UpdateUserModal'
 import { useMutation } from '@tanstack/react-query'
-import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import toast from 'react-hot-toast'
-import useAuth from '../../../hooks/useAuth'
+import useAuth from '../../../Hook/useAuth'
+import useAxiosSecure from '../../../Hook/useAxiosSecure'
 const UserDataRow = ({ user, refetch }) => {
   const { user: loggedInUser } = useAuth()
 

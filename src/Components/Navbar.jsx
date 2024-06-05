@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import './navbar.css'
-// import logo from "../assets/images/logo/logo3.png";
+import logo from "../assets/images/team5.jpg";
 import { Tooltip as ReactTooltip } from 'react-tooltip'
+import { GrLogout } from "react-icons/gr";
+import { MdDashboard } from "react-icons/md";
 
 const Navbar = () => {
 
@@ -40,24 +42,24 @@ const Navbar = () => {
 
         {/* {user && <> */}
 
-            <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
-                    :
-                    'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
-            } to={'/appliedJobs'}> Community </NavLink> </li>
+        <li> <NavLink className={({ isActive }) =>
+            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
+                :
+                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+        } to={'/appliedJobs'}> Community </NavLink> </li>
 
 
-            <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
-                    :
-                    'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
-            } to={'/addJob'}> About Us </NavLink> </li>
+        <li> <NavLink className={({ isActive }) =>
+            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
+                :
+                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+        } to={'/addJob'}> About Us </NavLink> </li>
 
-            <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
-                    :
-                    'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
-            } to={'/myJobs'}> Contact Us </NavLink> </li>
+        <li> <NavLink className={({ isActive }) =>
+            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
+                :
+                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+        } to={'/myJobs'}> Contact Us </NavLink> </li>
 
         {/* </>} */}
 
@@ -80,6 +82,10 @@ const Navbar = () => {
                 console.log(error);
             });
     }
+
+    const [isOpenMenu, setIsOpenMenu] = useState(false)
+
+    // console.log(isOpenMenu);
 
     return (
 
@@ -104,15 +110,15 @@ const Navbar = () => {
                     {/* <img className="md:w-12 md:h-10 w-7 h-7 relative" src={logo} alt="" /> */}
                     <span className="text-orange-500">T<span className="text-white">ravel</span><span className="">Guide</span></span></Link>
 
-                {/* Nav Menu */}
-                <div className="navbar-center hidden ml-8 lg:flex">
-                    <ul className="menu-horizontal space-x-5 ">
-                        {
-                            navLinks
-                        }
-                    </ul>
-                </div>
 
+            </div>
+            {/* Nav Menu */}
+            <div className="navbar-center hidden ml-8 lg:flex">
+                <ul className="menu-horizontal space-x-5 ">
+                    {
+                        navLinks
+                    }
+                </ul>
             </div>
 
 
@@ -152,19 +158,32 @@ const Navbar = () => {
                 </div>
                 {
                     user ? <>
-                        <div className="flex items-center gap-2" >
-
-                            <div className="btn flex items-center btn-ghost btn-circle avatar tooltip hover:tooltip-open tooltip-bottom text-white" data-tip={user?.displayName}>
-                                <div className=" md:w-12 w-8 rounded-full ">
-                                    <img alt={"User"} src={user?.photoURL} />
-                                </div>
+                        <div onClick={() => setIsOpenMenu(!isOpenMenu)} className="btn btn-ghost btn-circle avatar text-white">
+                            <div className=" w-12 rounded-full ">
+                                {/* <img alt={"User"} src={user.photoURL} /> */}
+                                <img alt={"User"} src={logo} />
                             </div>
-
-                            <Link to={`/`} onClick={handleLogoutBtn} className="md:mr-2 mr-1 md:px-[20px] md:py-[11px] py-0.5 px-1.5 ease-out font-bold tracking-wide text-white md:text-[15px] text-xs capitalize transition-colors duration-300 transform bg-green-600 rounded-full hover:bg-[#fe9703] ">
-                               Log Out
-                            </Link>
-
                         </div>
+                        {
+                            isOpenMenu &&
+                            <ul className="absolute bg-white top-20 right-16 rounded-lg py-2 z-10 w-[150px] border-t-2 border-[#ddd]">
+                                <li>
+                                    {/* <a className="text-black">{user.displayName}</a> */}
+                                    <Link to={`/dashboard`} className='flex w-full items-center px-4 py-2 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'>
+                                        <MdDashboard className='w-5 h-5' />
+
+                                        <span className='mx-3 font-medium'>Dashboard</span></Link>
+                                </li>
+                                <Link
+                                    onClick={handleLogoutBtn}
+                                    className='flex w-full items-center px-4 py-2 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
+                                >
+                                    <GrLogout className='w-5 h-5' />
+
+                                    <span className='mx-4 font-medium'>Logout</span>
+                                </Link>
+                            </ul>
+                        }
 
                     </>
                         :

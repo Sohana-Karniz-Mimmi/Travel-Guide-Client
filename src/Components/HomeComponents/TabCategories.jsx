@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
+// import TouristsSpots from './TouristsSpots'
+import TourGuide from '../TourGuide'
+import PopularSpot from './PopularSpot'
 // import JobCard from './JobCard'
 // import { useEffect, useState } from 'react'
 // import axios from 'axios'
@@ -27,7 +30,8 @@ const TabCategories = () => {
 
   // const getData = async () => {
   //   const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs`)
-  //   // setJobs(data)
+  //   // setJobs(data)import PopularSpot from './PopularSpot';
+
   //   return data;
   // }
 
@@ -56,20 +60,21 @@ const TabCategories = () => {
         </div>
         <div className=' text-[#fe9703] flex items-center justify-center'>
           <TabList>
-            <Tab>All Jobs</Tab>
-            <Tab>On Site Job</Tab>
-            <Tab>Remote Job</Tab>
+            <Tab>Overview</Tab>
+            <Tab>Our Packages</Tab>
+            <Tab>Meet Our Tour Guides</Tab>
           </TabList>
         </div>
 
         <TabPanel>
-          1
+          This is Overview Page
         </TabPanel>
         <TabPanel>
-          2
+          {/* <TouristsSpots></TouristsSpots> */}
+          <PopularSpot></PopularSpot>
         </TabPanel>
         <TabPanel>
-          3
+         <TourGuide></TourGuide>
         </TabPanel>
 
         {/* <TabPanel>
