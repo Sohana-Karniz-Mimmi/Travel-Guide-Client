@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
-import { FcSettings } from 'react-icons/fc'
+// import { FcSettings } from 'react-icons/fc'
 // import { BsFingerprint, BsFillHouseAddFill } from 'react-icons/bs'
 // import { GrUserAdmin } from 'react-icons/gr'
 // import { MdHomeWork } from 'react-icons/md'
@@ -17,13 +17,14 @@ import GuestMenu from './Menu/GuestMenu'
 import useAuth from '../../../Hook/useAuth'
 import AdminMenu from './Menu/AdminMenu'
 import HostMenu from './Menu/HostMenu'
+import useRole from './../../../Hook/useRole';
 
 const Sidebar = () => {
   const { logOut } = useAuth()
   const [isActive, setActive] = useState(false)
   // const [toggle, setToggle] = useState(true)
-  // const [role, isLoading] = useRole()
-  // console.log(role, isLoading)
+  const [role, isLoading] = useRole()
+  console.log(role, isLoading)
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive)
@@ -94,19 +95,20 @@ const Sidebar = () => {
                 address='/dashboard'
                 icon={BsGraphUp}
               />
-              <GuestMenu></GuestMenu>
-              <HostMenu></HostMenu>
-              <AdminMenu></AdminMenu>
+              {/* <GuestMenu></GuestMenu> */}
+              {/* <HostMenu></HostMenu> */}
+              {/* <AdminMenu></AdminMenu> */}
 
-              {/* {role === 'guest' && <GuestMenu />}
-              {role === 'host' ? (
+              {role === 'guest' && <GuestMenu />}
+              {role === 'host' && <HostMenu />}
+              {/* {role === 'host' ? (
                 toggle ? (
                   <HostMenu />
                 ) : (
                   <GuestMenu />
                 )
-              ) : undefined}
-              {role === 'admin' && <AdminMenu />} */}
+              ) : undefined} */}
+              {role === 'admin' && <AdminMenu />}
             </nav>
           </div>
         </div>

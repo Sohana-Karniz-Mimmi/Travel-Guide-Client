@@ -1,9 +1,8 @@
 import { useContext} from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { AuthContext } from "../../../AuthProvider/AuthProvider";
-import LoadingSpinner from "../../../Components/Shared/LoadingSpinner";
 
 
 const BidRequests = () => {
@@ -59,7 +58,7 @@ const BidRequests = () => {
 
   // console.log(bidRequests);
 
-  if (isLoading) return <LoadingSpinner/>
+  if (isLoading) return <p>Data is still loading......</p>
   return (
     <section className='container px-4 mx-auto pt-12'>
       <div className='flex items-center gap-x-3'>

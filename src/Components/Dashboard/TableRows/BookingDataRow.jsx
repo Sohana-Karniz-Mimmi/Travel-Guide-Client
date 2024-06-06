@@ -1,10 +1,10 @@
-import { format } from 'date-fns'
+// import { format } from 'date-fns'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import DeleteModal from '../../Modal/DeleteModal'
-import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+import useAxiosSecure from '../../../Hook/useAxiosSecure'
 
 const BookingDataRow = ({ booking, refetch }) => {
   const axiosSecure = useAxiosSecure()
@@ -54,7 +54,7 @@ const BookingDataRow = ({ booking, refetch }) => {
             </div>
           </div>
           <div className='ml-3'>
-            <p className='text-gray-900 whitespace-no-wrap'>{booking?.title}</p>
+            <p className='text-gray-900 whitespace-no-wrap'>{booking?.title}Title Name</p>
           </div>
         </div>
       </td>
@@ -64,29 +64,31 @@ const BookingDataRow = ({ booking, refetch }) => {
             <div className='block relative'>
               <img
                 alt='profile'
-                src={booking?.guest?.image}
+                src={booking?.guest?.image} 
                 className='mx-auto object-cover rounded h-10 w-15 '
               />
             </div>
           </div>
           <div className='ml-3'>
             <p className='text-gray-900 whitespace-no-wrap'>
-              {booking?.guest?.name}
+              {booking?.guest?.name} guest name
             </p>
           </div>
         </div>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>${booking?.price}</p>
+        <p className='text-gray-900 whitespace-no-wrap'>${booking?.price}100</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <p className='text-gray-900 whitespace-no-wrap'>
-          {format(new Date(booking?.from), 'P')}
+          {/* {format(new Date(booking?.from), 'P')} */}
+          05-03-2024
         </p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <p className='text-gray-900 whitespace-no-wrap'>
-          {format(new Date(booking?.to), 'P')}
+          {/* {format(new Date(booking?.to), 'P')} */}
+          05-03-2024
         </p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>

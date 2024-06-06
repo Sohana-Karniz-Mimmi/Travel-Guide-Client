@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "../Components/HomeComponents/Banner";
 import TabCategories from "../Components/HomeComponents/TabCategories";
-import Counting from "../Components/HomeComponents/CountUp";
+import TourType from "../Components/HomeComponents/TourType";
 
 const Home = () => {
     return (
@@ -14,7 +14,7 @@ const Home = () => {
             <div className="md:pt-12 md:pb-6 bg-[#f5f7fc]">
             <TabCategories></TabCategories>
             </div>
-            <Counting></Counting>
+            <TourType></TourType>
             {/* <ExtraSection></ExtraSection> */}
             {/* <Testimonial></Testimonial> */}
         </div>

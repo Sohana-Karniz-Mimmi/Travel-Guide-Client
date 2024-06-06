@@ -9,7 +9,7 @@ const Statistics = () => {
   // if (isLoading) return <LoadingSpinner />
   return (
     <>
-    This is Static Page
+    This is Profile Page
       {/* {role === 'admin' && <AdminStatistics />}
       {role === 'host' && <HostStatistics />}
       {role === 'guest' && <GuestStatistics />} */}

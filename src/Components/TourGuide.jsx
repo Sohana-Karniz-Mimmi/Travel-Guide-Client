@@ -5,7 +5,6 @@ import TourGuideCard from "./TourGuideCard";
 
 const TourGuide = () => {
 
-
     const axiosCommon = useAxiosCommon()
   
     const { data: guides = [], isLoading } = useQuery({

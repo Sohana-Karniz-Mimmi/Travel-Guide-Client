@@ -9,9 +9,9 @@ import {
 } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import UpdateRoomForm from '../Form/UpdateRoomForm'
-import useAxiosSecure from '../../hooks/useAxiosSecure'
 import { imageUpload } from '../../api/utils'
 import toast from 'react-hot-toast'
+import useAxiosSecure from '../../Hook/useAxiosSecure'
 
 const UpdateRoomModal = ({ setIsEditModalOpen, isOpen, room, refetch }) => {
   const axiosSecure = useAxiosSecure()

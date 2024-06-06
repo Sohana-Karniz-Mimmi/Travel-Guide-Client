@@ -1,21 +1,24 @@
 import PropTypes from 'prop-types'
-import { format } from 'date-fns'
-import { useState } from 'react'
-import {
-  Description,
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-} from '@headlessui/react'
-import DeleteModal from '../../Modal/DeleteModal'
-import UpdateRoomModal from '../../Modal/UpdateRoomModal'
-const RoomDataRow = ({ room, handleDelete, refetch }) => {
+import { Link } from 'react-router-dom'
+// import { format } from 'date-fns'
+// import { useState } from 'react'
+// import {
+//   Description,
+//   Dialog,
+//   DialogPanel,
+//   DialogTitle,
+// } from '@headlessui/react'
+// import DeleteModal from '../../Modal/DeleteModal'
+// import UpdateRoomModal from '../../Modal/UpdateRoomModal'
+
+// , handleDelete, refetch 
+const RoomDataRow = ({ room}) => {
   // for delete modal
-  const [isOpen, setIsOpen] = useState(false)
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
-  const closeModal = () => {
-    setIsOpen(false)
-  }
+  // const [isOpen, setIsOpen] = useState(false)
+  // const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+  // const closeModal = () => {
+  //   setIsOpen(false)
+  // }
 
   // for update modal
   return (
@@ -26,7 +29,7 @@ const RoomDataRow = ({ room, handleDelete, refetch }) => {
             <div className='block relative'>
               <img
                 alt='profile'
-                src={room?.image}
+                src={room?.image1}
                 className='mx-auto object-cover rounded h-10 w-15 '
               />
             </div>
@@ -43,18 +46,18 @@ const RoomDataRow = ({ room, handleDelete, refetch }) => {
         <p className='text-gray-900 whitespace-no-wrap'>${room?.price}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>
+        {/* <p className='text-gray-900 whitespace-no-wrap'>
           {format(new Date(room?.from), 'P')}
-        </p>
+        </p> */}
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>
+        {/* <p className='text-gray-900 whitespace-no-wrap'>
           {format(new Date(room?.to), 'P')}
-        </p>
+        </p> */}
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <button
-          onClick={() => setIsOpen(true)}
+          // onClick={() => setIsOpen(true)}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
         >
           <span
@@ -64,31 +67,23 @@ const RoomDataRow = ({ room, handleDelete, refetch }) => {
           <span className='relative'>Delete</span>
         </button>
         {/* Delete modal */}
-        <DeleteModal
+        {/* <DeleteModal
           isOpen={isOpen}
           closeModal={closeModal}
           handleDelete={handleDelete}
           id={room?._id}
-        />
+        /> */}
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <button
-          onClick={() => setIsEditModalOpen(true)}
+        <Link to={`packages-details/${room?._id}`}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
         >
           <span
             aria-hidden='true'
             className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
           ></span>
-          <span className='relative'>Update</span>
-        </button>
-        {/* Update Modal */}
-        <UpdateRoomModal
-          isOpen={isEditModalOpen}
-          setIsEditModalOpen={setIsEditModalOpen}
-          room={room}
-          refetch={refetch}
-        />
+          <span className='relative'>Details</span>
+        </Link>
       </td>
     </tr>
   )

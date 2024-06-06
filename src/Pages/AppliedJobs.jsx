@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
-import JobPage from "../Components/Pdf";
+// import JobPage from "../Components/Pdf";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import useAuth from "../Hook/useAuth";
 import { useQuery } from "@tanstack/react-query";
-import AppliedBanner from "../Components/ApplidBanner";
-import { format } from 'date-fns';
+// import AppliedBanner from "../Components/ApplidBanner";
+// import { format } from 'date-fns';
 
 // import axios from "axios";
 // import { RiArrowDropDownLine } from "react-icons/ri";
@@ -32,7 +32,7 @@ const AppliedJobs = () => {
     const filteredJobs = selectedCategory === 'All' ? appliedJob : appliedJob.filter(job => job.category === selectedCategory);
 
     const getData = async () => {
-        const { data } =  await axiosSecure(`/my-apply/${user?.email}`)
+        const { data } = await axiosSecure(`/my-apply/${user?.email}`)
         // setAppliedJob(data);
         return data;
     }
@@ -57,13 +57,13 @@ const AppliedJobs = () => {
                 <title>Applied Jobs- Job-Portal</title>
             </Helmet>
 
-            <div>
+            {/* <div>
                 <AppliedBanner></AppliedBanner>
-            </div>
+            </div> */}
 
 
             <section className='container px-4 mx-auto py-12'>
-                <h2 className="text-2xl md:text-4xl font-bold text-center pb-5">Applied Jobs</h2>
+                {/* <h2 className="text-2xl md:text-4xl font-bold text-center pb-5">Applied Jobs</h2> */}
 
                 {/* Filter */}
                 <div className="flex justify-end">
@@ -84,11 +84,6 @@ const AppliedJobs = () => {
                         <option className="bg-white text-black" value='Part Time'>Part Time</option>
                     </select>
                 </div>
-                <div className='flex items-center gap-x-3'>
-                    <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
-                        Total Applied {filteredJobs.length}
-                    </span>
-                </div>
 
                 <div className='flex flex-col mt-6'>
                     <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
@@ -102,14 +97,14 @@ const AppliedJobs = () => {
                                                 className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
                                             >
                                                 <div className='flex items-center gap-x-3'>
-                                                    <span>Title</span>
+                                                    <span>Tour Guide Name</span>
                                                 </div>
                                             </th>
                                             <th
                                                 scope='col'
                                                 className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                                             >
-                                                <span>Apply Date</span>
+                                                <span>Tour Date</span>
                                             </th>
 
                                             <th
@@ -117,15 +112,8 @@ const AppliedJobs = () => {
                                                 className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                                             >
                                                 <button className='flex items-center gap-x-2'>
-                                                    <span>Salary</span>
+                                                    <span>Price</span>
                                                 </button>
-                                            </th>
-
-                                            <th
-                                                scope='col'
-                                                className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
-                                            >
-                                                Category
                                             </th>
 
                                             <th
@@ -135,32 +123,42 @@ const AppliedJobs = () => {
                                                 Status
                                             </th>
 
+                                            <th
+                                                scope='col'
+                                                className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                            >
+                                                Cancel
+                                            </th>
+
                                             <th className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
-                                                Actions
+                                                Pay
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody className='bg-white divide-y divide-gray-200 '>
-                                        {
-                                            filteredJobs?.map(apply =>
+                                        {/* {
+                                            filteredJobs?.map(apply => */}
 
-                                                <tr key={apply._id} >
+                                                <tr >
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {apply.job_title}
+                                                        {/* {apply.job_title} */}
+                                                        Sohana
                                                     </td>
 
                                                     {/* Deadline */}
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {format(apply.deadline, 'dd-MM-yyyy')}
+                                                        {/* {format(apply.deadline, 'dd-MM-yyyy')} */}
+                                                        05-03-2024
                                                     </td>
 
                                                     {/* Price */}
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        ${apply.salary}
+                                                        {/* ${apply.salary} */}
+                                                        $500
                                                     </td>
 
                                                     {/* Dynamic category */}
-                                                    <td className='px-4 py-4 text-sm whitespace-nowrap'>
+                                                    {/* <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                         <div className='flex items-center gap-x-2'>
                                                             <p
                                                                 className={`px-3 py-1 rounded-full 
@@ -170,23 +168,33 @@ const AppliedJobs = () => {
                                                                 {apply.category}
                                                             </p>
                                                         </div>
-                                                    </td>
+                                                    </td> */}
                                                     {/* Pending */}
                                                     <td className='px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap'>
                                                         <div>
-                                                            <h2 className='text-sm font-normal bg-yellow-100/60 text-yellow-500 inline-flex items-center px-3 py-1 rounded-full gap-x-2'>Pending</h2>
+                                                            <h2 className='text-sm font-normal bg-yellow-100/60 text-yellow-500 inline-flex items-center px-3 py-1 rounded-full gap-x-2'>In Review</h2>
                                                         </div>
+                                                    </td>
+
+                                                    {/* Download Button */}
+                                                    <td className='px-4 py-4 text-sm whitespace-nowrap'>
+                                                        <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                            Cancel
+                                                            {/*Pdf  */}
+                                                            {/* <JobPage job={apply} /> */}
+                                                        </button>
                                                     </td>
                                                     {/* Download Button */}
                                                     <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                         <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-
+                                                            Pay
                                                             {/*Pdf  */}
-                                                            <JobPage job={apply} />
+                                                            {/* <JobPage job={apply} /> */}
                                                         </button>
                                                     </td>
-                                                </tr>)
-                                        }
+                                                </tr>
+                                                {/* )
+                                        } */}
                                     </tbody>
                                 </table>
                             </div>

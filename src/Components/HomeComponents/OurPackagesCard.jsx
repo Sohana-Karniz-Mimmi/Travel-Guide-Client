@@ -6,19 +6,82 @@ import { FaRegClock, FaRegMap, FaStar } from "react-icons/fa6";
 import { GoArrowRight } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
+import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+import useAxiosSecure from '../../Hook/useAxiosSecure';
+import useAuth from '../../Hook/useAuth';
 
-const OurPackagesCard = ({tourPackage}) => {
-    console.log(tourPackage);
+const OurPackagesCard = ({ tourPackage }) => {
+    // console.log(tourPackage);
+    const {user} = useAuth()
+    const {
+        _id,
+         image1,
+        image2,
+        image3,
+        image4,
+        image5,
+        tourists_spot_name,
+        country_name,
+        short_description,
+        price,
+        tour_type } = tourPackage
 
-    const {_id, image1, tourists_spot_name, tour_type, price} = tourPackage
-    
+    // Initialize state with the default background color
+    const [bgColor, setBgColor] = useState(true);
+    const axiosSecure = useAxiosSecure()
+
+    //   Post
+    const { mutateAsync } = useMutation({
+        mutationFn: async wishlist => {
+            const { data } = await axiosSecure.post(`/wishlist`, wishlist)
+            return data
+        },
+        onSuccess: () => {
+            console.log('Data Saved Successfully')
+            toast.success('Added to Wishlist')
+            //   setLoading(false)
+        },
+    })
+
+    const wishlist = {
+        image1,
+        image2,
+        image3,
+        image4,
+        image5,
+        tourists_spot_name,
+        country_name,
+        short_description,
+        price,
+        tour_type,
+        userId: _id,
+        email: user?.email
+    }
+
+    // Function to handle button click
+    const handleClick = async () => {
+        setBgColor(!bgColor);
+        console.table(wishlist);
+        try {
+            await mutateAsync(wishlist)
+        } catch (err) {
+            console.log(err)
+            toast.error(err.message)
+        }
+    };
+
+
     return (
         <div>
             <div className=" max-w-sm mx-auto group rounded border-2 lg::w-[365px]">
 
                 <div className="overflow-hidden relative">
                     <img role="presentation" className="object-cover transition-all group-hover:scale-110 duration-700 ease-in-out w-full rounded h-56 bg-gray-500" src={image1 || errorImage} />
-                    <h3 className="z-10 group-hover:bg-white bg-[#00000050] text-sm font-medium text-white absolute top-4 right-5 rounded-full py-2 px-2 xs:text-xl md:text-sm flex items-center gap-2"> <FaHeart className="group-hover:text-[#FF0143]" /></h3>
+                    <button onClick={handleClick} className={`z-10 group-hover:bg-white text-sm font-medium absolute top-4 right-5 rounded-full py-2 px-2 xs:text-xl md:text-sm flex items-center gap-2
+                    ${bgColor ? 'bg-[#00000050] text-white' : 'bg-white text-[#FF0143]'}
+                    `}> <FaHeart className={`group-hover:text-[#FF0143]`} /></button>
                     <h3 className="z-10 bg-green-600 text-sm font-medium text-white absolute top-4 left-4 rounded-md py-2 px-[14px] xs:text-xl md:text-sm flex items-center gap-2"> <AiOutlineSafetyCertificate className='text-lg' /> {tour_type}</h3>
                 </div>
 
@@ -53,6 +116,7 @@ const OurPackagesCard = ({tourPackage}) => {
 
 OurPackagesCard.propTypes = {
     tourPackage: PropTypes.object.isRequired,
+    mainPackage: PropTypes.array.isRequired,
 };
 
 export default OurPackagesCard;

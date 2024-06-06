@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import useAuth from '../../../Hook/useAuth'
 import useAxiosSecure from '../../../Hook/useAxiosSecure'
 import LoadingSpinner from '../../../Components/Shared/LoadingSpinner'
+import BookingDataRow from '../../../Components/Dashboard/TableRows/BookingDataRow'
 // import BookingDataRow from '../../../components/Dashboard/TableRows/BookingDataRow'
 
 
@@ -86,6 +87,7 @@ const ManageBookings = () => {
                       refetch={refetch}
                     />
                   ))} */}
+                  <BookingDataRow></BookingDataRow>
                 </tbody>
               </table>
             </div>

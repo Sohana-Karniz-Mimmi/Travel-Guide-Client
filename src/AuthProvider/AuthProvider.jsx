@@ -26,14 +26,14 @@ const AuthProvider = ({ children }) => {
     // Google Login
     const googleLogin = () => {
         setLoading(true);
-      return signInWithPopup(auth, googleProvider)
+        return signInWithPopup(auth, googleProvider)
     }
 
     // GitHub Login
     const githubLogin = () => {
         setLoading(true);
         return signInWithPopup(auth, githubProvider)
-      }
+    }
 
     // User Registration
     const userRegistration = (email, password) => {
@@ -47,6 +47,21 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
+    // save user
+    const saveUser = async user => {
+        const currentUser = {
+            email: user?.email,
+            role: 'guest',
+            status: 'Verified',
+        }
+        const { data } = await axios.put(
+            `${import.meta.env.VITE_API_URL}/user`,
+            currentUser
+        )
+        return data
+    }
+
+
     // onAuthStateChange
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -55,20 +70,21 @@ const AuthProvider = ({ children }) => {
             console.log('save user', currentUser);
             const userEmail = currentUser?.email || user?.email;
             const loggedUser = { email: userEmail };
-            if(currentUser){
-                axios.post('https://job-portal-bdserver.vercel.app/jwt', loggedUser, { withCredentials: true })
+            if (currentUser) {
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser, { withCredentials: true })
                     .then(data => {
                         console.log('token response', data.data);
                     })
+                saveUser(currentUser)
             }
-            else{
-                axios.post('https://job-portal-bdserver.vercel.app/logout', loggedUser, { withCredentials: true })
+            else {
+                axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, { withCredentials: true })
                     .then(data => {
                         console.log(data.data);
                     })
                 console.log('ami nai');
             }
-            
+
         });
         return () => {
             unSubscribe();
@@ -77,23 +93,23 @@ const AuthProvider = ({ children }) => {
 
     // Update Profile
     const profileUpdate = (name, photo) => {
-       return updateProfile(auth.currentUser, {
+        return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
-        .then(() => {
-            setUser({displayName : name, photoURL : photo})
-            // console.log('Profile Updated');
-            // ...
-        }).catch((error) => {
-            console.log(error.message);
-        });
+            .then(() => {
+                setUser({ displayName: name, photoURL: photo })
+                // console.log('Profile Updated');
+                // ...
+            }).catch((error) => {
+                console.log(error.message);
+            });
     }
 
-   
+
 
 
     const authInfo = { user, googleLogin, profileUpdate, loginUser, userRegistration, logOut, githubLogin, loading, }
-        
+
 
     return (
         <AuthContext.Provider value={authInfo}>

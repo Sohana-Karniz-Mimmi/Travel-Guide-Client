@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import OurPackagesCard from "./OurPackagesCard";
 
 
-const PopularSpot = () => {
+const OurPackage = () => {
 
     const [tourPackages, setTourPackage] = useState([])
     useEffect(() => {
@@ -38,9 +38,7 @@ const PopularSpot = () => {
         </>
     }
 
-    console.log(tourPackages);
-
-
+    // console.log(tourPackages);
 
     return (
         <div>
@@ -66,4 +64,4 @@ const PopularSpot = () => {
     );
 };
 
-export default PopularSpot;
+export default OurPackage;

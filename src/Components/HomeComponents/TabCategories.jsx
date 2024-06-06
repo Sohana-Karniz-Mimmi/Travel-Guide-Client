@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
 // import TouristsSpots from './TouristsSpots'
 import TourGuide from '../TourGuide'
-import PopularSpot from './PopularSpot'
+import OurPackage from './OurPackage'
 // import JobCard from './JobCard'
 // import { useEffect, useState } from 'react'
 // import axios from 'axios'
@@ -71,7 +71,7 @@ const TabCategories = () => {
         </TabPanel>
         <TabPanel>
           {/* <TouristsSpots></TouristsSpots> */}
-          <PopularSpot></PopularSpot>
+          <OurPackage></OurPackage>
         </TabPanel>
         <TabPanel>
          <TourGuide></TourGuide>

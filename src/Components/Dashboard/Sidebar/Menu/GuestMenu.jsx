@@ -1,15 +1,15 @@
 import { BsFingerprint } from 'react-icons/bs'
 import { GrUserAdmin } from 'react-icons/gr'
 import { useState } from 'react'
-// import useRole from '../../../../hooks/useRole'
-// import toast from 'react-hot-toast'
-// import useAuth from '../../../../Hook/useAuth.jsx'
+import toast from 'react-hot-toast'
+import useAuth from '../../../../Hook/useAuth.jsx'
 import MenuItem from './MenuItem.jsx'
 import HostModal from '../../../Modal/HostRequestModal.jsx'
-// import useAxiosSecure from '../../../../Hook/useAxiosSecure.jsx'
+import useAxiosSecure from '../../../../Hook/useAxiosSecure.jsx'
+// import useRole from './../../../../Hook/useRole';
 const GuestMenu = () => {
-  // const axiosSecure = useAxiosSecure()
-  // const { user } = useAuth()
+  const axiosSecure = useAxiosSecure()
+  const { user } = useAuth()
   // const [role] = useRole()
   // for modal
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -18,25 +18,25 @@ const GuestMenu = () => {
   }
   const modalHandler = async () => {
     console.log('I want to be a host')
-    // try {
-    //   const currentUser = {
-    //     email: user?.email,
-    //     role: 'guest',
-    //     status: 'Requested',
-    //   }
-    //   const { data } = await axiosSecure.put(`/user`, currentUser)
-    //   console.log(data)
-    //   if (data.modifiedCount > 0) {
-    //     toast.success('Success! Please wait for admin confirmation')
-    //   } else {
-    //     toast.success('Please!, Wait for admin approval👊')
-    //   }
-    // } catch (err) {
-    //   console.log(err)
-    //   toast.error(err.message)
-    // } finally {
-    //   closeModal()
-    // }
+    try {
+      const currentUser = {
+        email: user?.email,
+        role: 'guest',
+        status: 'Requested',
+      }
+      const { data } = await axiosSecure.put(`/user`, currentUser)
+      console.log(data)
+      if (data.modifiedCount > 0) {
+        toast.success('Success! Please wait for admin confirmation')
+      } else {
+        toast.success('Please!, Wait for admin approval👊')
+      }
+    } catch (err) {
+      console.log(err)
+      toast.error(err.message)
+    } finally {
+      closeModal()
+    }
   }
   return (
     <>

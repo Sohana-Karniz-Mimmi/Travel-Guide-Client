@@ -7,138 +7,141 @@ import Register from "../Pages/Register";
 import AllTourists from "../Pages/AllTourists";
 import Gallery from "../Pages/Gallery";
 import GuideProfileDetails from "../Pages/GuideProfileDetails";
-import CountriesData from "../Pages/CountriesData";
+import TourTypeMatch from "../Pages/TourTypeMatch";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Statistics from "../Pages/Dashboard/Common/Statistics";
 import AddJob from "../Pages/AddJob";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import BidRequests from "../Pages/Dashboard/Admin/BidRequests";
 import ManageBookings from "../Pages/Dashboard/Host/ManageBookings";
-import MyBookings from "../Pages/Dashboard/Guest/MyBookings";
+// import MyBookings from "../Pages/Dashboard/Guest/MyBookings";
 import MyListings from "../Pages/Dashboard/Host/MyListings";
+import AppliedJobs from "../Pages/AppliedJobs";
 
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
         path: "/",
-        element: <MainLayout></MainLayout>,
-        errorElement: <ErrorPage></ErrorPage>,
-        children: [
-            {
-                path: "/",
-                element: <Home></Home>,
-            },
-            {
-                path: "/login",
-                element: <Login></Login>
-            },
-            {
-                path: "/register",
-                element: <Register></Register>
-            },
-            {
-                path: "/all-packages",
-                element: <AllTourists></AllTourists>
-            },
-            {
-                path: "/packages-details/:id",
-                element: <Gallery></Gallery>
-            },
-            {
-                path: "/guide-profile-details/:id",
-                element: <GuideProfileDetails></GuideProfileDetails>
-            },
-            {
-                path: "/match-type-details",
-                element: <CountriesData></CountriesData>
-            },
-            
-            // {
-            //     path: "/job/:id",
-            //     element: <PrivetRoute><ViewDetails></ViewDetails></PrivetRoute>,
-            //     loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
-            // },
-            // {
-            //     path: "/update/:id",
-            //     element: <PrivetRoute><Update></Update></PrivetRoute>,
-            //     loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`),
-            // },
-        ]
-    },
-    {
-        path: '/dashboard',
-        element: (
-            <DashboardLayout />
-        ),
-        children: [
-          {
-            index: true,
-            element: (
-                <Statistics />
-
-            ),
-          },
-          {
-            path: 'add-package',
-            element: (
-                // <HostRoute>
-                  <AddJob />
-                // </HostRoute>
-
-            ),
-          },
-          {
-            path: 'wishlist',
-            element: (
-                // <HostRoute>
-                  <MyListings />
-                // </HostRoute>
-
-            ),
-          },
-          {
-            path: 'manage-users',
-            element: (
-                // <AdminRoute>
-                  <ManageUsers />
-                // </AdminRoute>
-
-            ),
-          },
-          {
-            // path: 'manage-users',
-            element: (
-                // <AdminRoute>
-                  <BidRequests />
-                // </AdminRoute>
-
-            ),
-          },
-          {
-            path: 'my-bookings',
-            element: (
-                <MyBookings />
-
-            ),
-          },
-          {
-            path: 'manage-bookings',
-            element: (
-                // <HostRoute>
-                  <ManageBookings />
-                // </HostRoute>
-
-            ),
-          },
-        //   {
-        //     path: 'profile',
-        //     element: (
-        //         <Profile />
-
-        //     ),
-        //   },
-        ],
+        element: <Home></Home>,
       },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+      },
+      {
+        path: "/all-packages",
+        element: <AllTourists></AllTourists>
+      },
+      {
+        path: "/packages-details/:id",
+        element: <Gallery></Gallery>
+      },
+      {
+        path: "/guide-profile-details/:id",
+        element: <GuideProfileDetails></GuideProfileDetails>
+      },
+      {
+        path: "/tour-type-match-package/:tourType",
+        element: <TourTypeMatch></TourTypeMatch>,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/tour-type/${params.tourType}`)
+      },
+
+      // {
+      //     path: "/job/:id",
+      //     element: <PrivetRoute><ViewDetails></ViewDetails></PrivetRoute>,
+      //     loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
+      // },
+      // {
+      //     path: "/update/:id",
+      //     element: <PrivetRoute><Update></Update></PrivetRoute>,
+      //     loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`),
+      // },
+    ]
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <DashboardLayout />
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <Statistics />
+
+        ),
+      },
+      {
+        path: 'add-package',
+        element: (
+          // <HostRoute>
+          <AddJob />
+          // </HostRoute>
+
+        ),
+      },
+      {
+        path: 'wishlist',
+        element: (
+          // <HostRoute>
+          <MyListings />
+          // </HostRoute>
+
+        ),
+      },
+      {
+        path: 'manage-users',
+        element: (
+          // <AdminRoute>
+          <ManageUsers />
+          // </AdminRoute>
+
+        ),
+      },
+      {
+        path: 'my-bookings',
+        element: (
+          // <MyBookings />
+          <AppliedJobs />
+
+        ),
+      },
+      {
+        // path: 'manage-bookings',
+        element: (
+          // <HostRoute>
+          <ManageBookings />
+          // </HostRoute>
+
+        ),
+      },
+      {
+        path: 'manage-bookings',
+        element: (
+          // <AdminRoute>
+          <BidRequests />
+          // </AdminRoute>
+
+        ),
+      },
+      //   {
+      //     path: 'profile',
+      //     element: (
+      //         <Profile />
+
+      //     ),
+      //   },
+    ],
+  },
 ]);
 
 export default router;

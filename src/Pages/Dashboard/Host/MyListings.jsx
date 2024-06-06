@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { useMutation, useQuery } from '@tanstack/react-query'
-// import RoomDataRow from '../../../Components/Dashboard/TableRows/RoomDataRows'
+import RoomDataRow from '../../../Components/Dashboard/TableRows/RoomDataRows'
 import toast from 'react-hot-toast'
 import useAuth from '../../../Hook/useAuth'
 import useAxiosSecure from '../../../Hook/useAxiosSecure'
@@ -10,17 +10,19 @@ const MyListings = () => {
   const axiosSecure = useAxiosSecure()
   //   Fetch Rooms Data
   const {
-    data: rooms = [],
+    data: wishlists = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ['my-listings', user?.email],
+    queryKey: ['wishlists', user?.email],
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/my-listings/${user?.email}`)
+      const { data } = await axiosSecure.get(`/wishlist/${user?.email}`)
 
       return data
     },
   })
+
+  console.log(wishlists);
 
   //   delete
   const { mutateAsync } = useMutation({
@@ -98,21 +100,21 @@ const MyListings = () => {
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      Update
+                      Details
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {/* Room row data */}
 
-                  {/* {rooms.map(room => (
+                  {wishlists.map(wishlist => (
                     <RoomDataRow
-                      key={room._id}
-                      room={room}
+                      key={wishlist._id}
+                      room={wishlist}
                       handleDelete={handleDelete}
                       refetch={refetch}
                     />
-                  ))} */}
+                  ))}
                 </tbody>
               </table>
             </div>
