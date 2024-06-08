@@ -71,7 +71,6 @@ const TabCategories = () => {
           <Overview></Overview>
         </TabPanel>
         <TabPanel>
-          {/* <TouristsSpots></TouristsSpots> */}
           <OurPackage></OurPackage>
         </TabPanel>
         <TabPanel>

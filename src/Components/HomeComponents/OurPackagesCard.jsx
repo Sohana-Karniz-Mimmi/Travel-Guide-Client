@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 // import photo from "../../assets/images/Saint_Martin_Island.jpg"
 import errorImage from "../../../public/404.jpg"
 import { FaHeart, FaRegUserCircle } from "react-icons/fa";
-import { FaRegClock, FaRegMap, FaStar } from "react-icons/fa6";
+import { FaRegMap, FaStar } from "react-icons/fa6";
 import { GoArrowRight } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
@@ -100,7 +100,7 @@ const OurPackagesCard = ({ tourPackage }) => {
 
                     <div className=" pt-3 flex justify-between items-center">
                         <div className="flex gap-6 font-medium text-[#9ca3a9]">
-                            <p className="flex gap-2 items-center"><FaRegClock /> 3 Days </p>
+                            {/* <p className="flex gap-2 items-center"><FaRegClock /> 3 Days </p> */}
                             <p className="flex gap-2 items-center"><FaRegUserCircle /> 12+ </p>
                             <p className="flex gap-2 items-center"><FaRegMap /> Bangladesh</p>
                         </div>
