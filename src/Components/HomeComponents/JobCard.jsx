@@ -72,7 +72,7 @@ const JobCard = ({ job }) => {
           </p>
           <div className=' text-center'>
             {
-              user ? <Link to={`/job/${_id}`} className="md:px-4 md:py-2 px-3 py-2 border hover:bg-[#fe9703] group-hover:text-white duration-300 border-green-600 hover:border-[#fe9703] text-center transition-all ease-out md:text-[16px] text-sm btn-outline rounded-md hover:outline-none bg-green-600 text-white">View Details</Link> : <Link to={`/job/${_id}`} onClick={showToast} className="md:px-4 md:py-2 px-3 py-2 border hover:bg-[#fe9703] group-hover:text-white duration-300 border-green-600 hover:border-[#fe9703] text-center transition-all ease-out md:text-[16px] text-sm btn-outline rounded-md hover:outline-none bg-green-600 text-white">View Details</Link>
+              user ? <Link to={`/job/${_id}`} className="md:px-4 md:py-2 px-3 py-2 border hover:bg-[#FD4C5C] group-hover:text-white duration-300 border-green-600 hover:border-[#FD4C5C] text-center transition-all ease-out md:text-[16px] text-sm btn-outline rounded-md hover:outline-none bg-green-600 text-white">View Details</Link> : <Link to={`/job/${_id}`} onClick={showToast} className="md:px-4 md:py-2 px-3 py-2 border hover:bg-[#FD4C5C] group-hover:text-white duration-300 border-green-600 hover:border-[#FD4C5C] text-center transition-all ease-out md:text-[16px] text-sm btn-outline rounded-md hover:outline-none bg-green-600 text-white">View Details</Link>
             }
           </div>
 

@@ -8,10 +8,9 @@ const TourGuide = () => {
     const axiosCommon = useAxiosCommon()
   
     const { data: guides = [], isLoading } = useQuery({
-      queryKey: ['guide'],
+      queryKey: ['guides'],
       queryFn: async () => {
         const { data } = await axiosCommon.get(`/tour-guide`)
-  
         return data
       },
     })

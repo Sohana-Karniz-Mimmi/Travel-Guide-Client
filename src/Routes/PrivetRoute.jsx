@@ -11,7 +11,7 @@ const PrivetRoute = ({ children }) => {
     if (loading) {
         return <>
             <div className="flex items-center justify-center space-x-2 h-screen">
-                <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-[#fe9703]"></div>
+                <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-[#FD4C5C]"></div>
             </div>
         </>
 

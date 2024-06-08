@@ -78,7 +78,7 @@ const Footer = () => {
                 </h4>
                 <div className="mb-6 flex md:justify-start justify-center  items-center">
                   <Link
-                    className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#fe9703] hover:bg-[#fe9703] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-[#fe9703] sm:mr-4 lg:mr-3 xl:mr-4"
+                    className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#FD4C5C] hover:bg-[#FD4C5C] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-[#FD4C5C] sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg
                       width="8"
@@ -90,7 +90,7 @@ const Footer = () => {
                     </svg>
                   </Link>
                   <Link
-                    className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#fe9703] hover:bg-[#fe9703] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-[#fe9703] sm:mr-4 lg:mr-3 xl:mr-4"
+                    className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#FD4C5C] hover:bg-[#FD4C5C] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-[#FD4C5C] sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg
                       width="16"
@@ -102,7 +102,7 @@ const Footer = () => {
                     </svg>
                   </Link>
                   <Link
-                    className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#fe9703] hover:bg-[#fe9703] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-[#fe9703] sm:mr-4 lg:mr-3 xl:mr-4"
+                    className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#FD4C5C] hover:bg-[#FD4C5C] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-[#FD4C5C] sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg
                       width="16"
@@ -114,7 +114,7 @@ const Footer = () => {
                     </svg>
                   </Link>
                   <Link
-                    className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#fe9703] hover:bg-[#fe9703] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-[#fe9703] sm:mr-4 lg:mr-3 xl:mr-4"
+                    className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-[#FD4C5C] hover:bg-[#FD4C5C] hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-[#FD4C5C] sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg
                       width="14"
@@ -225,7 +225,7 @@ const NavLink = ({ link, label }) => {
     <li>
       <a
         href={link}
-        className="inline-block text-base hover:underline leading-loose text-body-color hover:text-[#fe9703] dark:text-[#a1a6ab]"
+        className="inline-block text-base hover:underline leading-loose text-body-color hover:text-[#FD4C5C] dark:text-[#a1a6ab]"
       >
         {label}
       </a>

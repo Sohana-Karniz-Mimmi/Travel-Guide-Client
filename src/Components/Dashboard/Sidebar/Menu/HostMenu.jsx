@@ -7,7 +7,7 @@ const HostMenu = () => {
       <MenuItem
         icon={MdOutlineManageHistory}
         label='My Assigned Tours'
-        address='manage-bookings'
+        address='my-assigned-tours'
       />
     </>
   )

@@ -51,9 +51,9 @@ const ViewDetails = () => {
                         </div>
                         <div>
                             <div className="flex gap-1 font-medium text-[#9ca3a9]">
-                                <button className=" md:py-[3px] py-[3px] md:px-3 px-2 rounded-md text-sm bg-[#fe9703] text-white">Fulltime</button>
-                                <button className=" md:py-[3px] py-[3px] md:px-3 px-2 rounded-md text-sm bg-[#fe9703] text-white">{category}</button>
-                                <button className=" md:py-[3px] py-[3px] md:px-3 px-2 rounded-md text-sm bg-[#fe9703] text-white">2-4 Years</button>
+                                <button className=" md:py-[3px] py-[3px] md:px-3 px-2 rounded-md text-sm bg-[#FD4C5C] text-white">Fulltime</button>
+                                <button className=" md:py-[3px] py-[3px] md:px-3 px-2 rounded-md text-sm bg-[#FD4C5C] text-white">{category}</button>
+                                <button className=" md:py-[3px] py-[3px] md:px-3 px-2 rounded-md text-sm bg-[#FD4C5C] text-white">2-4 Years</button>
                             </div>
                             <div className="flex items-center gap-6">
                                 <p className='flex items-center gap-2 mt-2 text-sm font-medium'>

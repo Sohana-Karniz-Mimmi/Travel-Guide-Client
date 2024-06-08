@@ -8,9 +8,6 @@ import { GrLogout } from 'react-icons/gr'
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
-// import useRole from '../../../hooks/useRole'
-// import HostMenu from './Menu/HostMenu'
-// import AdminMenu from './Menu/AdminMenu'
 // import ToggleBtn from '../../Shared/Button/ToggleBtn'
 import MenuItem from './Menu/MenuItem'
 import GuestMenu from './Menu/GuestMenu'
@@ -29,10 +26,7 @@ const Sidebar = () => {
   const handleToggle = () => {
     setActive(!isActive)
   }
-
-  // const toggleHandler = event => {
-  //   setToggle(event.target.checked)
-  // }
+  
   return (
     <>
       {/* Small Screen Navbar */}
@@ -82,10 +76,6 @@ const Sidebar = () => {
 
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
-            {/* Conditional toggle button here.. */}
-            {/* {role === 'host' && (
-              <ToggleBtn toggleHandler={toggleHandler} toggle={toggle} />
-            )} */}
 
             {/*  Menu Items */}
             <nav>
@@ -99,16 +89,9 @@ const Sidebar = () => {
               {/* <HostMenu></HostMenu> */}
               {/* <AdminMenu></AdminMenu> */}
 
-              {role === 'guest' && <GuestMenu />}
-              {role === 'host' && <HostMenu />}
-              {/* {role === 'host' ? (
-                toggle ? (
-                  <HostMenu />
-                ) : (
-                  <GuestMenu />
-                )
-              ) : undefined} */}
-              {role === 'admin' && <AdminMenu />}
+              {role.role === 'guest' && <GuestMenu />}
+              {role.role === 'host' && <HostMenu />}
+              {role.role === 'admin' && <AdminMenu />}
             </nav>
           </div>
         </div>

@@ -61,7 +61,7 @@ const Modal = ({ _id, job_title, deadline, category, salary, buyer }) => {
     return (
         <>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
-            <button className="btn hover:bg-[#fe9703] bg-green-600 font-semibold text-white duration-300 border-green-600 hover:border-[#fe9703] text-center transition-all ease-out" onClick={() => document.getElementById('my_modal_5').showModal()}>
+            <button className="btn hover:bg-[#FD4C5C] bg-green-600 font-semibold text-white duration-300 border-green-600 hover:border-[#FD4C5C] text-center transition-all ease-out" onClick={() => document.getElementById('my_modal_5').showModal()}>
 
                 Apply_Now
             </button>

@@ -38,7 +38,7 @@ const TabCategories = () => {
   // if (isLoading) {
   //   return <>
   //     <div className="flex items-center justify-center space-x-2 h-screen">
-  //       <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-[#fe9703]"></div>
+  //       <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-[#FD4C5C]"></div>
   //     </div>
   //   </>
   // }
@@ -58,7 +58,7 @@ const TabCategories = () => {
             Explore our Job Portals to streamline your job search. From the cutting-edge world of Technology to the strategic realm of Finance,
           </p>
         </div>
-        <div className=' text-[#fe9703] flex items-center justify-center'>
+        <div className=' text-[#FD4C5C] flex items-center justify-center'>
           <TabList>
             <Tab>Overview</Tab>
             <Tab>Our Packages</Tab>

@@ -1,53 +1,57 @@
 import { Helmet } from "react-helmet-async";
-import { useState } from "react";
-// import JobPage from "../Components/Pdf";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import useAuth from "../Hook/useAuth";
-import { useQuery } from "@tanstack/react-query";
-// import AppliedBanner from "../Components/ApplidBanner";
-// import { format } from 'date-fns';
-
-// import axios from "axios";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { format } from 'date-fns';
+import LoadingSpinner from "../Components/Shared/LoadingSpinner";
+import toast from 'react-hot-toast'
+// import DeleteModal from "../Components/Modal/DeleteModal";
+// import { useState } from "react";
 // import { RiArrowDropDownLine } from "react-icons/ri";
 
 
 const AppliedJobs = () => {
 
     const axiosSecure = useAxiosSecure()
+    // const[isOpen, setIsOpen] = useState(false)
+    // const closeModal = () => {
+    //     setIsOpen(false)
+    // }
 
     const { user } = useAuth()
 
-    // const [appliedJob, setAppliedJob] = useState([]);
-    // useEffect(() => {
-    //     getData()
-    // }, [user])
-
-    const { data: appliedJob = [], isLoading, } = useQuery({
-        queryFn: () => getData(),
-        queryKey: ['appliedJob', user?.email],
+    const { data: bookings = [], isLoading, refetch } = useQuery({
+        queryKey: ['bookings'],
+        queryFn: async () => {
+            const { data } = await axiosSecure(`/my-bookings/${user?.email}`)
+            return data
+        },
     })
 
+    //   delete
+    const { mutateAsync } = useMutation({
+        mutationFn: async id => {
+            const { data } = await axiosSecure.delete(`/booking/${id}`)
+            return data
+        },
+        onSuccess: async data => {
+            console.log(data)
+            refetch()
+            toast.success('Booking Canceled')
+        },
+    })
 
-    const [selectedCategory, setSelectedCategory] = useState('All');
-    const filteredJobs = selectedCategory === 'All' ? appliedJob : appliedJob.filter(job => job.category === selectedCategory);
-
-    const getData = async () => {
-        const { data } = await axiosSecure(`/my-apply/${user?.email}`)
-        // setAppliedJob(data);
-        return data;
-    }
-
-    console.log(appliedJob);
+    const handleCancelBookings = async id => {
+        console.log('sohana', id);
+        try {
+            await mutateAsync(id)
+        } catch (err) {
+            console.log(err)
+        }
+    };
 
 
-    if (isLoading) {
-        return <>
-            <div className="flex items-center justify-center space-x-2 h-screen">
-                <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-[#fe9703]"></div>
-            </div>
-        </>
-
-    }
+    if (isLoading) { return <LoadingSpinner /> }
 
 
     return (
@@ -65,25 +69,6 @@ const AppliedJobs = () => {
             <section className='container px-4 mx-auto py-12'>
                 {/* <h2 className="text-2xl md:text-4xl font-bold text-center pb-5">Applied Jobs</h2> */}
 
-                {/* Filter */}
-                <div className="flex justify-end">
-                    <select
-                        onChange={e => {
-                            setSelectedCategory(e.target.value)
-                        }}
-                        value={selectedCategory}
-                        name='category'
-                        id='category'
-                        className='border md:py-4 py-2 mb-2 md:px-8 px-5 rounded-lg border-green-600 outline-none'
-                    >
-                        <option className="bg-white text-black" value=''>Filter By Category</option>
-                        <option className="bg-white text-black" value='All'>All</option>
-                        <option className="bg-white text-black" value='On Site'>On Site</option>
-                        <option className="bg-white text-black" value='Remote'>Remote</option>
-                        <option className="bg-white text-black" value='Hybrid'>Hybrid</option>
-                        <option className="bg-white text-black" value='Part Time'>Part Time</option>
-                    </select>
-                </div>
 
                 <div className='flex flex-col mt-6'>
                     <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
@@ -136,65 +121,65 @@ const AppliedJobs = () => {
                                         </tr>
                                     </thead>
                                     <tbody className='bg-white divide-y divide-gray-200 '>
-                                        {/* {
-                                            filteredJobs?.map(apply => */}
+                                        {
+                                            bookings?.map(booking =>
 
-                                                <tr >
+                                                <tr key={booking._id}>
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {/* {apply.job_title} */}
-                                                        Sohana
+                                                        {booking.guideName}
                                                     </td>
 
                                                     {/* Deadline */}
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {/* {format(apply.deadline, 'dd-MM-yyyy')} */}
-                                                        05-03-2024
+                                                        {format(booking.tourDate, 'dd-MM-yyyy')}
                                                     </td>
 
                                                     {/* Price */}
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {/* ${apply.salary} */}
-                                                        $500
+                                                        ${booking.price}
                                                     </td>
 
                                                     {/* Dynamic category */}
-                                                    {/* <td className='px-4 py-4 text-sm whitespace-nowrap'>
+                                                    <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                         <div className='flex items-center gap-x-2'>
                                                             <p
                                                                 className={`px-3 py-1 rounded-full 
-                                                    text-xs ${apply.category === 'On Site' && 'text-blue-500 bg-blue-100/60'} ${apply.category === 'Remote' && 'text-pink-500 bg-pink-100/60'} ${apply.category === 'Part Time' && 'text-emerald-500 bg-emerald-100/60'} ${apply.category === 'Hybrid' && 'text-violet-500 bg-violet-100/60'}
+                                                    text-xs ${booking.status === 'In Review' && 'text-blue-500 bg-blue-100/60'} ${booking.status === 'Rejected' && 'text-red-500 bg-pink-100/60'} ${booking.status === 'Accepted' && 'text-emerald-500 bg-emerald-100/60'} ${booking.status === 'Hybrid' && 'text-violet-500 bg-violet-100/60'}
                                                     `}
                                                             >
-                                                                {apply.category}
+                                                                {booking.status}
                                                             </p>
-                                                        </div>
-                                                    </td> */}
-                                                    {/* Pending */}
-                                                    <td className='px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap'>
-                                                        <div>
-                                                            <h2 className='text-sm font-normal bg-yellow-100/60 text-yellow-500 inline-flex items-center px-3 py-1 rounded-full gap-x-2'>In Review</h2>
                                                         </div>
                                                     </td>
 
-                                                    {/* Download Button */}
+                                                    {/* Calcel Button */}
                                                     <td className='px-4 py-4 text-sm whitespace-nowrap'>
-                                                        <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                        <button
+                                                            // onClick={() => setIsOpen(true)}
+                                                            onClick={() => handleCancelBookings(booking._id)}
+                                                            className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
+                                                            disabled={booking.status === 'Accepted'}
+                                                        >
                                                             Cancel
-                                                            {/*Pdf  */}
-                                                            {/* <JobPage job={apply} /> */}
                                                         </button>
+                                                        {/* Delete Modal */}
+                                                        {/* <DeleteModal
+                                                            handleDelete={handleCancelBookings}
+                                                            closeModal={closeModal}
+                                                            isOpen={isOpen}
+                                                            id={booking?._id}
+                                                        /> */}
                                                     </td>
-                                                    {/* Download Button */}
+                                                    {/* Pay Button */}
                                                     <td className='px-4 py-4 text-sm whitespace-nowrap'>
-                                                        <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                        <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
+                                                            disabled={booking.status === 'In Review'}
+                                                        >
                                                             Pay
-                                                            {/*Pdf  */}
-                                                            {/* <JobPage job={apply} /> */}
                                                         </button>
                                                     </td>
-                                                </tr>
-                                                {/* )
-                                        } */}
+                                                </tr>)
+                                        }
                                     </tbody>
                                 </table>
                             </div>

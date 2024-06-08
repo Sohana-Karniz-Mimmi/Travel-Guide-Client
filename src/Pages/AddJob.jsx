@@ -1,77 +1,70 @@
+import { imageUpload } from '../api/utils/index'
+import useAxiosSecure from "../Hook/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
-import { useState } from 'react'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
-// import { format } from 'date-fns';
-import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
-import { useForm } from "react-hook-form";
-import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
-// import AddJobBanner from "../Components/AddJobBanner";
-import useAuth from "../Hook/useAuth";
+import 'react-datepicker/dist/react-datepicker.css'
+import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast'
+
 
 const AddJob = () => {
-    const { user } = useAuth()
-    const navigate = useNavigate()
-
-    const [postedDate, setPostDate] = useState(new Date())
-    const [deadline, setDeadline] = useState(new Date())
+    const axiosSecure = useAxiosSecure()
 
     // React Hook Form
     const {
         register,
         handleSubmit,
     } = useForm()
-    const email = user.email
-    const displayName = user.displayName
 
-    const handleSubmitForm = data => {
-        // data.preventDefault();
-        console.log(data);
-        const { job_title, category, salaryRange, description, photo } = data
-        const salary = parseFloat(salaryRange)
-
-        const jobs = {
-            job_title, category, postedDate, deadline, salary, description, photo, buyer: {
-                email,
-                displayName,
-                buyerPhoto: user?.photoURL,
-            },
-            apply_count: 0,
-        }
-        console.table(jobs);
-
-        mutateAsync({ jobs })
-        // axios.post(`${import.meta.env.VITE_API_URL}/job`, jobs)
-        //     .then(data => {
-        //         if (data.data.insertedId) {
-        //             Swal.fire({
-        //                 title: "Job Added Successfully",
-        //                 icon: "success"
-        //             });
-        //         }
-        //         console.log('inside post response data', data);
-        //     })
-
-    }
-
-     // Tanstack Query for post the data   
+    // Tanstack Query for post the data   
     const { mutateAsync } = useMutation({
-        mutationFn: async ({ jobs }) => {
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/job`, jobs)
-            console.log(data)
+        mutationFn: async tourPackages => {
+            const { data } = await axiosSecure.post(`/tour-package`, tourPackages)
             return data
         },
         onSuccess: () => {
-            console.log('Job Added Successfully')
-            navigate('/myJobs')
-            Swal.fire({
-                title: "Job Added Successfully",
-                icon: "success"
-            });
+            console.log('Data Saved Successfully')
+            toast.success('Tour Packages Added Successfully!')
         },
     })
+    const handleSubmitForm = async data => {
+        const { tourists_spot_name, country_name, price, tour_type, description, image, image2, image3, image4, image5 } = data
+        const salary = parseFloat(price)
+        const uploadImage = image[0]
+        const uploadImage2 = image2[0]
+        const uploadImage3 = image3[0]
+        const uploadImage4 = image4[0]
+        const uploadImage5 = image5[0]
+
+        try {
+
+            // const image_url = data.data.display_url
+            const image_url = await imageUpload(uploadImage)
+            const image_url2 = await imageUpload(uploadImage2)
+            const image_url3 = await imageUpload(uploadImage3)
+            const image_url4 = await imageUpload(uploadImage4)
+            const image_url5 = await imageUpload(uploadImage5)
+
+            const tourPackages = {
+                tourists_spot_name, country_name, price: salary, tour_type, description,
+                image1:image_url,
+                image2:image_url2,
+                image3:image_url3,
+                image4:image_url4,
+                image5:image_url5,
+            }
+            // console.log(tourPackages)
+
+            //   Post request to server
+            await mutateAsync(tourPackages)
+        } catch (err) {
+            console.log(err)
+            toast.error(err.message)
+        }
+
+    }
+
+
 
 
     return (
@@ -86,37 +79,55 @@ const AddJob = () => {
                 <form onSubmit={handleSubmit(handleSubmitForm)} className="lato container mx-auto flex justify-center space-y-12">
                     <fieldset className=" py-5 md:px-[30px] px-5 rounded-md shadow-xl dark:bg-white mt-5">
                         <div className="py-[10px] border-b mb-6 flex justify-between items-center">
-                            <h3 className="rubik text-xl font-medium">POST A PACKAGE</h3>
+                            <h3 className="rubik text-xl font-medium">ADD A PACKAGE</h3>
                         </div>
                         <div className="lato lg:w-[848px] md:w-[680px] w-[300px] grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
 
 
-                            {/* First Row  */}
+                            {/* Tourist Spot name and country  */}
                             <div className="col-span-full sm:col-span-3">
-                                <label className="lato font-semibold text-base text-[#333] block mb-2">Job Title</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Tourist Spot Name</label>
                                 <div className="relative">
-                                    <input {...register("job_title", { required: true })} name="job_title" required type="text" className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Enter as Job Title" />
-                                    {/* {errors.job_title && <span className="text-red-600">Please Enter a Job Title</span>} */}
+                                    <input {...register("tourists_spot_name", { required: true })} name="tourists_spot_name" required type="text" className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Enter as Job Title" />
+                                    {/* {errors.tourists_spot_name && <span className="text-red-600">Please Enter a Job Title</span>} */}
 
                                 </div>
                             </div>
                             <div className="col-span-full sm:col-span-3">
-                                <label className="lato font-semibold text-base text-[#333] block mb-2">Job Category</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Country Name</label>
                                 <div className="relative">
-                                    <select {...register("category", { required: true })} name="category" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]">
+                                    <input {...register("country_name", { required: true })} name="country_name" value={'Bangladesh'} required type="text" className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" />
+                                    {/* {errors.country_name && <span className="text-red-600">Please Enter a Job Title</span>} */}
+
+                                </div>
+                            </div>
+
+                            {/* 2nd Row price and tour type  */}
+                            <div className="col-span-full sm:col-span-3">
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Price</label>
+                                <div className="salaryRange">
+                                    <input {...register("price", { required: true })} name="price" type="number" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Salary" />
+                                    {/* {errors.price && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
+
+                                </div>
+                            </div>
+                            <div className="col-span-full sm:col-span-3">
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Tour Type</label>
+                                <div className="relative">
+                                    <select {...register("tour_type", { required: true })} name="tour_type" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]">
                                         <option value="">Select Job...</option>
-                                        <option value="On Site">On Site</option>
+                                        <option value="Nature">Nature</option>
                                         <option value="Remote">Remote</option>
                                         <option value="Part Time">Part Time</option>
                                         <option value="Hybrid">Hybrid</option>
                                     </select>
-                                    {/* {errors.category && <span className="text-red-600">Please Enter Your Country</span>} */}
+                                    {/* {errors.tour_type && <span className="text-red-600">Please Enter Your Country</span>} */}
 
                                 </div>
                             </div>
 
                             {/* 2nd Row  */}
-                            <div className="col-span-full sm:col-span-3">
+                            {/* <div className="col-span-full sm:col-span-3">
                                 <label className="lato font-semibold text-base text-[#333] block mb-2">Job Posting Date</label>
                                 <div className="relative">
                                     <DatePicker
@@ -136,48 +147,95 @@ const AddJob = () => {
                                         onChange={date => setDeadline(date)}
                                     />
                                 </div>
-                            </div>
+                            </div> */}
 
-                            {/* 3rd Row  */}
+                            {/* 3rd Row images  */}
                             <div className="col-span-full sm:col-span-3">
-                                <label className="lato font-semibold text-base text-[#333] block mb-2">Salary rang</label>
-                                <div className="salaryRange">
-                                    <input {...register("salaryRange", { required: true })} name="salaryRange" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Salary" />
-                                    {/* {errors.salaryRange && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Photo URL</label>
+                                <div className="relative">
+                                    <input
+                                        {...register("image", { required: true })}
+                                        type='file'
+                                        name='image'
+                                        id='image'
+                                        accept='image/*'
+                                        className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]"
+                                        required
+                                    />
+                                    {/* {errors.photo2 && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
 
                                 </div>
                             </div>
                             <div className="col-span-full sm:col-span-3">
                                 <label className="lato font-semibold text-base text-[#333] block mb-2">Photo URL</label>
                                 <div className="relative">
-                                    <input {...register("photo", { required: true })} name="photo" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Enter Your Photo URL" />
-                                    {/* {errors.photo && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
+                                    <input
+                                        {...register("image2", { required: true })}
+                                        type='file'
+                                        name='image2'
+                                        id='image'
+                                        accept='image/*'
+                                        className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]"
+                                        required
+                                    />
+                                    {/* {errors.photo2 && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
 
                                 </div>
                             </div>
-
-
-
-                            {/* User Name  and email */}
+                            {/* 4rd Row images  */}
                             <div className="col-span-full sm:col-span-3">
-                                <label className="lato font-semibold text-base text-[#333] block mb-2">Your Name</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Photo URL</label>
                                 <div className="relative">
-                                    <input  {...register("userName", { required: true })} value={displayName} name="userName" type="text" className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" />
+                                    <input
+                                        {...register("image3", { required: true })}
+                                        type='file'
+                                        name='image3'
+                                        id='image'
+                                        accept='image/*'
+                                        className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]"
+                                        required
+                                    />
+                                    {/* {errors.photo2 && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
 
                                 </div>
                             </div>
                             <div className="col-span-full sm:col-span-3">
-                                <label className="lato font-semibold text-base text-[#333] block mb-2">Your Email</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Photo URL</label>
                                 <div className="relative">
-                                    <input  {...register("email", { required: true })} name="email" value={user.email} type="text" className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" />
+                                    <input
+                                        {...register("image4", { required: true })}
+                                        type='file'
+                                        name='image4'
+                                        id='image'
+                                        accept='image/*'
+                                        className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]"
+                                        required
+                                    />
+                                    {/* {errors.photo2 && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
 
                                 </div>
                             </div>
 
+                            <div className="col-span-full sm:col-span-3">
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Photo URL</label>
+                                <div className="relative">
+                                    <input
+                                        {...register("image5", { required: true })}
+                                        type='file'
+                                        name='image5'
+                                        id='image'
+                                        accept='image/*'
+                                        className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]"
+                                        required
+                                    />
+                                    {/* {errors.photo2 && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
+
+                                </div>
+                            </div>
 
                             {/* description */}
                             <div className="col-span-full">
-                                <label className="lato font-semibold text-base text-[#333] block mb-2">Job Description</label>
+                                <label className="lato font-semibold text-base text-[#333] block mb-2">Tour Description</label>
                                 <div className="relative">
                                     <textarea {...register("description", { required: true })} name="description" type="text" cols="10" rows="3" placeholder="Write a short description..." className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]"></textarea>
 

@@ -12,30 +12,31 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../Components/Shared/LoadingSpinner";
 import useAxiosCommon from "../Hook/useAxiosCommon";
+import BookingForm from "../Components/BookingForm";
 
 
 const Gallery = () => {
 
     const { id } = useParams()
-  const axiosCommon = useAxiosCommon()
+    const axiosCommon = useAxiosCommon()
 
-  const {
-    data: tourPackage = {},
-    isLoading,
-  } = useQuery({
-    queryKey: ['tourPackage', id],
-    queryFn: async () => {
-      const { data } = await axiosCommon.get(`/tour-package/${id}`)
-      return data
-    },
-  })
+    const {
+        data: tourPackage = {},
+        isLoading,
+    } = useQuery({
+        queryKey: ['tourPackage', id],
+        queryFn: async () => {
+            const { data } = await axiosCommon.get(`/tour-package/${id}`)
+            return data
+        },
+    })
 
-  if (isLoading) return <LoadingSpinner />
-  console.log(tourPackage)
+    if (isLoading) return <LoadingSpinner />
+    console.log(tourPackage)
 
-  const { image1, image2, image3, image4, image5} = tourPackage
-    
-    
+    const { image1, image2, image3, image4, image5 } = tourPackage
+
+
     return (
         <div>
 
@@ -94,6 +95,7 @@ const Gallery = () => {
                 </section>
 
 
+                <BookingForm></BookingForm>
 
                 {/* Contact Section */}
 

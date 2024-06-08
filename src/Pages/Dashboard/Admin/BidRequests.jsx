@@ -4,13 +4,15 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import LoadingSpinner from "../../../Components/Shared/LoadingSpinner";
+import useGuideName from "../../../Hook/useGuideName";
 
 
 const BidRequests = () => {
 
   const { user } = useContext(AuthContext)
+  const [guideName] = useGuideName()
+  console.log(guideName.name);
   const QueryClient = useQueryClient()
-
 
   // Tanstack Query
   const { data: bidRequests = [], isLoading } = useQuery({
@@ -25,14 +27,15 @@ const BidRequests = () => {
   // }, [user])
 
   const getData = async () => {
-    const { data } = await axios(`${import.meta.env.VITE_API_URL}/bid-requests/${user?.email}`)
+    // const { data } = await axios(`${import.meta.env.VITE_API_URL}/my-bookings/${user?.email}`)
+    const { data } = await axios(`${import.meta.env.VITE_API_URL}/manage-bookings/${guideName.name}`)
     return data;
   }
 
 
   const { mutateAsync } = useMutation({
     mutationFn: async ({ id, status }) => {
-      const { data } = await axios.patch(`${import.meta.env.VITE_API_URL}/bid/${id}`, { status })
+      const { data } = await axios.patch(`${import.meta.env.VITE_API_URL}/booking/update/${id}`, { status })
       console.log(data)
       return data
     },
@@ -82,7 +85,7 @@ const BidRequests = () => {
                       className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
                     >
                       <div className='flex items-center gap-x-3'>
-                        <span>Title</span>
+                        <span>Package Name</span>
                       </div>
                     </th>
                     <th
@@ -90,7 +93,7 @@ const BidRequests = () => {
                       className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
                     >
                       <div className='flex items-center gap-x-3'>
-                        <span>Email</span>
+                        <span>Tourist Name</span>
                       </div>
                     </th>
 
@@ -98,7 +101,7 @@ const BidRequests = () => {
                       scope='col'
                       className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                     >
-                      <span>Deadline</span>
+                      <span>Tour Date</span>
                     </th>
 
                     <th
@@ -106,15 +109,8 @@ const BidRequests = () => {
                       className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                     >
                       <button className='flex items-center gap-x-2'>
-                        <span>Price</span>
+                        <span>Tour Price</span>
                       </button>
-                    </th>
-
-                    <th
-                      scope='col'
-                      className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
-                    >
-                      Category
                     </th>
 
                     <th
@@ -146,7 +142,7 @@ const BidRequests = () => {
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
                         ${bidRequest.price}
                       </td>
-                      <td className='px-4 py-4 text-sm whitespace-nowrap'>
+                      {/* <td className='px-4 py-4 text-sm whitespace-nowrap'>
                         <div className='flex items-center gap-x-2'>
                           <p
                             className={`px-3 py-1 rounded-full 
@@ -156,23 +152,25 @@ const BidRequests = () => {
                             {bidRequest.category}
                           </p>
                         </div>
-                      </td>
+                      </td> */}
                       <td className='px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap'>
                         <div
-                          className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2 ${bidRequest.status === 'Pending' &&
-                            'bg-yellow-100/60 text-yellow-500'
-                            } ${bidRequest.status === 'In Progress' &&
+                          className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2 
+                            
+                            ${bidRequest.status === 'In Review' &&
                             'bg-blue-100/60 text-blue-500'
-                            } ${bidRequest.status === 'Complete' &&
+                            } 
+                            ${bidRequest.status === 'Accepted' &&
                             'bg-emerald-100/60 text-emerald-500'
-                            } ${bidRequest.status === 'Rejected' &&
+                            } 
+                            ${bidRequest.status === 'Rejected' &&
                             'bg-red-100/60 text-red-500'
                             } `}
                         >
                           <span
                             className={`h-1.5 w-1.5 rounded-full ${bidRequest.status === 'Pending' && 'bg-yellow-500'
-                              } ${bidRequest.status === 'In Progress' && 'bg-blue-500'
-                              } ${bidRequest.status === 'Complete' && 'bg-green-500'} ${bidRequest.status === 'Rejected' && 'bg-red-500'
+                              } ${bidRequest.status === 'In Review' && 'bg-blue-500'
+                              } ${bidRequest.status === 'Accepted' && 'bg-green-500'} ${bidRequest.status === 'Rejected' && 'bg-red-500'
                               }  `}
                           ></span>
                           <h2 className='text-sm font-normal '>{bidRequest.status}</h2>
@@ -180,11 +178,12 @@ const BidRequests = () => {
                       </td>
                       <td className='px-4 py-4 text-sm whitespace-nowrap'>
                         <div className='flex items-center gap-x-6'>
-                          {/* Accept Button: In Progress */}
-                          <button onClick={() =>
-                            handleStatus(bidRequest._id, bidRequest.status, 'In Progress')
+                          {/* Accept Button: In Review */}
+                          <button title="Accept"
+                          onClick={() =>
+                            handleStatus(bidRequest._id, bidRequest.status, 'Accepted')
                           }
-                            disabled={bidRequest.status === 'Complete'} className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'>
+                            disabled={bidRequest.status === 'Accepted'} className='text-gray-500 transition-colors duration-200   hover:text-green-500 focus:outline-none'>
                             <svg
                               xmlns='http://www.w3.org/2000/svg'
                               fill='none'
@@ -202,10 +201,11 @@ const BidRequests = () => {
                           </button>
 
                           {/* Reject Button */}
-                          <button onClick={() =>
+                          <button title="Reject"
+                          onClick={() =>
                             handleStatus(bidRequest._id, bidRequest.status, 'Rejected')}
-                            disabled={bidRequest.status === 'Complete'}
-                            className='text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none'>
+                            disabled={bidRequest.status === 'Accepted'}
+                            className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'>
                             <svg
                               xmlns='http://www.w3.org/2000/svg'
                               fill='none'

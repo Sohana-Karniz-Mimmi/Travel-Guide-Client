@@ -125,7 +125,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'manage-bookings',
+        path: 'my-assigned-tours',
         element: (
           // <AdminRoute>
           <BidRequests />

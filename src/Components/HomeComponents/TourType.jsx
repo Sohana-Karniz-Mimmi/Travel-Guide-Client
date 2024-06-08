@@ -41,7 +41,7 @@ const TourType = () => {
 
                     {
                         tourTypes.map(tourType => <Link key={tourType._id} to={`/tour-type-match-package/${tourType.type_name}`} className="hover:border border p-3 flex gap-2 items-center">
-                        <MdCardGiftcard className='text-[#fe9703] md:text-[55px] text-[30px]'/>
+                        <MdCardGiftcard className='text-[#FD4C5C] md:text-[55px] text-[30px]'/>
                         <div>
                             <h1 className='md:text-[30px] text-[20px] font-bold'>3,560</h1>
                             <p className='md:text-[15px] text-[12px]'>{tourType.type_name}</p>
@@ -50,35 +50,35 @@ const TourType = () => {
                     }
                     
                 {/* <Link to={`/match-type-details`} className="hover:border border p-3 flex gap-2 items-center">
-                    <FaRegCircleUser className='text-[#fe9703] md:text-[55px] text-[30px] ' />
+                    <FaRegCircleUser className='text-[#FD4C5C] md:text-[55px] text-[30px] ' />
                     <div>
                         <h1 className='md:text-[30px] text-[20px] font-bold'>8,563</h1>
                         <p className='md:text-[15px] text-[12px]'>Sports</p>
                     </div>
                 </Link>
                 <Link to={`/match-type-details`} className="hover:border border p-3 flex gap-2 items-center">
-                    <FaRegFileAlt className='text-[#fe9703] md:text-[55px] text-[30px]' />
+                    <FaRegFileAlt className='text-[#FD4C5C] md:text-[55px] text-[30px]' />
                     <div>
                         <h1 className='md:text-[30px] text-[20px] font-bold'>6,852</h1>
                         <p className='md:text-[15px] text-[12px]'>Walking</p>
                     </div>
                 </Link>
                 <Link to={`/match-type-details`} className="hover:border border p-3 flex gap-2 items-center">
-                    <TbBrandCampaignmonitor className='text-[#fe9703] md:text-[55px] text-[30px]' />
+                    <TbBrandCampaignmonitor className='text-[#FD4C5C] md:text-[55px] text-[30px]' />
                     <div>
                         <h1 className='md:text-[30px] text-[20px] font-bold'>420</h1>
                         <p className='md:text-[15px] text-[12px]'>Air Rides</p>
                     </div>
                 </Link>
                 <Link to={`/match-type-details`} className="hover:border border p-3 flex gap-2 items-center">
-                    <MdCardGiftcard className='text-[#fe9703] md:text-[55px] text-[30px]' />
+                    <MdCardGiftcard className='text-[#FD4C5C] md:text-[55px] text-[30px]' />
                     <div>
                         <h1 className='md:text-[30px] text-[20px] font-bold'>3,560</h1>
                         <p className='md:text-[15px] text-[12px]'>Hinking</p>
                     </div>
                 </Link>
                 <Link to={`/match-type-details`} className="hover:border border p-3 flex gap-2 items-center">
-                    <FaRegCircleUser className='text-[#fe9703] md:text-[55px] text-[30px]' />
+                    <FaRegCircleUser className='text-[#FD4C5C] md:text-[55px] text-[30px]' />
                     <div>
                         <h1 className='md:text-[30px] text-[20px] font-bold'>8,563</h1>
                         <p className='md:text-[15px] text-[12px]'>Sports</p>

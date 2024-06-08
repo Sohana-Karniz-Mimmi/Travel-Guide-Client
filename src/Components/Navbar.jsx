@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import './navbar.css'
-import logo from "../assets/images/team5.jpg";
+import logo from "../assets/images/logo.png";
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { GrLogout } from "react-icons/gr";
 import { MdDashboard } from "react-icons/md";
@@ -34,39 +34,39 @@ const Navbar = () => {
 
     const navLinks = <>
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
+            isActive ? 'p-0 text-[#FD4C5C] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#FD4C5C]'
                 :
-                'font-medium p-0 transition-all duration-200 ease-in-out hover:pb-1 hover:text-[#fe9703] hover:rounded-none text-[16px] hover:border-b-2 border-[#fe9703] mt-2'
+                'font-medium p-0 transition-all duration-200 ease-in-out hover:pb-1 hover:text-[#FD4C5C] hover:rounded-none text-[16px] hover:border-b-2 border-[#FD4C5C] mt-2'
         } to={'/'}> Home </NavLink> </li>
 
 
         {/* {user && <> */}
 
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
+            isActive ? 'p-0 text-[#FD4C5C] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#FD4C5C]'
                 :
-                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#FD4C5C] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#FD4C5C]'
         } to={'/appliedJobs'}> Community </NavLink> </li>
 
 
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
+            isActive ? 'p-0 text-[#FD4C5C] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#FD4C5C]'
                 :
-                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#FD4C5C] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#FD4C5C]'
         } to={'/addJob'}> About Us </NavLink> </li>
 
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
+            isActive ? 'p-0 text-[#FD4C5C] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#FD4C5C]'
                 :
-                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#FD4C5C] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#FD4C5C]'
         } to={'/myJobs'}> Contact Us </NavLink> </li>
 
         {/* </>} */}
 
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 text-[#fe9703] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#fe9703]'
+            isActive ? 'p-0 text-[#FD4C5C] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#FD4C5C]'
                 :
-                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#fe9703] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#fe9703]'
+                'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#FD4C5C] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#FD4C5C]'
         } to={'/blogs'}> Blogs </NavLink> </li>
 
     </>
@@ -89,7 +89,7 @@ const Navbar = () => {
 
     return (
 
-        <div className=" navbar items-center justify-between barlow-regular min-h-[99px] p-0 md:py-3 py-5 container mx-auto md:px-10 px-1">
+        <div className=" navbar items-center justify-between roboto min-h-[99px] p-0 md:py-3 py-5 container mx-auto md:px-10 px-1">
 
             <div className="">
 
@@ -107,8 +107,9 @@ const Navbar = () => {
 
 
                 <Link to={'/'} className="font-bold text-lg md:text-3xl gap-3 flex items-center">
-                    {/* <img className="md:w-12 md:h-10 w-7 h-7 relative" src={logo} alt="" /> */}
-                    <span className="text-orange-500">T<span className="text-white">ravel</span><span className="">Guide</span></span></Link>
+                    <img className="relative" src={logo} alt="logo" />
+                    {/* <span className="text-orange-500">T<span className="text-white">ravel</span><span className="">Guide</span></span> */}
+                    </Link>
 
 
             </div>
@@ -189,11 +190,11 @@ const Navbar = () => {
                         :
                         <>
                             <div className=" flex ">
-                                <Link to={`/login`} className="md:mr-2 mr-1 md:px-[30px] md:py-[9px] py-0.5 px-1.5 ease-out font-medium tracking-wide text-white md:text-[15px] text-xs capitalize transition-colors duration-300 transform bg-[#fe9703] rounded-full hover:bg-[#26ae61] ">
+                                <Link to={`/login`} className="md:mr-2 mr-1 md:px-[30px] md:py-[12px] py-0.5 px-1.5 ease-out font-medium tracking-wide text-white md:text-[15px] text-xs capitalize transition-colors duration-300 transform rounded-md border-[#FD4C5C] hover:border-[#FD4C5C] border hover:border">
                                     Login
                                 </Link>
-                                <Link to={`/register`} className="md:px-[30px] md:py-[9px] px-1 ease-out font-medium tracking-wide text-white md:text-[15px] text-xs capitalize transition-colors duration-300 transform bg-[#26ae61] rounded-full hover:bg-[#fe9703] ">
-                                    Register
+                                <Link to={`/register`} className="md:px-[30px] md:py-[12px] px-1 ease-out font-medium tracking-wide text-white md:text-[15px] text-xs capitalize transition-colors duration-300 transform bg-[#FD4C5C] rounded-md hover:bg-transparent border-[#FD4C5C] hover:border-[#FD4C5C] border  ">
+                                    Sign Up
                                 </Link>
                             </div>
                         </>
