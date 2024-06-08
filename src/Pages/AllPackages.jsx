@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 // import { RiArrowDropDownLine } from "react-icons/ri";
 import { Helmet } from "react-helmet-async";
 import AllPackagesCard from "../Components/HomeComponents/AllPackagesCard";
-import AddJobBanner from "../Components/AllPackagesBanner";
+import ViewBanner from "../Components/ViewBanner";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
@@ -74,7 +74,7 @@ const AllPackages = () => {
                 <title>All Tourist Spot - Turio</title>
             </Helmet>
             <div  >
-                <AddJobBanner></AddJobBanner>
+                <ViewBanner name={'All Packages'}></ViewBanner>
             </div>
             <div className="barlow-condensed-regular mt-4 mb-10 md:mt-16 container max-w-6xl mx-auto">
 
