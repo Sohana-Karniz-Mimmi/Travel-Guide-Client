@@ -82,7 +82,7 @@ const OurPackagesCard = ({ tourPackage }) => {
                     <button onClick={handleClick} className={`z-10 group-hover:bg-white text-sm font-medium absolute top-4 right-5 rounded-full py-2 px-2 xs:text-xl md:text-sm flex items-center gap-2
                     ${bgColor ? 'bg-[#00000050] text-white' : 'bg-white text-[#FF0143]'}
                     `}> <FaHeart className={`group-hover:text-[#FF0143]`} /></button>
-                    <h3 className="z-10 bg-green-600 text-sm font-medium text-white absolute top-4 left-4 rounded-md py-2 px-[14px] xs:text-xl md:text-sm flex items-center gap-2"> <AiOutlineSafetyCertificate className='text-lg' /> {tour_type}</h3>
+                    <h3 className="z-10 bg-[#FD4C5C] text-sm font-medium text-white absolute top-4 left-4 rounded-md py-2 px-[14px] xs:text-xl md:text-sm flex items-center gap-2"> <AiOutlineSafetyCertificate className='text-lg' /> {tour_type}</h3>
                 </div>
 
 
@@ -105,7 +105,7 @@ const OurPackagesCard = ({ tourPackage }) => {
                             <p className="flex gap-2 items-center"><FaRegMap /> Bangladesh</p>
                         </div>
                         <Link to={`/packages-details/${_id}`} ><GoArrowRight className="text-2xl"></GoArrowRight></Link>
-                        {/* <button className="btn bg-green-600 text-white">View Details</button> */}
+                        {/* <button className="btn bg-[#FD4C5C] text-white">View Details</button> */}
                     </div>
 
                 </div>

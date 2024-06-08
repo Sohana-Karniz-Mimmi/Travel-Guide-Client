@@ -50,37 +50,37 @@ const Navbar = () => {
 
     const navLinks = <>
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-green-600' : 'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 border-green-600 mt-2'
+            isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#FD4C5C]' : 'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 border-[#FD4C5C] mt-2'
         } to={'/'}> Home </NavLink> </li>
 
         <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-green-600'
+            isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#FD4C5C]'
                 :
-                'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-green-600'
+                'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#FD4C5C]'
         } to={'/allTourists'}>All Tourists Spot </NavLink> </li>
 
         {user && <>
 
             <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-green-600'
+                isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#FD4C5C]'
                     :
-                    'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-green-600'
+                    'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#FD4C5C]'
             } to={'/addTourists'}> Add Tourists Spot </NavLink> </li>
 
 
             <li> <NavLink className={({ isActive }) =>
-                isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-green-600'
+                isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#FD4C5C]'
                     :
-                    'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-green-600'
+                    'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#FD4C5C]'
             } to={'/myList'}> My List </NavLink> </li>
 
         </>}
 
 
         {/* <li> <NavLink className={({ isActive }) =>
-            isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-green-600'
+            isActive ? 'p-0 pb-1 rounded-none text-[16px] border-b-2 font-bold mt-2 border-[#FD4C5C]'
                 :
-                'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-green-600'
+                'font-bold p-0 hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#FD4C5C]'
         } to={'/about'}> About Us</NavLink> </li> */}
     </>
 
@@ -176,7 +176,7 @@ const Navbar = () => {
                                         <a className="text-black">{user.displayName}</a>
                                     </li>
                                     <Link to={`/`} onClick={handleLogoutBtn} className="w-full mt-2 relative inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-                                        <span className="w-full h-full bg-green-600 absolute"></span>
+                                        <span className="w-full h-full bg-[#FD4C5C] absolute"></span>
                                         <span className="relative md:px-3 md:py-1.5 px-3 py-1.5 transition-all ease-out rounded-md group-hover:bg-opacity-0 duration-400">
                                             <span className="relative text-white md:text-[16px] text-sm">Log Out</span>
                                         </span>
@@ -190,7 +190,7 @@ const Navbar = () => {
                         :
                         <>
                             <Link to={`/login`} className="md:mr-2 mr-1 relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-                                <span className="w-full h-full bg-green-600 absolute">
+                                <span className="w-full h-full bg-[#FD4C5C] absolute">
 
                                 </span>
                                 <span className="relative md:px-6 md:py-2 px-1 transition-all ease-out  rounded-md group-hover:bg-opacity-0 duration-400">
@@ -198,7 +198,7 @@ const Navbar = () => {
                                 </span>
                             </Link>
                             <Link to={`/register`} className=" relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-                                <span className="w-full h-full bg-green-600 absolute"></span>
+                                <span className="w-full h-full bg-[#FD4C5C] absolute"></span>
                                 <span className="relative md:px-6 md:py-2 px-1 transition-all ease-out rounded-md group-hover:bg-opacity-0 duration-400">
                                     <span className="relative text-white md:text-[16px] text-sm">Register</span>
                                 </span>

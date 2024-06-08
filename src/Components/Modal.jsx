@@ -61,7 +61,7 @@ const Modal = ({ _id, job_title, deadline, category, salary, buyer }) => {
     return (
         <>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
-            <button className="btn hover:bg-[#FD4C5C] bg-green-600 font-semibold text-white duration-300 border-green-600 hover:border-[#FD4C5C] text-center transition-all ease-out" onClick={() => document.getElementById('my_modal_5').showModal()}>
+            <button className="btn hover:bg-[#FD4C5C] bg-[#FD4C5C] font-semibold text-white duration-300 border-[#FD4C5C] hover:border-[#FD4C5C] text-center transition-all ease-out" onClick={() => document.getElementById('my_modal_5').showModal()}>
 
                 Apply_Now
             </button>
@@ -106,7 +106,7 @@ const Modal = ({ _id, job_title, deadline, category, salary, buyer }) => {
                             <input required name='resumeLink' type="text" className="grow" placeholder="Resume Link" />
                         </label>
                         <div className="text-center">
-                            <button type="submit" className="btn btn-block bg-green-600 text-white hover:bg-green-600">Submit</button>
+                            <button type="submit" className="btn btn-block bg-[#FD4C5C] text-white hover:bg-[#FD4C5C]">Submit</button>
                         </div>
                     </form>
                 </div>

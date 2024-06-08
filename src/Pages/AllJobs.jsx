@@ -62,7 +62,7 @@ const AllJobs = () => {
                                 aria-label='Enter Job Title'
                             />
 
-                            <button className='px-1 md:px-4 py-[13px] text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-green-600 hover:bg-green-600 focus:bg-green-600 focus:outline-none'>
+                            <button className='px-1 md:px-4 py-[13px] text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-[#FD4C5C] hover:bg-[#FD4C5C] focus:bg-[#FD4C5C] focus:outline-none'>
                                 Search
                             </button>
                         </div>

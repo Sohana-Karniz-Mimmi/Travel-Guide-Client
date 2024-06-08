@@ -151,7 +151,7 @@ const BookingForm = () => {
 
                             {/* Btn */}
                             <div className="col-span-full">
-                                <input type="submit" value='Book Now' className="text-base py-[10px] px-[20px] rounded-[3px] btn bg-green-600 hover:bg-green-600 text-white" />
+                                <input type="submit" value='Book Now' className="text-base py-[10px] px-[20px] rounded-[3px] btn bg-[#FD4C5C] hover:bg-[#FD4C5C] text-white" />
                             </div>
                         </div>
                     </fieldset>

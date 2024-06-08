@@ -44,7 +44,7 @@ const AllTourists = () => {
     if (loading) {
         return (
             <div className="flex items-center justify-center space-x-2 h-screen">
-                <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-green-600">
+                <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-[#FD4C5C]">
 
                 </div>
             </div>
@@ -69,7 +69,7 @@ const AllTourists = () => {
                 {/* Sort By*/}
                 {/* <div className="text-end mt-4 mb-4 pr-10">
                 <details className="dropdown">
-                    <summary className="m-1 btn bg-green-600 hover:bg-green-600 rounded-lg text-white flex items-center justify-center">Sort By
+                    <summary className="m-1 btn bg-[#FD4C5C] hover:bg-[#FD4C5C] rounded-lg text-white flex items-center justify-center">Sort By
                         <span className="text-3xl"><RiArrowDropDownLine /></span>
                     </summary>
                     <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">

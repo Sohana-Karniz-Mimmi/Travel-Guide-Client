@@ -15,7 +15,7 @@ const CountriesCard = () => {
                 <div className="p-6 space-y-2 relative">
 
                     <div>
-                        <h3 className="z-10 justify-center transition-all duration-500 else-in-out hover:bg-green-600 text-sm font-medium hover:text-white bg-white text-green-600 absolute top-[-20px] left-[30%] rounded-full py-2 px-8 flex items-center gap-2 shadow-sm"> <FaRegClock /> Rainy</h3>
+                        <h3 className="z-10 justify-center transition-all duration-500 else-in-out hover:bg-[#FD4C5C] text-sm font-medium hover:text-white bg-white text-[#FD4C5C] absolute top-[-20px] left-[30%] rounded-full py-2 px-8 flex items-center gap-2 shadow-sm"> <FaRegClock /> Rainy</h3>
                     </div>
                     <h3 className="text-2xl font-semibold ">Sajek Valley</h3>
                     <div className="flex justify-between">
@@ -26,13 +26,13 @@ const CountriesCard = () => {
                     </div>
                     <div className=" flex justify-between items-center">
                         <span className="font-bold text-lg flex items-center gap-2"><FaRegCalendarDays /> 10 Days</span>
-                        <h2 className="text-2xl font-semibold text-green-600">
+                        <h2 className="text-2xl font-semibold text-[#FD4C5C]">
                             $1500
                         </h2>
                     </div>
 
-                    <Link to={`/details`} className=" w-full relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden transition-all ease-out duration-300 bg-green-600 hover:bg-transparent rounded-md">
-                        <span className="md:px-6 border text-white hover:text-green-600 duration-300 border-green-600 w-full text-center md:py-3 px-3 py-2 transition-all ease-out rounded-md md:text-[16px] text-sm">View Details</span>
+                    <Link to={`/details`} className=" w-full relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden transition-all ease-out duration-300 bg-[#FD4C5C] hover:bg-transparent rounded-md">
+                        <span className="md:px-6 border text-white hover:text-[#FD4C5C] duration-300 border-[#FD4C5C] w-full text-center md:py-3 px-3 py-2 transition-all ease-out rounded-md md:text-[16px] text-sm">View Details</span>
                     </Link>
 
                 </div>

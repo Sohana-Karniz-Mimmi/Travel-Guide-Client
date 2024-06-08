@@ -168,7 +168,7 @@ const MyJobs = () => {
 
                                                 <span className="inline-flex gap-4 overflow-hidden rounded-md bg-white">
                                                     <Link to={`/update/${myJob._id}`}
-                                                        className="inline-block  p-3 text-gray-700 hover:text-green-600 hover:bg-gray-50 focus:relative"
+                                                        className="inline-block  p-3 text-gray-700 hover:text-[#FD4C5C] hover:bg-gray-50 focus:relative"
                                                         title="Update Job"
                                                     >
                                                         <svg

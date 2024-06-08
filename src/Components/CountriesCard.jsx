@@ -14,7 +14,7 @@ const CountriesCard = ({ countries }) => {
                 </div>
 
                 <div className="p-6 space-y-2">
-                    <h3 className="text-2xl group-hover:text-green-600 transition-all duration-300 text-center font-semibold ">{countryName}</h3>
+                    <h3 className="text-2xl group-hover:text-[#FD4C5C] transition-all duration-300 text-center font-semibold ">{countryName}</h3>
                     <div className="text-[#9ca3a9] text-[17px] font-medium text-center flex justify-between items-center barlow-condensed-regular ">
                         <p>{description}</p>
                     </div>
