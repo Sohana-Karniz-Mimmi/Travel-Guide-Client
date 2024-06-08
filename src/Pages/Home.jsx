@@ -11,7 +11,7 @@ const Home = () => {
             </Helmet>
 
             <Banner></Banner>
-            <div className="md:pt-12 md:pb-6 bg-[#f5f7fc]">
+            <div className="md:pt-12 md:pb-6 ">
             <TabCategories></TabCategories>
             </div>
             <TourType></TourType>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 // import { RiArrowDropDownLine } from "react-icons/ri";
 import { Helmet } from "react-helmet-async";
 import AllPackagesCard from "../Components/HomeComponents/AllPackagesCard";
-import AddJobBanner from "../Components/AddJobBanner";
+import AddJobBanner from "../Components/AllPackagesBanner";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 

@@ -63,7 +63,7 @@ const TabCategories = () => {
           <TabList>
             <Tab>Overview</Tab>
             <Tab>Our Packages</Tab>
-            <Tab>Meet Our Tour Guides</Tab>
+            <Tab>Tour Guides</Tab>
           </TabList>
         </div>
 
