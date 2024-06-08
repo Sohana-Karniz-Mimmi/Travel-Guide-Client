@@ -8,7 +8,7 @@
       "image6": "https://a.cdn-hotels.com/gdcs/production99/d1417/4da30a77-ecb2-4ead-a771-e61fac2a73dd.jpg?impolicy=fcrop&w=800&h=533&q=medium",
       "tourists_spot_name": "Serenity Beach",
       "country_name": "Bangladesh",
-      "short_description": "A serene beach with golden sand and clear waters.",
+      "description": "A serene beach with golden sand and clear waters.",
       "price": 150,
       "tour_type": "Beach"
     },
@@ -21,7 +21,7 @@
       "image6": "https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/w_1120,h_650/v1620229703/Best-Places-To-Visit-Cambodia-Phnom-Penh/Best-Places-To-Visit-Cambodia-Phnom-Penh.jpg",
       "tourists_spot_name": "Mystic Mountains",
       "country_name": "Nepal",
-      "short_description": "A beautiful mountain range with stunning views.",
+      "description": "A beautiful mountain range with stunning views.",
       "price": 300,
       "tour_type": "Mountain"
     },
@@ -34,7 +34,7 @@
         "image6": "https://a.cdn-hotels.com/gdcs/production99/d1417/4da30a77-ecb2-4ead-a771-e61fac2a73dd.jpg?impolicy=fcrop&w=800&h=533&q=medium",
       "tourists_spot_name": "Historic Castle",
       "country_name": "France",
-      "short_description": "An ancient castle with rich historical significance.",
+      "description": "An ancient castle with rich historical significance.",
       "price": 200,
       "tour_type": "Historical"
     },
@@ -47,7 +47,7 @@
         "image6": "https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/w_1120,h_650/v1620229703/Best-Places-To-Visit-Cambodia-Phnom-Penh/Best-Places-To-Visit-Cambodia-Phnom-Penh.jpg",
       "tourists_spot_name": "Enchanted Forest",
       "country_name": "Germany",
-      "short_description": "A forest with enchanting beauty and diverse wildlife.",
+      "description": "A forest with enchanting beauty and diverse wildlife.",
       "price": 100,
       "tour_type": "Nature"
     },
@@ -60,7 +60,7 @@
         "image6": "https://a.cdn-hotels.com/gdcs/production99/d1417/4da30a77-ecb2-4ead-a771-e61fac2a73dd.jpg?impolicy=fcrop&w=800&h=533&q=medium",
       "tourists_spot_name": "Modern Cityscape",
       "country_name": "Japan",
-      "short_description": "A bustling city with modern architecture and culture.",
+      "description": "A bustling city with modern architecture and culture.",
       "price": 250,
       "tour_type": "City"
     },
@@ -73,7 +73,7 @@
         "image6": "https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/w_1120,h_650/v1620229703/Best-Places-To-Visit-Cambodia-Phnom-Penh/Best-Places-To-Visit-Cambodia-Phnom-Penh.jpg",
       "tourists_spot_name": "Sunny Desert",
       "country_name": "Morocco",
-      "short_description": "A vast desert with golden dunes and a sunny climate.",
+      "description": "A vast desert with golden dunes and a sunny climate.",
       "price": 180,
       "tour_type": "Desert"
     },
@@ -86,7 +86,7 @@
         "image6": "https://a.cdn-hotels.com/gdcs/production99/d1417/4da30a77-ecb2-4ead-a771-e61fac2a73dd.jpg?impolicy=fcrop&w=800&h=533&q=medium",
       "tourists_spot_name": "Tropical Island",
       "country_name": "Maldives",
-      "short_description": "A tropical paradise with white sandy beaches and clear blue waters.",
+      "description": "A tropical paradise with white sandy beaches and clear blue waters.",
       "price": 400,
       "tour_type": "Island"
     },
@@ -99,7 +99,7 @@
         "image6": "https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/w_1120,h_650/v1620229703/Best-Places-To-Visit-Cambodia-Phnom-Penh/Best-Places-To-Visit-Cambodia-Phnom-Penh.jpg",
       "tourists_spot_name": "Cultural Village",
       "country_name": "India",
-      "short_description": "A village rich in culture and tradition, offering unique experiences.",
+      "description": "A village rich in culture and tradition, offering unique experiences.",
       "price": 120,
       "tour_type": "Cultural"
     }

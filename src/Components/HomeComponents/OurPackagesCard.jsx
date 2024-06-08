@@ -24,7 +24,7 @@ const OurPackagesCard = ({ tourPackage }) => {
         image5,
         tourists_spot_name,
         country_name,
-        short_description,
+        description,
         price,
         tour_type } = tourPackage
 
@@ -53,7 +53,7 @@ const OurPackagesCard = ({ tourPackage }) => {
         image5,
         tourists_spot_name,
         country_name,
-        short_description,
+        description,
         price,
         tour_type,
         userId: _id,

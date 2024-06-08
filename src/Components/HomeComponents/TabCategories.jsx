@@ -4,6 +4,7 @@ import 'react-tabs/style/react-tabs.css'
 // import TouristsSpots from './TouristsSpots'
 import TourGuide from '../TourGuide'
 import OurPackage from './OurPackage'
+import Overview from './Overview'
 // import JobCard from './JobCard'
 // import { useEffect, useState } from 'react'
 // import axios from 'axios'
@@ -51,7 +52,7 @@ const TabCategories = () => {
 
         <div>
           <h1 className='text-xl font-semibold text-center text-gray-800 capitalize lg:text-4xl '>
-            Popular Categories
+            Our Tourism
           </h1>
 
           <p className='max-w-2xl mx-auto mt-2 mb-8 text-center text-gray-500 '>
@@ -67,14 +68,14 @@ const TabCategories = () => {
         </div>
 
         <TabPanel>
-          This is Overview Page
+          <Overview></Overview>
         </TabPanel>
         <TabPanel>
           {/* <TouristsSpots></TouristsSpots> */}
           <OurPackage></OurPackage>
         </TabPanel>
         <TabPanel>
-         <TourGuide></TourGuide>
+          <TourGuide></TourGuide>
         </TabPanel>
 
         {/* <TabPanel>

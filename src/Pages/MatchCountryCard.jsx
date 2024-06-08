@@ -6,7 +6,7 @@ import { IoLocationOutline } from 'react-icons/io5';
 
 // { touristsSpot }
 const MatchCountryCard = ({ matchingPackage }) => {
-    const { _id, image1, tourists_spot_name, tour_type, short_description, price } = matchingPackage;
+    const { _id, image1, tourists_spot_name, tour_type, description, price } = matchingPackage;
     console.log(matchingPackage);
     return (
         <div>
@@ -26,7 +26,7 @@ const MatchCountryCard = ({ matchingPackage }) => {
                         }</h3>
                     </div>
                     <div className="text-gray-500 text-[15px]">
-                        <p className='flex items-center gap-2'>{short_description.slice(0, 135)}</p>
+                        <p className='flex items-center gap-2'>{description.slice(0, 135)}</p>
                     </div>
                     <div className=" flex justify-between items-center">
                         <h2 className="text-2xl font-semibold text-[#FD4C5C]">

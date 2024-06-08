@@ -19,9 +19,9 @@ const Banner = () => {
             navigation={true}
             effect="fade"
             modules={[Navigation, Autoplay, EffectFade]}
-            // autoplay={{
-            //     delay: 3000,
-            //   }}
+            autoplay={{
+                delay: 4000,
+              }}
             loop={true}
         >
             
@@ -55,7 +55,6 @@ const Banner = () => {
 
                 </section>
             </SwiperSlide>
-
             
             <SwiperSlide>
                 <section className="relative bg-cover bg-fixed bg-center bg-no-repeat md:h-[720px] h-[500px]" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${slider4})` }}>
@@ -90,7 +89,6 @@ const Banner = () => {
 
                 </section>
             </SwiperSlide>
-
 
             <SwiperSlide>
                 <section className="relative bg-cover bg-fixed bg-center bg-no-repeat md:h-[720px] h-[500px]" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${slider3})` }}>
