@@ -4,7 +4,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
-import AllTourists from "../Pages/AllTourists";
+import AllPackages from "../Pages/AllPackages";
 import Gallery from "../Pages/Gallery";
 import GuideProfileDetails from "../Pages/GuideProfileDetails";
 import TourTypeMatch from "../Pages/TourTypeMatch";
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-packages",
-        element: <AllTourists></AllTourists>
+        element: <AllPackages></AllPackages>
       },
       {
         path: "/packages-details/:id",

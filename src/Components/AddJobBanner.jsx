@@ -13,7 +13,7 @@ const AddJobBanner = () => {
                     <div className='flex items-center justify-center h-[340px]'>
                         <div className=" text-white mx-auto md:max-w-[820px] text-center ltr:sm:text-left rtl:sm:text-right p-10 rounded-lg">
                             <p className='text-5xl font-bold mb-1'>
-                            POST A JOB
+                                All Packages
                             </p>
 
                         </div>

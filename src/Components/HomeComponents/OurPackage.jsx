@@ -3,6 +3,7 @@ import axios from 'axios'
 // import { motion } from "framer-motion"
 import { useQuery } from '@tanstack/react-query'
 import OurPackagesCard from "./OurPackagesCard";
+import { Link } from 'react-router-dom';
 
 
 const OurPackage = () => {
@@ -52,13 +53,19 @@ const OurPackage = () => {
                 <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
 
                     {
-                        tourPackages.map(tourPackage => <OurPackagesCard key={tourPackage._id}
+                        tourPackages.slice(0, 3).map(tourPackage => <OurPackagesCard key={tourPackage._id}
                             tourPackage={tourPackage}
                         ></OurPackagesCard>)
                     }
 
 
                 </div>
+
+                <div className="text-center">
+                    <Link
+                     to={`/all-packages`} className='border border-[#FD4C5C] py-[9px] bg-[#FD4C5C] hover:bg-transparent px-10 text-white hover:text-[#FD4C5C] font-semibold rounded-full text-lg'> View All </Link>
+                </div>
+
             </div>
         </div>
     );
