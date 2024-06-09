@@ -6,7 +6,7 @@ import { GrLogout } from 'react-icons/gr'
 // import { MdHomeWork } from 'react-icons/md'
 // import { NavLink } from 'react-router-dom'
 import { AiOutlineBars } from 'react-icons/ai'
-import { BsGraphUp } from 'react-icons/bs'
+import { CgProfile } from "react-icons/cg";
 import { Link } from 'react-router-dom'
 // import ToggleBtn from '../../Shared/Button/ToggleBtn'
 import MenuItem from './Menu/MenuItem'
@@ -15,6 +15,7 @@ import useAuth from '../../../Hook/useAuth'
 import AdminMenu from './Menu/AdminMenu'
 import HostMenu from './Menu/HostMenu'
 import useRole from './../../../Hook/useRole';
+import logo from "../../../assets/images/logo2.png";
 
 const Sidebar = () => {
   const { logOut } = useAuth()
@@ -36,7 +37,7 @@ const Sidebar = () => {
             <Link to='/'>
               <img
                 // className='hidden md:block'
-                src='https://i.ibb.co/4ZXzmq5/logo.png'
+                src={logo}
                 alt='logo'
                 width='100'
                 height='100'
@@ -61,14 +62,14 @@ const Sidebar = () => {
       >
         <div>
           <div>
-            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-rose-100 mx-auto'>
+            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center mx-auto'>
               <Link to='/'>
                 <img
                   // className='hidden md:block'
-                  src='https://i.ibb.co/4ZXzmq5/logo.png'
+                  src={logo}
                   alt='logo'
-                  width='100'
-                  height='100'
+                  width='200'
+                  height='200'
                 />
               </Link>
             </div>
@@ -83,7 +84,7 @@ const Sidebar = () => {
               <MenuItem
                 label='My Profile'
                 address='/dashboard'
-                icon={BsGraphUp}
+                icon={CgProfile}
               />
               {/* <GuestMenu></GuestMenu> */}
               {/* <HostMenu></HostMenu> */}
