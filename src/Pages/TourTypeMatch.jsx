@@ -1,31 +1,15 @@
 import { useParams } from "react-router-dom";
-import Navbar from "../Components/Navbar";
-// import { useEffect, useState } from "react";
-// import MatchCountryCard from "./MatchCountryCard";
 import { Helmet } from "react-helmet-async";
-import MatchCountryCard from "./MatchCountryCard";
+import MatchTypeCard from "./MatchTypeCard";
 import LoadingSpinner from "../Components/Shared/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosCommon from "../Hook/useAxiosCommon";
-
-
+import ViewBanner from "../Components/ViewBanner";
 
 const TourTypeMatch = () => {
 
-    // const loadedTouristsSpotsData = useLoaderData();
-    // console.log(loadedTouristsSpotsData);
     const {tourType} = useParams();
     console.log(tourType);
-
-    // const [country, setCountry] = useState()
-
-    // useEffect(() => {
-    //     fetch(`https://tourism-server-beta.vercel.app/tourists`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //        setCountry(data)
-    //     })
-    // }, [])
 
     const axiosCommon = useAxiosCommon()
   
@@ -48,22 +32,17 @@ const TourTypeMatch = () => {
     return (
         <div>
             <Helmet>
-                {/* <title>{countryName} All Tourist Sport - Turio</title> */}
+                <title>{tourType} All Package In - Travel Guide</title>
             </Helmet>
             <div>
-                <Navbar></Navbar>
+                <ViewBanner name={`All Package In ${tourType}`}></ViewBanner>
             </div>
             <div className="barlow-condensed-regular mt-12 mb-10 md:mt-18 container max-w-6xl mx-auto space-y-6 sm:space-y-12">
-                <div className="text-center mb-12">
-                    <h2 data-aos="fade-down" data-aos-duration="1000" className="font-semibold text-3xl lg:text-[44px] lg:mb-4 mb-2"> Tourist Spot In {tourType}</h2>
-                    
-                    
-                </div>
 
                 <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
 
                     {
-                        remaining?.map(matchingPackage => <MatchCountryCard key={matchingPackage._id} matchingPackage={matchingPackage} ></MatchCountryCard>)
+                        remaining?.map(matchingPackage => <MatchTypeCard key={matchingPackage._id} matchingPackage={matchingPackage} ></MatchTypeCard>)
                     }
                 </div>
             </div>

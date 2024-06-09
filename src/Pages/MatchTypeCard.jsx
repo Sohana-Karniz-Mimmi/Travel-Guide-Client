@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 // import photo from '../assets/images/Saint_Martin_Island.jpg'
 import errorImage from "../../public/404.jpg"
 import { IoLocationOutline } from 'react-icons/io5';
+import { AiOutlineSafetyCertificate } from 'react-icons/ai';
 
 // { touristsSpot }
-const MatchCountryCard = ({ matchingPackage }) => {
-    const { _id, image1, tourists_spot_name, tour_type, description, price } = matchingPackage;
+const MatchTypeCard = ({ matchingPackage }) => {
+    const { _id, image1, tourists_spot_name, tour_type, description, price, country_name } = matchingPackage;
     console.log(matchingPackage);
     return (
         <div>
@@ -20,10 +21,9 @@ const MatchCountryCard = ({ matchingPackage }) => {
                 <div className="p-6 space-y-2">
                     <h3 className="text-2xl font-semibold ">{tourists_spot_name}</h3>
                     <div className="flex justify-between">
-                        <span className="text-gray-700 flex items-center gap-2"><IoLocationOutline className='text-black' /> Bangladesh, </span>
-                        <h3 className="z-10 bg-[#FD4C5C] text-sm font-medium text-white rounded-md py-1 px-[10px] xs:text-xl md:text-sm flex items-center gap-2">{
-                            tour_type
-                        }</h3>
+                        <span className="text-gray-700 flex items-center gap-2"><IoLocationOutline className='text-black' /> {country_name} </span>
+                        <h3 className="z-10 bg-[#FD4C5C] text-sm font-medium text-white rounded-md py-1 px-[10px] xs:text-xl md:text-sm flex items-center gap-2">
+                        <AiOutlineSafetyCertificate className='text-lg' />{tour_type}</h3>
                     </div>
                     <div className="text-gray-500 text-[15px]">
                         <p className='flex items-center gap-2'>{description.slice(0, 135)}</p>
@@ -44,8 +44,8 @@ const MatchCountryCard = ({ matchingPackage }) => {
     );
 };
 
-MatchCountryCard.propTypes = {
+MatchTypeCard.propTypes = {
     matchingPackage: PropTypes.object.isRequired,
 };
 
-export default MatchCountryCard;
+export default MatchTypeCard;

@@ -5,7 +5,7 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AllPackages from "../Pages/AllPackages";
-import Gallery from "../Pages/Gallery";
+import PackageDetaiils from "../Pages/PackageDetails";
 import GuideProfileDetails from "../Pages/GuideProfileDetails";
 import TourTypeMatch from "../Pages/TourTypeMatch";
 import DashboardLayout from "../Layouts/DashboardLayout";
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/packages-details/:id",
-        element: <Gallery></Gallery>
+        element: <PackageDetaiils></PackageDetaiils>
       },
       {
         path: "/guide-profile-details/:id",

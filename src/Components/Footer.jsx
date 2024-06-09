@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import footer from "../assets/images/footer.png"
+import logo from "../assets/images/logo.png";
 
 const Footer = () => {
   return (
@@ -12,10 +13,11 @@ const Footer = () => {
               <div className="mb-10 w-full">
                 <Link className="mb-6 inline-block max-w-[160px]">
                   <Link to={'/'} className="font-bold text-3xl md:text-4xl gap-3 flex items-center">
-                    <span className="">J<span className="text-orange-500">o</span>b<span className="text-orange-500">Portal</span></span></Link>
+                  <img className="relative" src={logo} alt="logo" />
+                    </Link>
                 </Link>
                 <p className="mb-7 text-[#a1a6ab] text-body-color">
-                  Unlock your career potential with JobPortal - your gateway to endless job opportunities.
+                  Unlock your career potential with Travel Guide - your gateway to endless job opportunities.
                 </p>
                 <p className="flex md:justify-start justify-center items-center text-sm font-medium text-dark dark:text-[#a1a6ab]">
                   <span className="mr-3 text-primary">
@@ -59,7 +61,7 @@ const Footer = () => {
               <NavLink link="/#" label="User Strategy" />
             </LinkGroup>
             <LinkGroup header="Company">
-              <NavLink link="/#" label="About JobPortal" />
+              <NavLink link="/#" label="About Travel Guide" />
               <NavLink link="/#" label="Contact & Support" />
               <NavLink link="/#" label="Success History" />
               <NavLink link="/#" label="Setting & Privacy" />
@@ -127,7 +129,7 @@ const Footer = () => {
                   </Link>
                 </div>
                 <p className="text-base text-body-color dark:text-[#a1a6ab]">
-                  &copy; 2024 JobPortal
+                  &copy; 2024 Travel Guide
                 </p>
               </div>
             </div>
@@ -136,7 +138,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="footer footer-center text-[#a1a6ab] pt-4 pb-3 border-t">
             <aside>
-              <p>Copyright © 2024 - All right reserved by Job Portal Ltd</p>
+              <p>Copyright © 2024 - All right reserved by Travel Guide Ltd</p>
             </aside>
           </div>
 
@@ -169,7 +171,7 @@ const Footer = () => {
               </defs>
             </svg>
           </span>
-          <span className="absolute right-10 top-10 z-[-1]">
+          {/* <span className="absolute right-10 top-10 z-[-1]">
             <svg
               width={75}
               height={75}
@@ -195,7 +197,7 @@ const Footer = () => {
                 </linearGradient>
               </defs>
             </svg>
-          </span>
+          </span> */}
         </div>
 
       </footer>

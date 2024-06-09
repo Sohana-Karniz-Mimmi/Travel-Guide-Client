@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import { FaRegCalendarDays, FaRegClock } from "react-icons/fa6";
+import { FaRegCalendarDays } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { HiOutlineUserGroup } from 'react-icons/hi';
 import { IoLocationOutline } from "react-icons/io5";
+import { AiOutlineSafetyCertificate } from 'react-icons/ai';
 
 const AllPackagesCard = ({touristsSpot}) => {
 
@@ -25,7 +26,7 @@ const AllPackagesCard = ({touristsSpot}) => {
                 <div className="p-6 space-y-2 relative">
 
                     <div>
-                        <h3 className="z-10 justify-center transition-all duration-500 else-in-out hover:bg-[#FD4C5C] text-sm font-medium hover:text-white bg-white text-[#FD4C5C] absolute top-[-20px] left-[30%] rounded-full py-2 px-8 flex items-center gap-2 shadow-sm"> <FaRegClock /> {tour_type}</h3>
+                        <h3 className="z-10 justify-center transition-all duration-500 else-in-out hover:bg-[#FD4C5C] text-sm font-medium hover:text-white bg-white text-[#FD4C5C] absolute top-[-20px] left-[30%] rounded-full py-2 px-8 flex items-center gap-2 shadow-sm"> <AiOutlineSafetyCertificate className='text-lg' />{tour_type}</h3>
                     </div>
                     <h3 className="text-2xl font-semibold ">{tourists_spot_name}</h3>
                     <div className="flex justify-between">
