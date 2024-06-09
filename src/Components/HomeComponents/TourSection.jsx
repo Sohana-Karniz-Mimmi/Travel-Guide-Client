@@ -54,7 +54,7 @@ const TourSection = ({tourPackage}) => {
                     </div>
 
                     <Link to={`/packages-details/${_id}`} className=" w-full relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden transition-all ease-out duration-300 group-hover:bg-[#FD4C5C] rounded-md">
-                        <span className="md:px-6 border hover:bg-[#FD4C5C] group-hover:text-white duration-300 border-[#FD4C5C] w-full text-center md:py-3 px-3 py-2 transition-all ease-out rounded-md  text-[#FD4C5C] md:text-[16px] text-sm">View Details</span>
+                        <span className="md:px-6 border hover:bg-[#FF0143] group-hover:text-white duration-300 hover:border-[#FF0143] border-[#FD4C5C] w-full text-center md:py-3 px-3 py-2 transition-all ease-out rounded-md  text-[#FD4C5C] md:text-[16px] text-sm">View Details</span>
                     </Link>
 
                 </div>

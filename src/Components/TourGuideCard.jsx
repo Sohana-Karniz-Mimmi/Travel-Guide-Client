@@ -37,7 +37,7 @@ const TourGuideCard = ({ guide }) => {
 
                     </div>
                 </div>
-                <Link to={`/guide-profile-details/${_id}`} className="btn rounded-t-none w-full bg-[#FD4C5C] text-white">View Details</Link>
+                <Link to={`/guide-profile-details/${_id}`} className="btn rounded-t-none w-full bg-[#FD4C5C] hover:bg-[#FF0143] text-white">View Details</Link>
             </div>
         </div>
     );

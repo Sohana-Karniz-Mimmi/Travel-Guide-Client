@@ -104,7 +104,7 @@ const OurPackagesCard = ({ tourPackage }) => {
                             <p className="flex gap-2 items-center"><FaRegUserCircle /> 12+ </p>
                             <p className="flex gap-2 items-center"><FaRegMap /> Bangladesh</p>
                         </div>
-                        <Link to={`/packages-details/${_id}`} ><GoArrowRight className="text-2xl"></GoArrowRight></Link>
+                        <Link className='px-6 py-1 rounded-md text-[#FF0143] group-hover:text-white transition-all duration-100 ease-in-out group-hover:bg-[#FF0143]' to={`/packages-details/${_id}`} ><GoArrowRight className="text-2xl transition-all hover:scale-150 duration-500 ease-in-out"></GoArrowRight ></Link>
                         {/* <button className="btn bg-[#FD4C5C] text-white">View Details</button> */}
                     </div>
 

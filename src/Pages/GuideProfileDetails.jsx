@@ -7,6 +7,7 @@ import Container from "../Components/Shared/Container";
 import { GrCheckmark } from "react-icons/gr";
 import contact from '../assets/images/Contact.jpg'
 import { RiSendPlaneFill } from "react-icons/ri";
+import Review from "../Components/Review";
 
 const GuideProfileDetails = () => {
 
@@ -86,6 +87,9 @@ const GuideProfileDetails = () => {
                     </div>
                 </Container>
             </div>
+
+            {/* Review Section */}
+            <Review></Review>
 
             {/* Contact Section */}
 

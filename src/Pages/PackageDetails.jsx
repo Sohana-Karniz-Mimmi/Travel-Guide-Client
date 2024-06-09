@@ -148,10 +148,10 @@ const PackageDetails = () => {
 
                     </div>
 
-                    <div>
+                    <div className="mt-14">
                         <TourPlan></TourPlan>
                     </div>
-                    <div>
+                    <div className="mt-14">
                         <TourGuide></TourGuide>
                     </div>
                     <div>
