@@ -54,17 +54,17 @@ const Footer = () => {
               </div>
             </div>
 
-            <LinkGroup header="Resources">
-              <NavLink link="/#" label="SaaS Development" />
-              <NavLink link="/#" label="Our Products" />
-              <NavLink link="/#" label="User Flow" />
+            <LinkGroup header="Support">
+              <NavLink link="/#" label="Customer Support" />
+              <NavLink link="/#" label="Privacy & Policy" />
+              <NavLink link="/#" label="Contact Channels" />
               <NavLink link="/#" label="User Strategy" />
             </LinkGroup>
-            <LinkGroup header="Company">
-              <NavLink link="/#" label="About Travel Guide" />
-              <NavLink link="/#" label="Contact & Support" />
+            <LinkGroup header="About Us">
+              <NavLink link="/#" label="Our Story" />
+              <NavLink link="/#" label="Travel Blog & Tips" />
               <NavLink link="/#" label="Success History" />
-              <NavLink link="/#" label="Setting & Privacy" />
+              <NavLink link="/#" label="Be Our Partner" />
             </LinkGroup>
             <LinkGroup header="Quick Links">
               <NavLink link="/#" label="Premium Support" />

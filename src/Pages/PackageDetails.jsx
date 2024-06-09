@@ -17,9 +17,11 @@ import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import ViewBanner from "../Components/ViewBanner";
 import TourGuide from "../Components/TourGuide";
 import { FaRegUserCircle } from "react-icons/fa";
+import TourPlan from "./TourPlan";
+import TouristsSpots from "../Components/HomeComponents/TouristsSpots";
 
 
-const PackageDetaiils = () => {
+const PackageDetails = () => {
 
     const { id } = useParams()
     const axiosCommon = useAxiosCommon()
@@ -38,7 +40,7 @@ const PackageDetaiils = () => {
     if (isLoading) return <LoadingSpinner />
     console.log(tourPackage)
 
-    const { image1, image2, image3, image4, image5, tour_type, tourists_spot_name, price, country_name } = tourPackage
+    const { image1, image2, image3, image4, image5, tour_type, tourists_spot_name, price, country_name, description } = tourPackage
 
 
     return (
@@ -73,8 +75,8 @@ const PackageDetaiils = () => {
                         <div className=" border-b pb-6 flex justify-between items-end mb-4">
                             <div className="space-y-2">
 
-                                <h2 data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1800" className="md:text-5xl text-2xl font-medium">{tourists_spot_name}</h2>
-                                <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2000" className="md:text-[17px] text-xs flex items-center font-medium text-[#9ca3a9] gap-2">
+                                <h2 className="md:text-5xl text-2xl font-medium">{tourists_spot_name}</h2>
+                                <p className="md:text-[17px] text-xs flex items-center font-medium text-[#9ca3a9] gap-2">
                                     <FaLocationDot /> {country_name}
                                 </p>
                             </div>
@@ -83,7 +85,7 @@ const PackageDetaiils = () => {
                                 <h2 className="md:text-[30px] text-[#FF0143] font-semibold text-2xl "> ${price}</h2>
                             </div>
                         </div>
-                        <div className="flex items-center justify-between">
+                        <div className="md:flex items-center justify-between">
                             <div className="flex gap-6 font-medium text-[#9ca3a9] mb-6">
                                 <p className="flex gap-2 items-center"><FaRegClock /> 10 Days </p>
                                 <p className="flex gap-2 items-center"><FaRegUserCircle /> 500 </p>
@@ -97,7 +99,6 @@ const PackageDetaiils = () => {
                     </div>
 
                     {/* Gallery */}
-
                     <section className="bg-white mb-12">
                         <div className=" max-w-screen-xl ">
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 h-full">
@@ -138,10 +139,28 @@ const PackageDetaiils = () => {
                         </div>
                     </section>
 
-                    <TourGuide></TourGuide>
+                    {/* description */}
+                    <div className="p-6 rounded-lg border my-8" >
+                        <h2 className="text-black md:text-3xl text-xl font-medium">Overview</h2>
+                        <div className=" pb-4 pt-3 flex justify-between items-center font-medium text-[#9ca3a9]">
+                            <p className="text-[#5c727d]">{description}</p>
+                        </div>
 
+                    </div>
 
-                    <BookingForm></BookingForm>
+                    <div>
+                        <TourPlan></TourPlan>
+                    </div>
+                    <div>
+                        <TourGuide></TourGuide>
+                    </div>
+                    <div>
+                        <BookingForm></BookingForm>
+                    </div>
+                    <div>
+                        <TouristsSpots></TouristsSpots>
+                    </div>
+
                 </Container>
 
                 {/* Contact Section */}
@@ -171,4 +190,4 @@ const PackageDetaiils = () => {
     );
 };
 
-export default PackageDetaiils;
+export default PackageDetails;

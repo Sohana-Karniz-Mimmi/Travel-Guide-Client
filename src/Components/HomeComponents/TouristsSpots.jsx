@@ -1,61 +1,58 @@
-import { Link } from "react-router-dom";
-// import TouristsSpotsCard from "./TouristsSpotsCard";
-import Countries from "./Countries";
+import TourSection from "./TourSection";
+import Guide from "../../assets/images/guide.png";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 
 
 const TouristsSpots = () => {
 
-    // const loadedTouristsSpotsData = useLoaderData();
+    const [tourPackages, setTourPackage] = useState([])
+    useEffect(() => {
+        const getData = async () => {
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/tour-package`)
+            setTourPackage(data)
+        }
+        getData()
+    }, [])
+
+    // Tanstack Query
+    // eslint-disable-next-line no-unused-vars
+    const { data: tourPackage = [], isLoading, } = useQuery({
+        queryFn: () => getData(),
+        queryKey: ['tourPackages'],
+    })
+
+    const getData = async () => {
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/tour-package`)
+        // setJobs(data)import PopularSpot from './PopularSpot';
+
+        return data;
+    }
+
+    if (isLoading) {
+        return <>
+            <div className="flex items-center justify-center space-x-2 h-screen">
+                <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-[#FD4C5C]"></div>
+            </div>
+        </>
+    }
+
 
     return (
         <div className="barlow-condensed-regular mt-12 mb-10 md:mt-24 container max-w-6xl mx-auto space-y-6 sm:space-y-12">
-            {/* <div className="text-center mb-12">
-                <h2 data-aos="fade-down" data-aos-duration="1000" className="font-semibold text-3xl lg:text-[44px] lg:mb-4 mb-2 ">Tourists Spots</h2>
-                <p data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" className="lg:w-[550px] md:w-[500px] text-sm lg:text-lg text-[#9ca3a9] font-medium w-80 mx-auto">Uncover must-see destinations with Turio. From iconic landmarks to hidden treasures, plan your perfect itinerary and make memories.</p>
-            </div> */}
-
-            <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
-
-                {/* {
-                    loadedTouristsSpotsData.slice(0, 6).map(touristsSpot => <TouristsSpotsCard key={touristsSpot._id} touristsSpot={touristsSpot} ></TouristsSpotsCard>)
-                } */}
-
-                {/* ***************** */}
-                {/* <div className="barlow-regular w-full mx-auto group rounded border-2 lg::w-[365px]">
-
-                    <div className="overflow-hidden relative">
-                        <img role="presentation" className="object-cover transition-all hover:scale-110 duration-700 ease-in-out w-full rounded h-52 bg-gray-500" src='https://www.ahsanmanzilticket.gov.bd/images/NMB.jpg' />
-                        <h3 className="z-10 bg-[#FD4C5C] text-sm font-medium text-white absolute top-4 left-4 rounded-md py-2 px-[14px] xs:text-xl md:text-sm flex items-center gap-2"> <FaRegClock /> Rainy</h3>
-                    </div>
-
-                    <div className="p-6 space-y-2">
-                        <h3 className="text-2xl  font-semibold  ">Ahsan Manzil</h3>
-                        <div className="flex justify-between">
-                            <span className="text-[#9ca3a9] font-medium flex items-center gap-2"><IoLocationOutline /> Bangladesh, Kumartoli, Dhaka</span>
-                        </div>
-                        <div className=" flex justify-between items-center">
-                            <span className="font-bold text-lg flex items-center gap-2"><FaRegCalendarDays /> 7 Days</span>
-                            <h2 className="text-[#FF0143] font-semibold text-2xl">
-                            $1000
-                            </h2>
-                        </div>
-
-                        <Link to={`/details`} className=" w-full relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden transition-all ease-out duration-300 group-hover:bg-[#FD4C5C] rounded-md">
-                            <span className="md:px-6 border hover:bg-[#FD4C5C] group-hover:text-white duration-300 border-[#FD4C5C] w-full text-center md:py-3 px-3 py-2 transition-all ease-out rounded-md  text-[#FD4C5C] md:text-[16px] text-sm">View Details</span>
-                        </Link>
-
-                    </div>
-                </div> */}
-                <Countries></Countries>
-                <Countries></Countries>
-                <Countries></Countries>
-                {/* ***************** */}
-
-
+            <div className="flex items-center gap-2">
+                <h2 className="mb-1 text-3xl leading-[1.2] sm:text-4xl md:text-[35px] font-semibold"
+                >You May Like </h2>
+                <img className="w-[55px] h-3" src={Guide} alt="" />
             </div>
-            <div className="text-center">
-                <Link to={`/all-packages`} className='border border-[#FD4C5C] py-[9px] bg-[#FD4C5C] hover:bg-transparent px-10 text-white hover:text-[#FD4C5C] font-semibold rounded-full text-lg'> View All </Link>
+
+            <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+
+                {
+                    tourPackages.slice(0, 4).map(tourPackage => <TourSection key={tourPackage._id} tourPackage={tourPackage} ></TourSection>)
+                }
             </div>
         </div>
     );
