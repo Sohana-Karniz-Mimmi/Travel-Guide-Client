@@ -1,4 +1,5 @@
-import { BsFingerprint } from 'react-icons/bs'
+import { FaRegHeart } from "react-icons/fa";
+import { MdOutlineLibraryBooks } from "react-icons/md";
 import { GrUserAdmin } from 'react-icons/gr'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
@@ -41,12 +42,12 @@ const GuestMenu = () => {
   return (
     <>
       <MenuItem
-        icon={BsFingerprint}
+        icon={MdOutlineLibraryBooks  }
         label='My Bookings'
         address='my-bookings'
       />
       <MenuItem
-        icon={BsFingerprint}
+        icon={FaRegHeart}
         label='My Wishlist'
         address='wishlist'
       />
@@ -65,7 +66,7 @@ const GuestMenu = () => {
       {/***************** */}
       <div
         onClick={() => setIsModalOpen(true)}
-        className='flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform text-gray-600  hover:bg-gray-300   hover:text-gray-700 cursor-pointer'
+        className='flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform text-[#FF0143]  hover:bg-[#FD4C5C]   hover:text-white cursor-pointer'
       >
         <GrUserAdmin className='w-5 h-5' />
 
