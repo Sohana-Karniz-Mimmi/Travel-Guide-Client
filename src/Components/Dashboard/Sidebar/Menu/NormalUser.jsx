@@ -8,7 +8,7 @@ import MenuItem from './MenuItem.jsx'
 import HostModal from '../../../Modal/HostRequestModal.jsx'
 import useAxiosSecure from '../../../../Hook/useAxiosSecure.jsx'
 // import useRole from './../../../../Hook/useRole';
-const GuestMenu = () => {
+const NormalUser = () => {
   const axiosSecure = useAxiosSecure()
   const { user } = useAuth()
   // const [role] = useRole()
@@ -84,4 +84,4 @@ const GuestMenu = () => {
   )
 }
 
-export default GuestMenu
+export default NormalUser

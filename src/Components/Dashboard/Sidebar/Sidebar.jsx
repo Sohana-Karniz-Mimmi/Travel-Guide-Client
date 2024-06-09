@@ -10,10 +10,10 @@ import { CgProfile } from "react-icons/cg";
 import { Link } from 'react-router-dom'
 // import ToggleBtn from '../../Shared/Button/ToggleBtn'
 import MenuItem from './Menu/MenuItem'
-import GuestMenu from './Menu/GuestMenu'
+import NormalUser from './Menu/NormalUser'
 import useAuth from '../../../Hook/useAuth'
 import AdminMenu from './Menu/AdminMenu'
-import HostMenu from './Menu/HostMenu'
+import Guide from './Menu/Guide'
 import useRole from './../../../Hook/useRole';
 import logo from "../../../assets/images/logo2.png";
 
@@ -90,8 +90,8 @@ const Sidebar = () => {
               {/* <HostMenu></HostMenu> */}
               {/* <AdminMenu></AdminMenu> */}
 
-              {role.role === 'guest' && <GuestMenu />}
-              {role.role === 'host' && <HostMenu />}
+              {role.role === 'guest' && <NormalUser />}
+              {role.role === 'host' && <Guide />}
               {role.role === 'admin' && <AdminMenu />}
             </nav>
           </div>

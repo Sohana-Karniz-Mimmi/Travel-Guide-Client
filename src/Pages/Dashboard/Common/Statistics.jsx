@@ -4,15 +4,14 @@
 // import GuestStatistics from '../Guest/GuestStatistics'
 // import HostStatistics from '../Host/HostStatistics'
 
+import UserProfile from "../../../Components/UserProfile"
+
 const Statistics = () => {
   // const [role, isLoading] = useRole()
   // if (isLoading) return <LoadingSpinner />
   return (
     <>
-    This is Profile Page
-      {/* {role === 'admin' && <AdminStatistics />}
-      {role === 'host' && <HostStatistics />}
-      {role === 'guest' && <GuestStatistics />} */}
+    <UserProfile></UserProfile>
     </>
   )
 }

@@ -1,7 +1,7 @@
 
 import {MdOutlineManageHistory } from 'react-icons/md'
 import MenuItem from './MenuItem'
-const HostMenu = () => {
+const Guide = () => {
   return (
     <>
       <MenuItem
@@ -13,4 +13,4 @@ const HostMenu = () => {
   )
 }
 
-export default HostMenu
+export default Guide
