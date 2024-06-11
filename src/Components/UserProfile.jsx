@@ -11,7 +11,6 @@ const UserProfile = () => {
     const userInfo = {
         name: user?.displayName,
         email: user?.email,
-        phone: "+1 987-654-3210",
         profilePicture: user?.photoURL
     };
 
@@ -29,7 +28,7 @@ const UserProfile = () => {
                         {role.role}
                     </button>
                     </div>
-                    <div className="!mt-0">
+                    <div className="!mt-2">
                         <div className="flex justify-center items-center flex-col text-lg font-medium leading-6">
                             {/* <h3 className="">{userInfo.name}</h3> */}
                             <h2 className="font-bold text-indigo-300">{userInfo.name}</h2>

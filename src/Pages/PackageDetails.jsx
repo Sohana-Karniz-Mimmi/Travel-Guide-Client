@@ -155,7 +155,7 @@ const PackageDetails = () => {
                         <TourGuide></TourGuide>
                     </div>
                     <div>
-                        <BookingForm></BookingForm>
+                        <BookingForm tourPackage={tourPackage}></BookingForm>
                     </div>
                     <div>
                         <TouristsSpots></TouristsSpots>

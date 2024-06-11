@@ -67,9 +67,9 @@ const AppliedJobs = () => {
 
 
             <section className='container px-4 mx-auto py-12'>
-                {/* <h2 className="text-2xl md:text-4xl font-bold text-center pb-5">Applied Jobs</h2> */}
-
-
+                <div className='flex items-center gap-x-3'>
+                    <h2 className='text-lg font-medium text-gray-800 '>My Booking</h2>
+                </div>
                 <div className='flex flex-col mt-6'>
                     <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
                         <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
@@ -82,9 +82,18 @@ const AppliedJobs = () => {
                                                 className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
                                             >
                                                 <div className='flex items-center gap-x-3'>
+                                                    <span>Package Name</span>
+                                                </div>
+                                            </th>
+                                            <th
+                                                scope='col'
+                                                className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                            >
+                                                <div className='flex items-center gap-x-3'>
                                                     <span>Tour Guide Name</span>
                                                 </div>
                                             </th>
+
                                             <th
                                                 scope='col'
                                                 className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
@@ -126,6 +135,9 @@ const AppliedJobs = () => {
 
                                                 <tr key={booking._id}>
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                                                        {booking.tour_type}
+                                                    </td>
+                                                    <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
                                                         {booking.guideName}
                                                     </td>
 
@@ -155,9 +167,11 @@ const AppliedJobs = () => {
                                                     {/* Calcel Button */}
                                                     <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                         <button
+                                                            title="Cancel"
                                                             // onClick={() => setIsOpen(true)}
                                                             onClick={() => handleCancelBookings(booking._id)}
-                                                            className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
+                                                            className="px-3 py-1 rounded-full 
+                                                    text-xs text-red-500 bg-pink-100/60"
                                                             disabled={booking.status === 'Accepted'}
                                                         >
                                                             Cancel
@@ -172,10 +186,11 @@ const AppliedJobs = () => {
                                                     </td>
                                                     {/* Pay Button */}
                                                     <td className='px-4 py-4 text-sm whitespace-nowrap'>
-                                                        <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
+                                                        <button title="Pay Now" className="text-purple-500 bg-purple-100/60 px-3 py-1 rounded-full 
+                                                    text-xs"
                                                             disabled={booking.status === 'In Review'}
                                                         >
-                                                            Pay
+                                                            Pay Now
                                                         </button>
                                                     </td>
                                                 </tr>)

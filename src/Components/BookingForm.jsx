@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Helmet } from "react-helmet-async";
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
@@ -12,10 +13,11 @@ import LoadingSpinner from "./Shared/LoadingSpinner";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import toast from 'react-hot-toast'
 
-const BookingForm = () => {
+const BookingForm = ({tourPackage}) => {
     const { user, loading } = useAuth()
     const navigate = useNavigate()
     const axiosSecure = useAxiosSecure()
+    
 
     const [tourDate, setTourDate] = useState(new Date())
     // const [deadline, setDeadline] = useState(new Date())
@@ -53,7 +55,7 @@ const BookingForm = () => {
             
             try {
                 const bookingData = {
-                     touristName: displayName, touristEmail: email, guideName, tourDate, price, photo, status: 'In Review'
+                     touristName: displayName, touristEmail: email, guideName, tourDate, price, photo, status: 'In Review', tour_type: tourPackage.tour_type
                }
                 console.table(bookingData)
           
@@ -160,5 +162,9 @@ const BookingForm = () => {
         </>
     )
 }
+
+BookingForm.propTypes = {
+    tourPackage: PropTypes.object.isRequired,
+};
 
 export default BookingForm
