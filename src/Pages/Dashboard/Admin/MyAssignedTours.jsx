@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -7,7 +7,7 @@ import LoadingSpinner from "../../../Components/Shared/LoadingSpinner";
 import useGuideName from "../../../Hook/useGuideName";
 
 
-const BidRequests = () => {
+const MyAssignedTours = () => {
 
   const { user } = useContext(AuthContext)
   const [guideName] = useGuideName()
@@ -15,16 +15,11 @@ const BidRequests = () => {
   const QueryClient = useQueryClient()
 
   // Tanstack Query
-  const { data: bidRequests = [], isLoading } = useQuery({
+  const { data: assignedTours = [], isLoading } = useQuery({
     queryFn: () => getData(),
-    queryKey: ['bidRequests', user?.email],
+    queryKey: ['assignedTours', user?.email],
   })
-  console.log(bidRequests, isLoading);
-
-  // const [bidRequests, setBidRequests] = useState([]);
-  // useEffect(() => {
-  //   getData()
-  // }, [user])
+  console.log(assignedTours, isLoading);
 
   const getData = async () => {
     // const { data } = await axios(`${import.meta.env.VITE_API_URL}/my-bookings/${user?.email}`)
@@ -46,7 +41,7 @@ const BidRequests = () => {
       // refetch()
 
       // Kothin
-      QueryClient.invalidateQueries({ queryKey: ['bidRequests'] })
+      QueryClient.invalidateQueries({ queryKey: ['assignedTours'] })
     },
   })
 
@@ -54,23 +49,19 @@ const BidRequests = () => {
   // Handle Status
   const handleStatus = async (id, prevStatus, status) => {
     if (prevStatus === status) return console.log('Sry vai.. hobena')
-      await mutateAsync({ id, status })
+    await mutateAsync({ id, status })
     console.log(id, prevStatus, status);
-    
+
     // getData();
   }
 
-  // console.log(bidRequests);
+  // console.log(assignedTours);
 
-  if (isLoading) return <LoadingSpinner/>
+  if (isLoading) return <LoadingSpinner />
   return (
     <section className='container px-4 mx-auto pt-12'>
       <div className='flex items-center gap-x-3'>
-        <h2 className='text-lg font-medium text-gray-800 '>Bid Requests</h2>
-
-        <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
-          {bidRequests.length} Requests
-        </span>
+        <h2 className='text-lg font-medium text-gray-800 '>My Assigned Tours</h2>
       </div>
 
       <div className='flex flex-col mt-6'>
@@ -127,20 +118,20 @@ const BidRequests = () => {
                 </thead>
                 <tbody className='bg-white divide-y divide-gray-200 '>
                   {
-                    bidRequests?.map(bidRequest => <tr key={bidRequest._id}>
+                    assignedTours?.map(assignedTour => <tr key={assignedTour._id}>
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        {bidRequest.job_title}
+                        {assignedTour.tour_type}
                       </td>
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        {bidRequest.email}
-                      </td>
-
-                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        {new Date(bidRequest.deadline).toLocaleDateString()}
+                        {assignedTour.touristName}
                       </td>
 
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        ${bidRequest.price}
+                        {new Date(assignedTour.deadline).toLocaleDateString()}
+                      </td>
+
+                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                        ${assignedTour.price}
                       </td>
                       {/* <td className='px-4 py-4 text-sm whitespace-nowrap'>
                         <div className='flex items-center gap-x-2'>
@@ -157,33 +148,33 @@ const BidRequests = () => {
                         <div
                           className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2 
                             
-                            ${bidRequest.status === 'In Review' &&
+                            ${assignedTour.status === 'In Review' &&
                             'bg-blue-100/60 text-blue-500'
                             } 
-                            ${bidRequest.status === 'Accepted' &&
+                            ${assignedTour.status === 'Accepted' &&
                             'bg-emerald-100/60 text-emerald-500'
                             } 
-                            ${bidRequest.status === 'Rejected' &&
+                            ${assignedTour.status === 'Rejected' &&
                             'bg-red-100/60 text-red-500'
                             } `}
                         >
                           <span
-                            className={`h-1.5 w-1.5 rounded-full ${bidRequest.status === 'Pending' && 'bg-yellow-500'
-                              } ${bidRequest.status === 'In Review' && 'bg-blue-500'
-                              } ${bidRequest.status === 'Accepted' && 'bg-green-500'} ${bidRequest.status === 'Rejected' && 'bg-red-500'
+                            className={`h-1.5 w-1.5 rounded-full ${assignedTour.status === 'Pending' && 'bg-yellow-500'
+                              } ${assignedTour.status === 'In Review' && 'bg-blue-500'
+                              } ${assignedTour.status === 'Accepted' && 'bg-green-500'} ${assignedTour.status === 'Rejected' && 'bg-red-500'
                               }  `}
                           ></span>
-                          <h2 className='text-sm font-normal '>{bidRequest.status}</h2>
+                          <h2 className='text-sm font-normal '>{assignedTour.status}</h2>
                         </div>
                       </td>
                       <td className='px-4 py-4 text-sm whitespace-nowrap'>
                         <div className='flex items-center gap-x-6'>
                           {/* Accept Button: In Review */}
                           <button title="Accept"
-                          onClick={() =>
-                            handleStatus(bidRequest._id, bidRequest.status, 'Accepted')
-                          }
-                            disabled={bidRequest.status === 'Accepted'} className='text-gray-500 transition-colors duration-200   hover:text-green-500 focus:outline-none'>
+                            onClick={() =>
+                              handleStatus(assignedTour._id, assignedTour.status, 'Accepted')
+                            }
+                            disabled={assignedTour.status === 'Accepted'} className='text-gray-500 transition-colors duration-200   hover:text-green-500 focus:outline-none'>
                             <svg
                               xmlns='http://www.w3.org/2000/svg'
                               fill='none'
@@ -202,9 +193,9 @@ const BidRequests = () => {
 
                           {/* Reject Button */}
                           <button title="Reject"
-                          onClick={() =>
-                            handleStatus(bidRequest._id, bidRequest.status, 'Rejected')}
-                            disabled={bidRequest.status === 'Accepted'}
+                            onClick={() =>
+                              handleStatus(assignedTour._id, assignedTour.status, 'Rejected')}
+                            disabled={assignedTour.status === 'Accepted'}
                             className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'>
                             <svg
                               xmlns='http://www.w3.org/2000/svg'
@@ -235,4 +226,4 @@ const BidRequests = () => {
   )
 }
 
-export default BidRequests
+export default MyAssignedTours

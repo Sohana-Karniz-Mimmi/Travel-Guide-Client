@@ -12,7 +12,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import Statistics from "../Pages/Dashboard/Common/Statistics";
 import AddJob from "../Pages/AddJob";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
-import BidRequests from "../Pages/Dashboard/Admin/BidRequests";
+import MyAssignedTours from "../Pages/Dashboard/Admin/MyAssignedTours";
 import ManageBookings from "../Pages/Dashboard/Host/ManageBookings";
 // import MyBookings from "../Pages/Dashboard/Guest/MyBookings";
 import MyListings from "../Pages/Dashboard/Host/Wishlist";
@@ -128,7 +128,7 @@ const router = createBrowserRouter([
         path: 'my-assigned-tours',
         element: (
           // <AdminRoute>
-          <BidRequests />
+          <MyAssignedTours />
           // </AdminRoute>
 
         ),
