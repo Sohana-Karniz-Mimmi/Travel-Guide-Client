@@ -1,24 +1,24 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 // import { format } from 'date-fns'
-// import { useState } from 'react'
 // import {
 //   Description,
 //   Dialog,
 //   DialogPanel,
 //   DialogTitle,
 // } from '@headlessui/react'
-// import DeleteModal from '../../Modal/DeleteModal'
+import DeleteModal from '../../Modal/DeleteModal'
+import { useState } from 'react'
 // import UpdateRoomModal from '../../Modal/UpdateRoomModal'
 
 // , handleDelete, refetch 
-const RoomDataRow = ({ room}) => {
+const WishlistDataRows = ({ wishlist, handleDelete }) => {
   // for delete modal
-  // const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   // const [isEditModalOpen, setIsEditModalOpen] = useState(false)
-  // const closeModal = () => {
-  //   setIsOpen(false)
-  // }
+  const closeModal = () => {
+    setIsOpen(false)
+  }
 
   // for update modal
   return (
@@ -29,36 +29,29 @@ const RoomDataRow = ({ room}) => {
             <div className='block relative'>
               <img
                 alt='profile'
-                src={room?.image1}
+                src={wishlist?.image1}
                 className='mx-auto object-cover rounded h-10 w-15 '
               />
             </div>
           </div>
           <div className='ml-3'>
-            <p className='text-gray-900 whitespace-no-wrap'>{room?.title}</p>
+            <p className='text-gray-900 whitespace-no-wrap'>{wishlist?.title}</p>
           </div>
         </div>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>{room?.location}</p>
+        <p className='text-gray-900 whitespace-no-wrap'>{wishlist?.tourists_spot_name}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>${room?.price}</p>
+        <p className='text-gray-900 whitespace-no-wrap'>{wishlist?.tour_type}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        {/* <p className='text-gray-900 whitespace-no-wrap'>
-          {format(new Date(room?.from), 'P')}
-        </p> */}
-      </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        {/* <p className='text-gray-900 whitespace-no-wrap'>
-          {format(new Date(room?.to), 'P')}
-        </p> */}
+        <p className='text-gray-900 whitespace-no-wrap'>${wishlist?.price}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <button
-          // onClick={() => setIsOpen(true)}
-          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
+          onClick={() => setIsOpen(true)}
+          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-red-500  leading-tight'
         >
           <span
             aria-hidden='true'
@@ -67,15 +60,15 @@ const RoomDataRow = ({ room}) => {
           <span className='relative'>Delete</span>
         </button>
         {/* Delete modal */}
-        {/* <DeleteModal
+        <DeleteModal
           isOpen={isOpen}
           closeModal={closeModal}
           handleDelete={handleDelete}
-          id={room?._id}
-        /> */}
+          id={wishlist?._id}
+        />
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <Link to={`packages-details/${room?._id}`}
+        <Link to={`packages-details/${wishlist?._id}`}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
         >
           <span
@@ -89,10 +82,10 @@ const RoomDataRow = ({ room}) => {
   )
 }
 
-RoomDataRow.propTypes = {
-  room: PropTypes.object,
+WishlistDataRows.propTypes = {
+  wishlist: PropTypes.object,
   refetch: PropTypes.func,
   handleDelete: PropTypes.func,
 }
 
-export default RoomDataRow
+export default WishlistDataRows

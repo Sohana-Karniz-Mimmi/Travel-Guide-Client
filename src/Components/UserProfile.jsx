@@ -1,5 +1,6 @@
 import useAuth from '../Hook/useAuth';
 import useRole from '../Hook/useRole';
+import AddGuideProfileForm from './AddGuideProfileForm';
 import AddStoryForm from './AddStoryForm';
 import LoadingSpinner from './Shared/LoadingSpinner';
 
@@ -64,7 +65,8 @@ const UserProfile = () => {
                     </div>
                 </div>
             </div>
-            <AddStoryForm />
+            {role.role === 'guest' && <AddStoryForm />}
+            {role.role === 'host' && <AddGuideProfileForm />}
         </div>
 
     );

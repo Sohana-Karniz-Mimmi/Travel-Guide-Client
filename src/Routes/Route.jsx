@@ -15,8 +15,8 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import BidRequests from "../Pages/Dashboard/Admin/BidRequests";
 import ManageBookings from "../Pages/Dashboard/Host/ManageBookings";
 // import MyBookings from "../Pages/Dashboard/Guest/MyBookings";
-import MyListings from "../Pages/Dashboard/Host/MyListings";
-import AppliedJobs from "../Pages/AppliedJobs";
+import MyListings from "../Pages/Dashboard/Host/Wishlist";
+import AppliedJobs from "../Pages/MyBookings";
 
 
 const router = createBrowserRouter([

@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import RoomDataRow from '../../../Components/Dashboard/TableRows/RoomDataRows'
+import WishlistDataRows from '../../../Components/Dashboard/TableRows/WishlistDataRows'
 import toast from 'react-hot-toast'
 import useAuth from '../../../Hook/useAuth'
 import useAxiosSecure from '../../../Hook/useAxiosSecure'
@@ -27,7 +27,7 @@ const MyListings = () => {
   //   delete
   const { mutateAsync } = useMutation({
     mutationFn: async id => {
-      const { data } = await axiosSecure.delete(`/room/${id}`)
+      const { data } = await axiosSecure.delete(`/wishlist/${id}`)
       return data
     },
     onSuccess: data => {
@@ -54,51 +54,48 @@ const MyListings = () => {
       </Helmet>
 
       <div className='container mx-auto px-4 sm:px-8'>
-        <div className='py-8'>
+        <div className='flex items-center pt-8 gap-x-3'>
+          <h2 className='text-lg font-medium text-gray-800 '>My Wishlist</h2>
+        </div>
+        <div className='pb-8'>
           <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
             <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
               <table className='min-w-full leading-normal'>
-                <thead>
+                <thead className='bg-gray-50'>
                   <tr>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                    >
+                      Photo
+                    </th>
+                    <th
+                      scope='col'
+                      className='px-5 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
                       Title
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      Location
+                      Package Name
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
                       Price
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                      From
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                      To
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
                       Delete
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
                       Details
                     </th>
@@ -108,9 +105,9 @@ const MyListings = () => {
                   {/* Room row data */}
 
                   {wishlists.map(wishlist => (
-                    <RoomDataRow
+                    <WishlistDataRows
                       key={wishlist._id}
-                      room={wishlist}
+                      wishlist={wishlist}
                       handleDelete={handleDelete}
                       refetch={refetch}
                     />

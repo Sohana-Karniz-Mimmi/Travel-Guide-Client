@@ -12,7 +12,7 @@ const MyBookings = () => {
   const {
     data: bookings = [],
     isLoading,
-    refetch,
+    // refetch,
   } = useQuery({
     queryKey: ['my-bookings', user?.email],
     queryFn: async () => {
