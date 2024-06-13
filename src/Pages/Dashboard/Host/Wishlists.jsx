@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 import useAuth from '../../../Hook/useAuth'
 import useAxiosSecure from '../../../Hook/useAxiosSecure'
 import LoadingSpinner from '../../../Components/Shared/LoadingSpinner'
-const MyListings = () => {
+const Wishlists = () => {
   const { user } = useAuth()
   const axiosSecure = useAxiosSecure()
   //   Fetch Rooms Data
@@ -122,4 +122,4 @@ const MyListings = () => {
   )
 }
 
-export default MyListings
+export default Wishlists

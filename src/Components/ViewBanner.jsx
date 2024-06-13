@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import Navbar from "./Navbar";
 import banner from "../assets/images/banner.jpg"
+import Navbar from './Shared/Navbar/Navbar';
 
 const ViewBanner = ({name}) => {
     return (

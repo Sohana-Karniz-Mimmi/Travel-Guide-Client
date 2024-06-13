@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+import Navbar from './Shared/Navbar/Navbar';
 import banner from "../assets/images/banner.jpg"
 
 const DetailsBanner = () => {

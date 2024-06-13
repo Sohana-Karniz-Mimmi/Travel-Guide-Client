@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 // import { RiArrowDropDownLine } from "react-icons/ri";
 import { Helmet } from "react-helmet-async";
-import AllPackagesCard from "../Components/HomeComponents/AllPackagesCard";
+import AllPackagesCard from "../Components/Home/AllPackagesCard";
 import ViewBanner from "../Components/ViewBanner";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";

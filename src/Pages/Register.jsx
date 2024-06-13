@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast'
 import { IoEyeOffOutline } from "react-icons/io5";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import Navbar from "../Components/Navbar";
 import login from '../assets/images/login.jpg';
+import Navbar from "../Components/Shared/Navbar/Navbar";
 
 
 const Register = () => {

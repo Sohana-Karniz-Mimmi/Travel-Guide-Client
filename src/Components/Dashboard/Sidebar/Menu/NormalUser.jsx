@@ -18,11 +18,11 @@ const NormalUser = () => {
     setIsModalOpen(false)
   }
   const modalHandler = async () => {
-    console.log('I want to be a host')
+    console.log('I want to be a Tour Guide')
     try {
       const currentUser = {
         email: user?.email,
-        role: 'guest',
+        role: 'normal_user',
         status: 'Requested',
       }
       const { data } = await axiosSecure.put(`/user`, currentUser)
@@ -52,7 +52,7 @@ const NormalUser = () => {
         address='wishlist'
       />
 
-      {/* {role === 'guest' && (
+      {/* {role === 'normal_user' && (
         <div
           onClick={() => setIsModalOpen(true)}
           className='flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform text-gray-600  hover:bg-gray-300   hover:text-gray-700 cursor-pointer'

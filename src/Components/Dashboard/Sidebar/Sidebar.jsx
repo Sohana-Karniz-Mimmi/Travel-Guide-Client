@@ -86,12 +86,8 @@ const Sidebar = () => {
                 address='/dashboard'
                 icon={CgProfile}
               />
-              {/* <GuestMenu></GuestMenu> */}
-              {/* <HostMenu></HostMenu> */}
-              {/* <AdminMenu></AdminMenu> */}
-
-              {role.role === 'guest' && <NormalUser />}
-              {role.role === 'host' && <Guide />}
+              {role.role === 'normal_user' && <NormalUser />}
+              {role.role === 'tour_guide' && <Guide />}
               {role.role === 'admin' && <AdminMenu />}
             </nav>
           </div>

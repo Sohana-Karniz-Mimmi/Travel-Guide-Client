@@ -10,14 +10,11 @@ import GuideProfileDetails from "../Pages/GuideProfileDetails";
 import TourTypeMatch from "../Pages/TourTypeMatch";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Statistics from "../Pages/Dashboard/Common/Statistics";
-import AddJob from "../Pages/AddJob";
+import AddPackage from "../Pages/AddPackage";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import MyAssignedTours from "../Pages/Dashboard/Admin/MyAssignedTours";
-import ManageBookings from "../Pages/Dashboard/Host/ManageBookings";
-// import MyBookings from "../Pages/Dashboard/Guest/MyBookings";
-import MyListings from "../Pages/Dashboard/Host/Wishlist";
-import AppliedJobs from "../Pages/MyBookings";
-
+import Wishlists from "../Pages/Dashboard/Host/Wishlists";
+import MyBookings from "../Pages/MyBookings";
 
 const router = createBrowserRouter([
   {
@@ -84,7 +81,7 @@ const router = createBrowserRouter([
         path: 'add-package',
         element: (
           // <HostRoute>
-          <AddJob />
+          <AddPackage />
           // </HostRoute>
 
         ),
@@ -93,7 +90,7 @@ const router = createBrowserRouter([
         path: 'wishlist',
         element: (
           // <HostRoute>
-          <MyListings />
+          <Wishlists />
           // </HostRoute>
 
         ),
@@ -111,16 +108,7 @@ const router = createBrowserRouter([
         path: 'my-bookings',
         element: (
           // <MyBookings />
-          <AppliedJobs />
-
-        ),
-      },
-      {
-        // path: 'manage-bookings',
-        element: (
-          // <HostRoute>
-          <ManageBookings />
-          // </HostRoute>
+          <MyBookings />
 
         ),
       },
@@ -133,13 +121,6 @@ const router = createBrowserRouter([
 
         ),
       },
-      //   {
-      //     path: 'profile',
-      //     element: (
-      //         <Profile />
-
-      //     ),
-      //   },
     ],
   },
 ]);

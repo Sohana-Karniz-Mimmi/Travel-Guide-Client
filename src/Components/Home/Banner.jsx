@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/bundle";
 import 'swiper/css/effect-fade';
 import { Navigation, Autoplay, EffectFade } from 'swiper/modules';
-import Navbar from '../Navbar';
+import Navbar from '../Shared/Navbar/Navbar';
 
 
 

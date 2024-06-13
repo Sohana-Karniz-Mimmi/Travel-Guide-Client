@@ -1,8 +1,6 @@
 // import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
 // import useRole from '../../../hooks/useRole'
 // import AdminStatistics from '../Admin/AdminStatistics'
-// import GuestStatistics from '../Guest/GuestStatistics'
-// import HostStatistics from '../Host/HostStatistics'
 
 import UserProfile from "../../../Components/UserProfile"
 

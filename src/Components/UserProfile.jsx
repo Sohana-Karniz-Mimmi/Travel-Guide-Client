@@ -65,8 +65,8 @@ const UserProfile = () => {
                     </div>
                 </div>
             </div>
-            {role.role === 'guest' && <AddStoryForm />}
-            {role.role === 'host' && <AddGuideProfileForm />}
+            {role.role === 'normal_user' && <AddStoryForm />}
+            {role.role === 'tour_guide' && <AddGuideProfileForm />}
         </div>
 
     );

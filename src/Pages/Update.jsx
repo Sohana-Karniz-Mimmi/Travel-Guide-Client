@@ -1,6 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import Navbar from "../Components/Navbar";
-
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -12,6 +10,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 // import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
 import Swal from 'sweetalert2'
+import Navbar from "../Components/Shared/Navbar/Navbar";
 
 const Update = () => {
 

@@ -10,7 +10,7 @@ import toast from 'react-hot-toast'
 // import { RiArrowDropDownLine } from "react-icons/ri";
 
 
-const AppliedJobs = () => {
+const MyBookings = () => {
 
     const axiosSecure = useAxiosSecure()
     // const[isOpen, setIsOpen] = useState(false)
@@ -208,5 +208,5 @@ const AppliedJobs = () => {
 }
 
 
-export default AppliedJobs
+export default MyBookings
 

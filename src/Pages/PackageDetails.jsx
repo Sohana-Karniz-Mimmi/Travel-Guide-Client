@@ -18,7 +18,7 @@ import ViewBanner from "../Components/ViewBanner";
 import TourGuide from "../Components/TourGuide";
 import { FaRegUserCircle } from "react-icons/fa";
 import TourPlan from "./TourPlan";
-import TouristsSpots from "../Components/HomeComponents/TouristsSpots";
+import TouristsSpots from "../Components/Home/TouristsSpots";
 
 
 const PackageDetails = () => {

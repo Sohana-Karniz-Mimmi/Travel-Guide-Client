@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
-import Banner from "../Components/HomeComponents/Banner";
-import TabCategories from "../Components/HomeComponents/TabCategories";
-import TourType from "../Components/HomeComponents/TourType";
+import Banner from "../Components/Home/Banner";
+import TabCategories from "../Components/Home/TabCategories";
+import TourType from "../Components/Home/TourType";
 
 const Home = () => {
     return (
