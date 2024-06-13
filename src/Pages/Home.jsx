@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import Banner from "../Components/Home/Banner";
 import TabCategories from "../Components/Home/TabCategories";
 import TourType from "../Components/Home/TourType";
+import TouristStories from "../Components/Stories/TouristStories";
 
 const Home = () => {
     return (
@@ -15,6 +16,10 @@ const Home = () => {
             <TabCategories></TabCategories>
             </div>
             <TourType></TourType>
+
+            <div>
+                <TouristStories></TouristStories>
+            </div>
             {/* <ExtraSection></ExtraSection> */}
             {/* <Testimonial></Testimonial> */}
         </div>

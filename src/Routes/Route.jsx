@@ -15,6 +15,8 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import MyAssignedTours from "../Pages/Dashboard/Admin/MyAssignedTours";
 import Wishlists from "../Pages/Dashboard/Host/Wishlists";
 import MyBookings from "../Pages/MyBookings";
+import StoryDetail from "../Components/Stories/StoryDetail";
+import AllStories from "../Components/Stories/AllStories";
 
 const router = createBrowserRouter([
   {
@@ -52,16 +54,16 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/tour-type/${params.tourType}`)
       },
 
-      // {
-      //     path: "/job/:id",
-      //     element: <PrivetRoute><ViewDetails></ViewDetails></PrivetRoute>,
-      //     loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
-      // },
-      // {
-      //     path: "/update/:id",
-      //     element: <PrivetRoute><Update></Update></PrivetRoute>,
-      //     loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`),
-      // },
+      {
+          path: "/stories/:id",
+          element: <StoryDetail></StoryDetail>,
+          // loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
+      },
+      {
+          path: "/all-stories",
+          element: <AllStories></AllStories>,
+          // loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`),
+      },
     ]
   },
   {

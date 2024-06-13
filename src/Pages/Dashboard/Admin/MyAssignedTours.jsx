@@ -16,8 +16,9 @@ const MyAssignedTours = () => {
 
   // Tanstack Query
   const { data: assignedTours = [], isLoading } = useQuery({
-    queryFn: () => getData(),
     queryKey: ['assignedTours', user?.email],
+    enabled: !!guideName?.name,
+    queryFn: () => getData(),
   })
   console.log(assignedTours, isLoading);
 

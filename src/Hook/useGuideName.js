@@ -7,7 +7,7 @@ const useGuideName = () => {
 
   const { data: guideName = '', isLoading } = useQuery({
     queryKey: ['guideName', user?.displayName],
-    enabled: !loading && !!user?.displayName,
+    enabled: !loading && !!user?.email,
     queryFn: async () => {
       const { data } = await axiosSecure(`/tour-guides/${user?.displayName}`)
       return data

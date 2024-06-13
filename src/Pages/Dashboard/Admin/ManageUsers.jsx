@@ -1,13 +1,15 @@
 import { Helmet } from 'react-helmet-async'
-import { useQuery } from '@tanstack/react-query'
+// import { useQuery } from '@tanstack/react-query'
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import LoadingSpinner from '../../../Components/Shared/LoadingSpinner'
+// import LoadingSpinner from '../../../Components/Shared/LoadingSpinner'
 import UserDataRow from '../../../Components/Dashboard/TableRows/UserDataRow'
 import useAxiosSecure from './../../../Hook/useAxiosSecure';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+// import useAuth from '../../../Hook/useAuth';
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure()
+  // const [loading] = useAuth()
 
   /****Use Search and filter****/
   // eslint-disable-next-line no-unused-vars
@@ -18,56 +20,63 @@ const ManageUsers = () => {
   const [search, setSearch] = useState('')
   const [searchText, setSearchText] = useState('')
   console.log(search)
+  const [users, setUsers] = useState([])
 
 
   //   Fetch users Data
-  const {
-    data: users = [], isLoading, refetch, } = useQuery({
-      queryKey: ['users, filter, search'],
-      queryFn: async () => {
-        // const { data } = await axiosSecure(`/users`)
-        const { data } = await axiosSecure(`/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`)
-        return (data)
-      },
-    })
+  // const {
+  //   data: users = [], isLoading, refetch, } = useQuery({
+  //     queryKey: ['users, filter, search'],
+  //     queryFn: async () => {
+  //       // const { data } = await axiosSecure(`/users`)
+  //       // const { data } = await axiosSecure(`/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`)
+  //       return (data)
+  //     },
+  //   })
 
-    useEffect(() => {
-      const getCount = async () => {
-        const { data } = await axios(
-          `${
-            import.meta.env.VITE_API_URL
-          }/users-count?filter=${filter}&search=${search}`
-        )
-  
-        setCount(data.count)
-      }
-      getCount()
-    }, [filter, search])
-  
+  useEffect(() => {
+    axiosSecure(`/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`)
+    .then((res) => setUsers(res.data))
+  }, [search, filter, currentPage, itemsPerPage])
 
-    // console.log(count)
-    const numberOfPages = Math.ceil(count / itemsPerPage)
-    const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
-  
-    //  handle pagination button
-    const handlePaginationButton = value => {
-      console.log(value)
-      setCurrentPage(value)
+  // console.log(users);
+
+  useEffect(() => {
+    const getCount = async () => {
+      const { data } = await axios(
+        `${import.meta.env.VITE_API_URL
+        }/users-count?filter=${filter}&search=${search}`
+      )
+
+      setCount(data.count)
     }
-    const handleReset = () => {
-      setFilter('')
-      setSearch('')
-      setSearchText('')
-    }
-  
-    const handleSearch = e => {
-      e.preventDefault()
-      setSearch(searchText)
-    }
-  
+    getCount()
+  }, [filter, search])
+
+
+  // console.log(count)
+  const numberOfPages = Math.ceil(count / itemsPerPage)
+  const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
+
+  //  handle pagination button
+  const handlePaginationButton = value => {
+    console.log(value)
+    setCurrentPage(value)
+  }
+  const handleReset = () => {
+    setFilter('')
+    setSearch('')
+    setSearchText('')
+  }
+
+  const handleSearch = e => {
+    e.preventDefault()
+    setSearch(searchText)
+  }
+
 
   console.log(users)
-  if (isLoading) return <LoadingSpinner />
+  // if (loading) return <LoadingSpinner />
   return (
     <>
       <div className='container mx-auto px-4 sm:px-8'>
@@ -159,11 +168,11 @@ const ManageUsers = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map(user => (
+                  {users?.map(user => (
                     <UserDataRow
                       key={user?._id}
                       user={user}
-                      refetch={refetch}
+                      // refetch={refetch}
                     />
                   ))}
                 </tbody>
@@ -182,7 +191,7 @@ const ManageUsers = () => {
             className='px-4 py-2 mx-1 text-white disabled:text-gray-500 capitalize bg-[#FD4C5C] rounded-full disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:bg-gray-200 disabled:hover:text-gray-500 hover:bg-[#FF0143] hover:text-white'
           >
             <div className='flex items-center -mx-1'>
-            <IoIosArrowBack />
+              <IoIosArrowBack />
             </div>
           </button>
           {/* Numbers */}
@@ -203,7 +212,7 @@ const ManageUsers = () => {
             className='px-4 py-2 mx-1 text-white transition-colors duration-300 transform bg-[#FD4C5C] rounded-full hover:bg-[#FF0143] disabled:hover:bg-gray-200 disabled:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500'
           >
             <div className='flex items-center -mx-1'>
-            <IoIosArrowForward />
+              <IoIosArrowForward />
             </div>
           </button>
         </div>
