@@ -50,6 +50,7 @@ const MyBookings = () => {
 
     const numberOfPages = Math.ceil(count / itemsPerPage)
     const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
+    console.log(pages);
 
     //  handle pagination button
   const handlePaginationButton = value => {
@@ -108,6 +109,7 @@ const MyBookings = () => {
                 <div className='flex items-center gap-x-3'>
                     <h2 className='text-lg font-medium text-gray-800 '>My Booking</h2>
                 </div>
+
                 <div className='flex flex-col mt-6'>
                     <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
                         <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
@@ -239,6 +241,7 @@ const MyBookings = () => {
                         </div>
                     </div>
                 </div>
+
                 {/* Pagination Section */}
                 <div className='flex justify-center mt-12'>
                     {/* Previous Button */}

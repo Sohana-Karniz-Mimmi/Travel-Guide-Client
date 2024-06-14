@@ -1,16 +1,43 @@
-import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import useAxiosCommon from "../Hook/useAxiosCommon";
+import toast from 'react-hot-toast'
 
 const AddStoryForm = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const axiosCommon = useAxiosCommon()
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission (send to server or display locally)
-    console.log(`Title: ${title}, Content: ${content}`);
-    // Optionally reset the form
-    setTitle('');
-    setContent('');
+  // Tanstack Query for post the data   
+  const { mutateAsync } = useMutation({
+    mutationFn: async story => {
+      const { data } = await axiosCommon.post(`/story`, story)
+      return data
+    },
+    onSuccess: () => {
+      console.log('Data Saved Successfully')
+      toast.success('Story Added Successfully!')
+      //   setLoading(false)
+    },
+  })
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const form = e.target
+    const title = form.title.value
+    const image = form.image.value
+    const description = form.content.value
+
+    try {
+      const story = {
+        title, image, description
+      }
+      console.table(story)
+
+      //   Post request to server
+      await mutateAsync(story)
+    } catch (err) {
+      console.log(err)
+      toast.error(err.message)
+    }
+
   };
 
   return (
@@ -20,10 +47,17 @@ const AddStoryForm = () => {
         <div>
           <label htmlFor="title" className="block mb-2">Title:</label>
           <input
-            id="title"
+            name="title"
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            className="w-full p-2 border border-gray-300 focus:outline-rose-500 rounded"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="image" className="block mb-2">Image URL:</label>
+          <input
+            name="image"
+            type="text"
             className="w-full p-2 border border-gray-300 focus:outline-rose-500 rounded"
             required
           />
@@ -31,9 +65,7 @@ const AddStoryForm = () => {
         <div>
           <label htmlFor="content" className="block mb-2">Content:</label>
           <textarea
-            id="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
+            name="content"
             className="w-full p-2 border border-gray-300 focus:outline-rose-500 rounded"
             rows="4"
             required

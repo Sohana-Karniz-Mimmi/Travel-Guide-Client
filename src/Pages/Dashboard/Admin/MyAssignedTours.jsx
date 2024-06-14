@@ -1,32 +1,72 @@
-import { useContext } from "react";
+import {  useEffect, useState } from "react";
 import axios from "axios";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { AuthContext } from "../../../AuthProvider/AuthProvider";
-import LoadingSpinner from "../../../Components/Shared/LoadingSpinner";
+// import LoadingSpinner from "../../../Components/Shared/LoadingSpinner";
 import useGuideName from "../../../Hook/useGuideName";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 
 const MyAssignedTours = () => {
 
-  const { user } = useContext(AuthContext)
+  const axiosSecure = useAxiosSecure()
   const [guideName] = useGuideName()
   console.log(guideName.name);
   const QueryClient = useQueryClient()
 
-  // Tanstack Query
-  const { data: assignedTours = [], isLoading } = useQuery({
-    queryKey: ['assignedTours', user?.email],
-    enabled: !!guideName?.name,
-    queryFn: () => getData(),
-  })
-  console.log(assignedTours, isLoading);
+  // eslint-disable-next-line no-unused-vars
+  const [itemsPerPage, setItemsPerPage] = useState(10)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [count, setCount] = useState(0)
+  // const [filter, setFilter] = useState('')
+  // const [search, setSearch] = useState('')
+  const [assignedTours, setAssignedTours] = useState([])
+  // console.log(search)
 
-  const getData = async () => {
-    // const { data } = await axios(`${import.meta.env.VITE_API_URL}/my-bookings/${user?.email}`)
-    const { data } = await axios(`${import.meta.env.VITE_API_URL}/manage-bookings/${guideName.name}`)
-    return data;
+
+   //   Fetch users Data
+   useEffect(() => {
+    axiosSecure(`/manage-bookings/${guideName.name}?page=${currentPage}&size=${itemsPerPage}`)
+      .then((res) => setAssignedTours(res.data))
+  }, [assignedTours, currentPage, itemsPerPage])
+
+  useEffect(() => {
+    const getCount = async () => {
+      const { data } = await axios(
+        `${import.meta.env.VITE_API_URL}/bookings/count/${guideName.name}`
+      )
+
+      setCount(data.count)
+    }
+    getCount()
+  }, [])
+
+  const numberOfPages = Math.ceil(count / itemsPerPage)
+  const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
+  console.log(pages);
+
+  //  handle pagination button
+  const handlePaginationButton = value => {
+    console.log(value)
+    setCurrentPage(value)
   }
+  
+  
+
+  // Tanstack Query
+  // const { data: assignedTours = [], isLoading } = useQuery({
+  //   queryKey: ['assignedTours', user?.email],
+  //   enabled: !!guideName?.name,
+  //   queryFn: () => getData(),
+  // })
+  // console.log(assignedTours, isLoading);
+
+  // const getData = async () => {
+  //   // const { data } = await axios(`${import.meta.env.VITE_API_URL}/my-bookings/${user?.email}`)
+  //   const { data } = await axios(`${import.meta.env.VITE_API_URL}/manage-bookings/${guideName.name}`)
+  //   return data;
+  // }
 
 
   const { mutateAsync } = useMutation({
@@ -58,7 +98,7 @@ const MyAssignedTours = () => {
 
   // console.log(assignedTours);
 
-  if (isLoading) return <LoadingSpinner />
+  // if (isLoading) return <LoadingSpinner />
   return (
     <section className='container px-4 mx-auto pt-12'>
       <div className='flex items-center gap-x-3'>
@@ -223,6 +263,42 @@ const MyAssignedTours = () => {
           </div>
         </div>
       </div>
+
+      {/* Pagination Section */}
+      <div className='flex justify-center mt-12'>
+          {/* Previous Button */}
+          <button
+            disabled={currentPage === 1}
+            onClick={() => handlePaginationButton(currentPage - 1)}
+            className='px-4 py-2 mx-1 text-white disabled:text-gray-500 capitalize bg-[#FD4C5C] rounded-full disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:bg-gray-200 disabled:hover:text-gray-500 hover:bg-[#FF0143] hover:text-white'
+          >
+            <div className='flex items-center -mx-1'>
+              <IoIosArrowBack />
+            </div>
+          </button>
+          {/* Numbers */}
+          {pages.map(btnNum => (
+            <button
+              onClick={() => handlePaginationButton(btnNum)}
+              key={btnNum}
+              className={`hidden ${currentPage === btnNum ? 'bg-[#FD4C5C] text-white' : ''
+                } px-4 py-2 mx-1 transition-colors duration-300 transform border rounded-full sm:inline hover:bg-[#FF0143]  hover:text-white`}
+            >
+              {btnNum}
+            </button>
+          ))}
+          {/* Next Button */}
+          <button
+            disabled={currentPage === numberOfPages}
+            onClick={() => handlePaginationButton(currentPage + 1)}
+            className='px-4 py-2 mx-1 text-white transition-colors duration-300 transform bg-[#FD4C5C] rounded-full hover:bg-[#FF0143] disabled:hover:bg-gray-200 disabled:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500'
+          >
+            <div className='flex items-center -mx-1'>
+              <IoIosArrowForward />
+            </div>
+          </button>
+        </div>
+      
     </section>
   )
 }
