@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const AddGuideProfileForm = () => {
   const [profileData, setProfileData] = useState({
@@ -15,6 +16,7 @@ const AddGuideProfileForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Profile Data Submitted:', profileData);
+    toast.success(`Profile Data Updated`)
     // Add logic to send profile data to server or update state
   };
 
@@ -72,7 +74,7 @@ const AddGuideProfileForm = () => {
         </div>
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="px-4 py-2 bg-[#FD4C5C] text-white rounded hover:bg-[#FF0143]"
         >
           Submit Profile
         </button>

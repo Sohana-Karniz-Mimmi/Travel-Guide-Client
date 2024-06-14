@@ -17,6 +17,9 @@ import Wishlists from "../Pages/Dashboard/Host/Wishlists";
 import MyBookings from "../Pages/MyBookings";
 import StoryDetail from "../Components/Stories/StoryDetail";
 import AllStories from "../Components/Stories/AllStories";
+import PrivetRoute from "./PrivetRoute";
+import AdminRoute from "./AdminRoute";
+import TourGuideRoute from "./TourGuideRoute";
 
 const router = createBrowserRouter([
   {
@@ -42,11 +45,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/packages-details/:id",
-        element: <PackageDetaiils></PackageDetaiils>
+        element: <PrivetRoute><PackageDetaiils></PackageDetaiils></PrivetRoute>
       },
       {
         path: "/guide-profile-details/:id",
-        element: <GuideProfileDetails></GuideProfileDetails>
+        element: <PrivetRoute> <GuideProfileDetails></GuideProfileDetails> </PrivetRoute>
       },
       {
         path: "/tour-type-match-package/:tourType",
@@ -55,14 +58,12 @@ const router = createBrowserRouter([
       },
 
       {
-          path: "/stories/:id",
-          element: <StoryDetail></StoryDetail>,
-          // loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
+        path: "/stories/:id",
+        element: <StoryDetail></StoryDetail>
       },
       {
-          path: "/all-stories",
-          element: <AllStories></AllStories>,
-          // loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`),
+        path: "/all-stories",
+        element: <AllStories></AllStories>
       },
     ]
   },
@@ -79,47 +80,52 @@ const router = createBrowserRouter([
 
         ),
       },
+      // AdminRoute
       {
         path: 'add-package',
         element: (
-          // <HostRoute>
-          <AddPackage />
-          // </HostRoute>
-
-        ),
-      },
-      {
-        path: 'wishlist',
-        element: (
-          // <HostRoute>
-          <Wishlists />
-          // </HostRoute>
+          <PrivetRoute>
+            <AdminRoute>
+              <AddPackage />
+            </AdminRoute>
+          </PrivetRoute>
 
         ),
       },
       {
         path: 'manage-users',
         element: (
-          // <AdminRoute>
-          <ManageUsers />
-          // </AdminRoute>
+          <PrivetRoute>
+            <AdminRoute>
+              <ManageUsers />
+            </AdminRoute>
+          </PrivetRoute>
+
+        ),
+      },
+      // Normal User Route
+      {
+        path: 'wishlist',
+        element: (
+          <Wishlists />
 
         ),
       },
       {
         path: 'my-bookings',
         element: (
-          // <MyBookings />
           <MyBookings />
-
         ),
       },
+      // TourGuideRoute
       {
         path: 'my-assigned-tours',
         element: (
-          // <AdminRoute>
-          <MyAssignedTours />
-          // </AdminRoute>
+          <PrivetRoute>
+            <TourGuideRoute>
+              <MyAssignedTours />
+            </TourGuideRoute>
+          </PrivetRoute>
 
         ),
       },

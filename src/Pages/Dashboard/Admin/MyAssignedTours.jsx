@@ -28,20 +28,20 @@ const MyAssignedTours = () => {
 
    //   Fetch users Data
    useEffect(() => {
-    axiosSecure(`/manage-bookings/${guideName.name}?page=${currentPage}&size=${itemsPerPage}`)
+    axiosSecure(`/manage-bookings/${guideName?.name}?page=${currentPage}&size=${itemsPerPage}`)
       .then((res) => setAssignedTours(res.data))
   }, [assignedTours, currentPage, itemsPerPage])
 
   useEffect(() => {
     const getCount = async () => {
       const { data } = await axios(
-        `${import.meta.env.VITE_API_URL}/bookings/count/${guideName.name}`
+        `${import.meta.env.VITE_API_URL}/bookings/count/${guideName?.name}`
       )
 
       setCount(data.count)
     }
     getCount()
-  }, [])
+  }, [guideName?.name])
 
   const numberOfPages = Math.ceil(count / itemsPerPage)
   const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
