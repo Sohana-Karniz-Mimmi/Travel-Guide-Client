@@ -3,93 +3,83 @@ import useAxiosSecure from "../Hook/useAxiosSecure";
 import useAuth from "../Hook/useAuth";
 import { useMutation } from "@tanstack/react-query";
 import LoadingSpinner from "../Components/Shared/LoadingSpinner";
-import toast from 'react-hot-toast'
+import toast from 'react-hot-toast';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import MyBookingsRows from "../Components/Dashboard/TableRows/MyBookingsRows";
-// import { RiArrowDropDownLine } from "react-icons/ri";
-
 
 const MyBookings = () => {
 
-    const axiosSecure = useAxiosSecure()
-    const { user, loading } = useAuth()
+    const axiosSecure = useAxiosSecure();
+    const { user, loading } = useAuth();
 
     // eslint-disable-next-line no-unused-vars
-    const [itemsPerPage, setItemsPerPage] = useState(10)
-    const [currentPage, setCurrentPage] = useState(1)
-    const [count, setCount] = useState(0)
-    const [bookings, setBookings] = useState([])
+    const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [count, setCount] = useState(0);
+    const [bookings, setBookings] = useState([]);
 
-    //   Fetch bookings Data
-    useEffect(() => {
-        const getCount = async () => {
-            await axiosSecure(`/my-bookings/${user?.email}?page=${currentPage}&size=${itemsPerPage}`)
-                .then((res) => setBookings(res.data))
-        }
-        getCount()
-
-    }, [user?.email, currentPage, itemsPerPage])
-
-    useEffect(() => {
-        const getCount = async () => {
-            const { data } = await axios(
-                `${import.meta.env.VITE_API_URL}/my-bookings/count/${user?.email}`
-            )
-
-            setCount(data.count)
-        }
-        getCount()
-    }, [user?.email])
-
-    const numberOfPages = Math.ceil(count / itemsPerPage)
-    const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
-    console.log(pages);
-
-    //  handle pagination button
-    const handlePaginationButton = value => {
-        console.log(value)
-        setCurrentPage(value)
-    }
-
-
-    // const { data: bookings = [], isLoading, refetch } = useQuery({
-    //     queryKey: ['bookings'],
-    //     queryFn: async () => {
-    //         const { data } = await axiosSecure(`/my-bookings/${user?.email}`)
-    //         return data
-    //     },
-    // })
-
-    //   delete
-    const { mutateAsync } = useMutation({
-        mutationFn: async id => {
-            const { data } = await axiosSecure.delete(`/booking/${id}`)
-            return data
-        },
-        
-        onSuccess: async data => {
-            console.log(data)
-            // refetch() 
-            toast.success('Booking Canceled')
-        },
-    })
-
-    const handleCancelBookings = async id => {
-        try {
-            await mutateAsync(id)
-        } catch (err) {
-            console.log(err)
+    // Fetch bookings data
+    const fetchBookings = async () => {
+        if (user?.email) {
+            const { data } = await axiosSecure(`/my-bookings/${user.email}?page=${currentPage}&size=${itemsPerPage}`);
+            setBookings(data);
         }
     };
 
+    // Fetch bookings count
+    const fetchBookingsCount = async () => {
+        if (user?.email) {
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/my-bookings/count/${user.email}`);
+            setCount(data.count);
+        }
+    };
 
-    if (loading) { return <LoadingSpinner /> }
+    useEffect(() => {
+        fetchBookings();
+    }, [user?.email, currentPage, itemsPerPage]);
 
+    useEffect(() => {
+        fetchBookingsCount();
+    }, [user?.email]);
+
+    const numberOfPages = Math.ceil(count / itemsPerPage);
+    const pages = [...Array(numberOfPages).keys()].map(element => element + 1);
+    console.log(pages);
+
+    // Handle pagination button
+    const handlePaginationButton = value => {
+        console.log(value);
+        setCurrentPage(value);
+    };
+
+    // Delete booking mutation
+    const { mutateAsync } = useMutation({
+        mutationFn: async id => {
+            const { data } = await axiosSecure.delete(`/booking/${id}`);
+            return data;
+        },
+        onSuccess: async data => {
+            console.log(data);
+            toast.success('Booking Canceled');
+            await fetchBookings(); // Refetch bookings after cancellation
+        },
+    });
+
+    const handleCancelBookings = async id => {
+        try {
+            await mutateAsync(id);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    if (loading) {
+        return <LoadingSpinner />;
+    }
 
     return (
-
         <>
             <Helmet>
                 <title>Applied Jobs- Job-Portal</title>
@@ -97,13 +87,13 @@ const MyBookings = () => {
 
             <section className='container px-4 mx-auto py-12'>
                 <div className='flex items-center gap-x-3'>
-                    <h2 className='text-lg font-medium text-gray-800 '>My Booking</h2>
+                    <h2 className='text-lg font-medium text-gray-800'>My Booking</h2>
                 </div>
 
                 <div className='flex flex-col mt-6'>
                     <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
                         <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
-                            <div className='overflow-hidden border border-gray-200  md:rounded-lg'>
+                            <div className='overflow-hidden border border-gray-200 md:rounded-lg'>
                                 <table className='min-w-full divide-y divide-gray-200'>
                                     <thead className='bg-gray-50'>
                                         <tr>
@@ -159,7 +149,7 @@ const MyBookings = () => {
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody className='bg-white divide-y divide-gray-200 '>
+                                    <tbody className='bg-white divide-y divide-gray-200'>
                                         {
                                             bookings?.map(booking => <MyBookingsRows
                                                 key={booking._id}
@@ -209,11 +199,8 @@ const MyBookings = () => {
                     </button>
                 </div>
             </section>
-
         </>
-    )
+    );
 }
 
-
-export default MyBookings
-
+export default MyBookings;

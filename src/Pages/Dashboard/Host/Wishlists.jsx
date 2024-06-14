@@ -18,22 +18,47 @@ const Wishlists = () => {
   const [count, setCount] = useState(0)
   const [wishlists, setWishlists] = useState([])
 
-  //   Fetch users Data
-  useEffect(() => {
-    axiosSecure(`/wishlist/${user?.email}?page=${currentPage}&size=${itemsPerPage}`)
-      .then((res) => setWishlists(res.data))
-  }, [currentPage, itemsPerPage])
 
-  useEffect(() => {
-    const getCount = async () => {
-      const { data } = await axios(
-        `${import.meta.env.VITE_API_URL}/wishlist/count/${user?.email}`
-      )
-
-      setCount(data.count)
+  // Fetch bookings data
+  const fetchBookings = async () => {
+    if (user?.email) {
+      const { data } = await axiosSecure(`/wishlist/${user?.email}?page=${currentPage}&size=${itemsPerPage}`);
+      setWishlists(data);
     }
-    getCount()
-  }, [])
+  };
+
+  // Fetch bookings count
+  const fetchBookingsCount = async () => {
+    if (user?.email) {
+      const { data } = await axios(`${import.meta.env.VITE_API_URL}/wishlist/count/${user?.email}`);
+      setCount(data.count);
+    }
+  };
+
+  useEffect(() => {
+    fetchBookings();
+  }, [user?.email, currentPage, itemsPerPage]);
+
+  useEffect(() => {
+    fetchBookingsCount();
+  }, [user?.email]);
+
+  //   Fetch users Data
+  // useEffect(() => {
+  //   axiosSecure(`/wishlist/${user?.email}?page=${currentPage}&size=${itemsPerPage}`)
+  //     .then((res) => setWishlists(res.data))
+  // }, [currentPage, itemsPerPage])
+
+  // useEffect(() => {
+  //   const getCount = async () => {
+  //     const { data } = await axios(
+  //       `${import.meta.env.VITE_API_URL}/wishlist/count/${user?.email}`
+  //     )
+
+  //     setCount(data.count)
+  //   }
+  //   getCount()
+  // }, [])
 
   const numberOfPages = Math.ceil(count / itemsPerPage)
   const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
@@ -67,9 +92,10 @@ const Wishlists = () => {
       const { data } = await axiosSecure.delete(`/wishlist/${id}`)
       return data
     },
-    onSuccess: data => {
+    onSuccess: async data => {
       console.log(data)
       // refetch()
+      await fetchBookings();
       toast.success('Successfully deleted.')
     },
   })

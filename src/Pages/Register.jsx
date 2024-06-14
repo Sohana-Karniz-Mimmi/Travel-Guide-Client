@@ -8,11 +8,12 @@ import { IoEyeOffOutline } from "react-icons/io5";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import login from '../assets/images/login.jpg';
 import Navbar from "../Components/Shared/Navbar/Navbar";
+import axios from "axios";
 
 
 const Register = () => {
 
-    const { profileUpdate, userRegistration, googleLogin, githubLogin } = useContext(AuthContext)
+    const { profileUpdate, userRegistration, googleLogin, githubLogin, setUser } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -24,7 +25,7 @@ const Register = () => {
         formState: { errors },
     } = useForm()
 
-    const handleRegisterForm = data => {
+    const handleRegisterForm = async data => {
 
         const { email, password, name, photo } = data
 
@@ -42,32 +43,59 @@ const Register = () => {
             return toast.error('Password must have at least one lowercase letter');
         }
 
-        userRegistration(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                const users = { email, password }
-                fetch(`https://tourism-server-beta.vercel.app/users`, {
-                    method: 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(users)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        if (data.insertedId) {
-                            toast.success('Sing Up Successful')
+        // userRegistration(email, password)
+        //     .then(result => {
+        //         const user = result.user;
+        //         console.log(user);
+        //         const users = { email, password }
+        //         fetch(`https://tourism-server-beta.vercel.app/users`, {
+        //             method: 'POST',
+        //             headers: { 'content-type': 'application/json' },
+        //             body: JSON.stringify(users)
+        //         })
+        //             .then(res => res.json())
+        //             .then(data => {
+        //                 console.log(data);
+        //                 if (data.insertedId) {
+        //                     toast.success('Sing Up Successful')
 
-                        }
-                    })
+        //                 }
+        //             })
 
-                // Update Profile
-                profileUpdate(name, photo)
-                navigate('/')
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
+        //         // Update Profile
+        //         profileUpdate(name, photo)
+        //         setUser({ ...result?.user, photoURL: photo, displayName: name })
+        //         navigate('/')
+        //     })
+        //     .catch(err => {
+        //         console.log(err.message);
+        //     })
+
+        try {
+            //2. User Registration
+            const result = await userRegistration(email, password)
+
+            await profileUpdate(name, photo)
+            // Optimistic UI Update
+            setUser({ ...result?.user, photoURL: photo, displayName: name })
+            // save user
+            const saveUser = {
+                name: name,
+                email: email,
+                role: 'normal_user',
+                status: 'Verified',
+            }
+            const { data } = await axios.put(
+                `${import.meta.env.VITE_API_URL}/user`,
+                saveUser
+            )
+            console.log(data)
+            navigate('/')
+            toast.success('Sign Up Successful')
+        } catch (err) {
+            console.log(err)
+            toast.error(err?.message)
+        }
     }
 
     // Google Login 
@@ -76,6 +104,17 @@ const Register = () => {
             .then(result => {
                 console.log(result, 'Google Login');
                 if (result.user) {
+                    const saveUser = {
+                        name: result?.user?.displayName,
+                        email: result?.user?.email,
+                        role: 'normal_user',
+                        status: 'Verified',
+                    }
+                    const { data } = axios.put(
+                        `${import.meta.env.VITE_API_URL}/user`,
+                        saveUser
+                    )
+                    console.log(data)
                     toast.success('Login Successful')
                     navigate(location?.state || "/")
                 }

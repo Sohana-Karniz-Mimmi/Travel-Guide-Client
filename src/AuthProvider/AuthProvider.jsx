@@ -48,18 +48,19 @@ const AuthProvider = ({ children }) => {
     }
 
     // save user
-    const saveUser = async user => {
-        const currentUser = {
-            email: user?.email,
-            role: 'normal_user',
-            status: 'Verified',
-        }
-        const { data } = await axios.put(
-            `${import.meta.env.VITE_API_URL}/user`,
-            currentUser
-        )
-        return data
-    }
+    // const saveUser = async user => {
+    //     const currentUser = {
+    //         name: user?.displayName,
+    //         email: user?.email,
+    //         role: 'normal_user',
+    //         status: 'Verified',
+    //     }
+    //     const { data } = await axios.put(
+    //         `${import.meta.env.VITE_API_URL}/user`,
+    //         currentUser
+    //     )
+    //     return data
+    // }
 
 
     // onAuthStateChange
@@ -75,7 +76,7 @@ const AuthProvider = ({ children }) => {
                     .then(data => {
                         console.log('token response', data.data);
                     })
-                saveUser(currentUser)
+                // saveUser(currentUser)
             }
             else {
                 axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, { withCredentials: true })
@@ -96,19 +97,19 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
-            .then(() => {
-                setUser({ displayName: name, photoURL: photo })
-                // console.log('Profile Updated');
-                // ...
-            }).catch((error) => {
-                console.log(error.message);
-            });
+            // .then(() => {
+            //     setUser({ displayName: name, photoURL: photo })
+            //     // console.log('Profile Updated');
+            //     // ...
+            // }).catch((error) => {
+            //     console.log(error.message);
+            // });
     }
 
 
 
 
-    const authInfo = { user, googleLogin, profileUpdate, loginUser, userRegistration, logOut, githubLogin, loading, }
+    const authInfo = { user, setUser, googleLogin, profileUpdate, loginUser, userRegistration, logOut, githubLogin, loading, }
 
 
     return (

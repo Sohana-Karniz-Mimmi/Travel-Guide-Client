@@ -6,10 +6,10 @@ import UserDataRow from '../../../Components/Dashboard/TableRows/UserDataRow'
 import useAxiosSecure from './../../../Hook/useAxiosSecure';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-// import useAuth from '../../../Hook/useAuth';
+import useAuth from '../../../Hook/useAuth';
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure()
-  // const [loading] = useAuth()
+  const { user } = useAuth()
 
   /****Use Search and filter****/
   // eslint-disable-next-line no-unused-vars
@@ -19,29 +19,56 @@ const ManageUsers = () => {
   const [filter, setFilter] = useState('')
   const [search, setSearch] = useState('')
   const [searchText, setSearchText] = useState('')
-  console.log(search)
+  // console.log(search)
   const [users, setUsers] = useState([])
 
+  // Fetch bookings data
+  const fetchBookings = async () => {
+    if (user?.email) {
+      const { data } = await axiosSecure(`/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`);
+      setUsers(data);
+    }
+  };
 
-  //   Fetch users Data
-  useEffect(() => {
-    axiosSecure(`/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`)
-    .then((res) => setUsers(res.data))
-  }, [search, filter, currentPage, itemsPerPage])
-
-  // console.log(users);
-
-  useEffect(() => {
-    const getCount = async () => {
+  // Fetch bookings count
+  const fetchBookingsCount = async () => {
+    if (user?.email) {
       const { data } = await axios(
         `${import.meta.env.VITE_API_URL
         }/users-count?filter=${filter}&search=${search}`
       )
-
-      setCount(data.count)
+      setCount(data.count);
     }
-    getCount()
-  }, [filter, search])
+  };
+
+  useEffect(() => {
+    fetchBookings();
+  }, [users, user?.email, search, filter, currentPage, itemsPerPage]);
+
+  useEffect(() => {
+    fetchBookingsCount();
+  }, [filter, search, user?.email]);
+
+
+  //   Fetch users Data
+  // useEffect(() => {
+  //   axiosSecure(`/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`)
+  //     .then((res) => setUsers(res.data))
+  // }, [search, filter, currentPage, itemsPerPage])
+
+  // console.log(users);
+
+  // useEffect(() => {
+  //   const getCount = async () => {
+  //     const { data } = await axios(
+  //       `${import.meta.env.VITE_API_URL
+  //       }/users-count?filter=${filter}&search=${search}`
+  //     )
+
+  //     setCount(data.count)
+  //   }
+  //   getCount()
+  // }, [filter, search])
 
 
   // console.log(count)
@@ -65,7 +92,7 @@ const ManageUsers = () => {
   }
 
 
-  console.log(users)
+  // console.log(users)
   // if (loading) return <LoadingSpinner />
   return (
     <>
@@ -162,7 +189,7 @@ const ManageUsers = () => {
                     <UserDataRow
                       key={user?._id}
                       user={user}
-                      // refetch={refetch}
+                      refetch={fetchBookings}
                     />
                   ))}
                 </tbody>

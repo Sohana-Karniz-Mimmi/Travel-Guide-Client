@@ -8,6 +8,7 @@ import { IoEyeOffOutline } from "react-icons/io5";
 import useAuth from "../Hook/useAuth";
 import login from '../assets/images/login.jpg';
 import Navbar from "../Components/Shared/Navbar/Navbar";
+import axios from "axios";
 
 const Login = () => {
 
@@ -67,6 +68,17 @@ const Login = () => {
             .then(result => {
                 console.log(result, 'Google Login');
                 if (result.user) {
+                    const saveUser = {
+                        name: result?.user?.displayName,
+                        email: result?.user?.email,
+                        role: 'normal_user',
+                        status: 'Verified',
+                    }
+                    const { data } = axios.put(
+                        `${import.meta.env.VITE_API_URL}/user`,
+                        saveUser
+                    )
+                    console.log(data)
                     toast.success('Login Successful')
                     navigate(location?.state || "/")
                 }

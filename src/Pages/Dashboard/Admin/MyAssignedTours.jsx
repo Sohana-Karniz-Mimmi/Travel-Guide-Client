@@ -13,7 +13,7 @@ const MyAssignedTours = () => {
 
   const axiosSecure = useAxiosSecure()
   const [guideName] = useGuideName()
-  console.log(guideName.name);
+  // console.log(guideName.name);
   const QueryClient = useQueryClient()
 
   // eslint-disable-next-line no-unused-vars
@@ -45,7 +45,7 @@ const MyAssignedTours = () => {
 
   const numberOfPages = Math.ceil(count / itemsPerPage)
   const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
-  console.log(pages);
+  // console.log(pages);
 
   //  handle pagination button
   const handlePaginationButton = value => {
