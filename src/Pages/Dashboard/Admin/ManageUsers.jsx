@@ -24,16 +24,6 @@ const ManageUsers = () => {
 
 
   //   Fetch users Data
-  // const {
-  //   data: users = [], isLoading, refetch, } = useQuery({
-  //     queryKey: ['users, filter, search'],
-  //     queryFn: async () => {
-  //       // const { data } = await axiosSecure(`/users`)
-  //       // const { data } = await axiosSecure(`/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`)
-  //       return (data)
-  //     },
-  //   })
-
   useEffect(() => {
     axiosSecure(`/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`)
     .then((res) => setUsers(res.data))

@@ -28,7 +28,7 @@ const TourType = () => {
     console.log(tourTypes);
 
     return (
-        <section className="relative bg-cover mb-12 bg-center bg-no-repeat lg:h-[350px] md:h-[470px] h-[650px]" style={{
+        <section className="relative bg-cover mb-12 bg-center bg-no-repeat lg:h-[370px] md:h-[470px] h-[650px]" style={{
             backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url(${count})`
         }}
         >

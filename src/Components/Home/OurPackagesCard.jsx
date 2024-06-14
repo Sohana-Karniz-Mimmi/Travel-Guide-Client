@@ -9,8 +9,9 @@ import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import useAxiosSecure from '../../Hook/useAxiosSecure';
+// import useAxiosSecure from '../../Hook/useAxiosSecure';
 import useAuth from '../../Hook/useAuth';
+import axios from 'axios';
 
 const OurPackagesCard = ({ tourPackage }) => {
     // console.log(tourPackage);
@@ -30,12 +31,13 @@ const OurPackagesCard = ({ tourPackage }) => {
 
     // Initialize state with the default background color
     const [bgColor, setBgColor] = useState(true);
-    const axiosSecure = useAxiosSecure()
+    // const axiosSecure = useAxiosSecure()
 
     //   Post
     const { mutateAsync } = useMutation({
         mutationFn: async wishlist => {
-            const { data } = await axiosSecure.post(`/wishlist`, wishlist)
+            // const { data } = await axiosSecure.post(`/wishlist`, wishlist)
+            const { data } =  await axios.post(`${import.meta.env.VITE_API_URL}/wishlist`, wishlist)
             return data
         },
         onSuccess: () => {
@@ -62,13 +64,14 @@ const OurPackagesCard = ({ tourPackage }) => {
 
     // Function to handle button click
     const handleClick = async () => {
-        setBgColor(!bgColor);
+        setBgColor(false);
         console.table(wishlist);
         try {
             await mutateAsync(wishlist)
         } catch (err) {
             console.log(err)
-            toast.error(err.message)
+            // toast.error(err.message)
+            toast.error(err.response.data)
         }
     };
 
@@ -104,7 +107,7 @@ const OurPackagesCard = ({ tourPackage }) => {
                             <p className="flex gap-2 items-center"><FaRegUserCircle /> 12+ </p>
                             <p className="flex gap-2 items-center"><FaRegMap /> Bangladesh</p>
                         </div>
-                        <Link className='px-6 py-1 rounded-md text-[#FF0143] group-hover:text-white transition-all duration-100 ease-in-out group-hover:bg-[#FF0143]' to={`/packages-details/${_id}`} ><GoArrowRight className="text-2xl transition-all hover:scale-150 duration-500 ease-in-out"></GoArrowRight ></Link>
+                        <Link className='px-6 py-1 rounded-md text-[#FF0143] group-hover:text-white transition-all duration-100 ease-in-out group-hover:bg-[#FF0143]' to={`/packages-details/${_id}`} ><GoArrowRight className="text-2xl"></GoArrowRight ></Link>
                         {/* <button className="btn bg-[#FD4C5C] text-white">View Details</button> */}
                     </div>
 

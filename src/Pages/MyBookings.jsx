@@ -1,10 +1,13 @@
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import useAuth from "../Hook/useAuth";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { format } from 'date-fns';
-import LoadingSpinner from "../Components/Shared/LoadingSpinner";
+// import LoadingSpinner from "../Components/Shared/LoadingSpinner";
 import toast from 'react-hot-toast'
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useEffect, useState } from "react";
+import axios from "axios";
 // import DeleteModal from "../Components/Modal/DeleteModal";
 // import { useState } from "react";
 // import { RiArrowDropDownLine } from "react-icons/ri";
@@ -13,20 +16,55 @@ import toast from 'react-hot-toast'
 const MyBookings = () => {
 
     const axiosSecure = useAxiosSecure()
+    const { user } = useAuth()
     // const[isOpen, setIsOpen] = useState(false)
     // const closeModal = () => {
     //     setIsOpen(false)
     // }
 
-    const { user } = useAuth()
+    const [itemsPerPage, setItemsPerPage] = useState(10)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [count, setCount] = useState(0)
+    const [filter, setFilter] = useState('')
+    const [search, setSearch] = useState('')
+    const [users, setUsers] = useState([])
+    console.log(search)
 
-    const { data: bookings = [], isLoading, refetch } = useQuery({
-        queryKey: ['bookings'],
-        queryFn: async () => {
-            const { data } = await axiosSecure(`/my-bookings/${user?.email}`)
-            return data
-        },
-    })
+    //   Fetch users Data
+    useEffect(() => {
+        axiosSecure(`/my-bookings/${user?.email}?page=${currentPage}&size=${itemsPerPage}`)
+            .then((res) => setUsers(res.data))
+    }, [currentPage, itemsPerPage])
+
+    useEffect(() => {
+        const getCount = async () => {
+            const { data } = await axios(
+                `${import.meta.env.VITE_API_URL
+                }/users-count?filter=${filter}&search=${search}`
+            )
+
+            setCount(data.count)
+        }
+        getCount()
+    }, [filter, search])
+
+    const numberOfPages = Math.ceil(count / itemsPerPage)
+    const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
+
+    //  handle pagination button
+  const handlePaginationButton = value => {
+    console.log(value)
+    setCurrentPage(value)
+  }
+
+
+    // const { data: bookings = [], isLoading, refetch } = useQuery({
+    //     queryKey: ['bookings'],
+    //     queryFn: async () => {
+    //         const { data } = await axiosSecure(`/my-bookings/${user?.email}`)
+    //         return data
+    //     },
+    // })
 
     //   delete
     const { mutateAsync } = useMutation({
@@ -42,7 +80,7 @@ const MyBookings = () => {
     })
 
     const handleCancelBookings = async id => {
-        console.log('sohana', id);
+        // console.log('sohana', id);
         try {
             await mutateAsync(id)
         } catch (err) {
@@ -51,7 +89,7 @@ const MyBookings = () => {
     };
 
 
-    if (isLoading) { return <LoadingSpinner /> }
+    // if (isLoading) { return <LoadingSpinner /> }
 
 
     return (
@@ -131,7 +169,7 @@ const MyBookings = () => {
                                     </thead>
                                     <tbody className='bg-white divide-y divide-gray-200 '>
                                         {
-                                            bookings?.map(booking =>
+                                            users?.map(booking =>
 
                                                 <tr key={booking._id}>
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
@@ -200,6 +238,40 @@ const MyBookings = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                {/* Pagination Section */}
+                <div className='flex justify-center mt-12'>
+                    {/* Previous Button */}
+                    <button
+                        disabled={currentPage === 1}
+                        onClick={() => handlePaginationButton(currentPage - 1)}
+                        className='px-4 py-2 mx-1 text-white disabled:text-gray-500 capitalize bg-[#FD4C5C] rounded-full disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:bg-gray-200 disabled:hover:text-gray-500 hover:bg-[#FF0143] hover:text-white'
+                    >
+                        <div className='flex items-center -mx-1'>
+                            <IoIosArrowBack />
+                        </div>
+                    </button>
+                    {/* Numbers */}
+                    {pages.map(btnNum => (
+                        <button
+                            onClick={() => handlePaginationButton(btnNum)}
+                            key={btnNum}
+                            className={`hidden ${currentPage === btnNum ? 'bg-[#FD4C5C] text-white' : ''
+                                } px-4 py-2 mx-1 transition-colors duration-300 transform border rounded-full sm:inline hover:bg-[#FF0143]  hover:text-white`}
+                        >
+                            {btnNum}
+                        </button>
+                    ))}
+                    {/* Next Button */}
+                    <button
+                        disabled={currentPage === numberOfPages}
+                        onClick={() => handlePaginationButton(currentPage + 1)}
+                        className='px-4 py-2 mx-1 text-white transition-colors duration-300 transform bg-[#FD4C5C] rounded-full hover:bg-[#FF0143] disabled:hover:bg-gray-200 disabled:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500'
+                    >
+                        <div className='flex items-center -mx-1'>
+                            <IoIosArrowForward />
+                        </div>
+                    </button>
                 </div>
             </section>
 

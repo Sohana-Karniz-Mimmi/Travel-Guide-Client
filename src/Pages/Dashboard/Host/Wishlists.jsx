@@ -8,7 +8,7 @@ import LoadingSpinner from '../../../Components/Shared/LoadingSpinner'
 const Wishlists = () => {
   const { user } = useAuth()
   const axiosSecure = useAxiosSecure()
-  //   Fetch Rooms Data
+  //   Fetch Wishlist Data
   const {
     data: wishlists = [],
     isLoading,

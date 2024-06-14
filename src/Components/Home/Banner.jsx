@@ -19,9 +19,9 @@ const Banner = () => {
             navigation={true}
             effect="fade"
             modules={[Navigation, Autoplay, EffectFade]}
-            autoplay={{
-                delay: 4000,
-              }}
+            // autoplay={{
+            //     delay: 4000,
+            //   }}
             loop={true}
         >
             
