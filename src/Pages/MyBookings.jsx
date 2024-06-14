@@ -3,7 +3,7 @@ import useAxiosSecure from "../Hook/useAxiosSecure";
 import useAuth from "../Hook/useAuth";
 import { useMutation } from "@tanstack/react-query";
 import { format } from 'date-fns';
-// import LoadingSpinner from "../Components/Shared/LoadingSpinner";
+import LoadingSpinner from "../Components/Shared/LoadingSpinner";
 import toast from 'react-hot-toast'
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useEffect, useState } from "react";
@@ -16,47 +16,48 @@ import axios from "axios";
 const MyBookings = () => {
 
     const axiosSecure = useAxiosSecure()
-    const { user } = useAuth()
+    const { user, loading } = useAuth()
     // const[isOpen, setIsOpen] = useState(false)
     // const closeModal = () => {
     //     setIsOpen(false)
     // }
 
+    // eslint-disable-next-line no-unused-vars
     const [itemsPerPage, setItemsPerPage] = useState(10)
     const [currentPage, setCurrentPage] = useState(1)
     const [count, setCount] = useState(0)
-    const [filter, setFilter] = useState('')
-    const [search, setSearch] = useState('')
-    const [users, setUsers] = useState([])
-    console.log(search)
+    const [bookings, setBookings] = useState([])
 
-    //   Fetch users Data
+    //   Fetch bookings Data
     useEffect(() => {
-        axiosSecure(`/my-bookings/${user?.email}?page=${currentPage}&size=${itemsPerPage}`)
-            .then((res) => setUsers(res.data))
-    }, [currentPage, itemsPerPage])
+        const getCount = async () => {
+           await axiosSecure(`/my-bookings/${user?.email}?page=${currentPage}&size=${itemsPerPage}`)
+                .then((res) => setBookings(res.data))
+        }
+        getCount()
+
+    }, [user?.email, currentPage, itemsPerPage])
 
     useEffect(() => {
         const getCount = async () => {
             const { data } = await axios(
-                `${import.meta.env.VITE_API_URL
-                }/users-count?filter=${filter}&search=${search}`
+                `${import.meta.env.VITE_API_URL}/my-bookings/count/${user?.email}`
             )
 
             setCount(data.count)
         }
         getCount()
-    }, [filter, search])
+    }, [user?.email])
 
     const numberOfPages = Math.ceil(count / itemsPerPage)
     const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
     console.log(pages);
 
     //  handle pagination button
-  const handlePaginationButton = value => {
-    console.log(value)
-    setCurrentPage(value)
-  }
+    const handlePaginationButton = value => {
+        console.log(value)
+        setCurrentPage(value)
+    }
 
 
     // const { data: bookings = [], isLoading, refetch } = useQuery({
@@ -75,7 +76,9 @@ const MyBookings = () => {
         },
         onSuccess: async data => {
             console.log(data)
-            refetch()
+            // refetch()
+            // const remaining = bookings.filter(booking => booking._id !== id)
+
             toast.success('Booking Canceled')
         },
     })
@@ -90,7 +93,7 @@ const MyBookings = () => {
     };
 
 
-    // if (isLoading) { return <LoadingSpinner /> }
+    if (loading) { return <LoadingSpinner /> }
 
 
     return (
@@ -171,7 +174,7 @@ const MyBookings = () => {
                                     </thead>
                                     <tbody className='bg-white divide-y divide-gray-200 '>
                                         {
-                                            users?.map(booking =>
+                                            bookings?.map(booking =>
 
                                                 <tr key={booking._id}>
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
