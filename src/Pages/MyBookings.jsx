@@ -2,14 +2,12 @@ import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import useAuth from "../Hook/useAuth";
 import { useMutation } from "@tanstack/react-query";
-import { format } from 'date-fns';
 import LoadingSpinner from "../Components/Shared/LoadingSpinner";
 import toast from 'react-hot-toast'
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import DeleteModal from "../Components/Modal/DeleteModal";
-// import { useState } from "react";
+import MyBookingsRows from "../Components/Dashboard/TableRows/MyBookingsRows";
 // import { RiArrowDropDownLine } from "react-icons/ri";
 
 
@@ -17,10 +15,6 @@ const MyBookings = () => {
 
     const axiosSecure = useAxiosSecure()
     const { user, loading } = useAuth()
-    // const[isOpen, setIsOpen] = useState(false)
-    // const closeModal = () => {
-    //     setIsOpen(false)
-    // }
 
     // eslint-disable-next-line no-unused-vars
     const [itemsPerPage, setItemsPerPage] = useState(10)
@@ -31,7 +25,7 @@ const MyBookings = () => {
     //   Fetch bookings Data
     useEffect(() => {
         const getCount = async () => {
-           await axiosSecure(`/my-bookings/${user?.email}?page=${currentPage}&size=${itemsPerPage}`)
+            await axiosSecure(`/my-bookings/${user?.email}?page=${currentPage}&size=${itemsPerPage}`)
                 .then((res) => setBookings(res.data))
         }
         getCount()
@@ -74,17 +68,15 @@ const MyBookings = () => {
             const { data } = await axiosSecure.delete(`/booking/${id}`)
             return data
         },
+        
         onSuccess: async data => {
             console.log(data)
-            // refetch()
-            // const remaining = bookings.filter(booking => booking._id !== id)
-
+            // refetch() 
             toast.success('Booking Canceled')
         },
     })
 
     const handleCancelBookings = async id => {
-        // console.log('sohana', id);
         try {
             await mutateAsync(id)
         } catch (err) {
@@ -102,11 +94,6 @@ const MyBookings = () => {
             <Helmet>
                 <title>Applied Jobs- Job-Portal</title>
             </Helmet>
-
-            {/* <div>
-                <AppliedBanner></AppliedBanner>
-            </div> */}
-
 
             <section className='container px-4 mx-auto py-12'>
                 <div className='flex items-center gap-x-3'>
@@ -174,69 +161,11 @@ const MyBookings = () => {
                                     </thead>
                                     <tbody className='bg-white divide-y divide-gray-200 '>
                                         {
-                                            bookings?.map(booking =>
-
-                                                <tr key={booking._id}>
-                                                    <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {booking.tour_type}
-                                                    </td>
-                                                    <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {booking.guideName}
-                                                    </td>
-
-                                                    {/* Deadline */}
-                                                    <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {format(booking.tourDate, 'dd-MM-yyyy')}
-                                                    </td>
-
-                                                    {/* Price */}
-                                                    <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        ${booking.price}
-                                                    </td>
-
-                                                    {/* Dynamic category */}
-                                                    <td className='px-4 py-4 text-sm whitespace-nowrap'>
-                                                        <div className='flex items-center gap-x-2'>
-                                                            <p
-                                                                className={`px-3 py-1 rounded-full 
-                                                    text-xs ${booking.status === 'In Review' && 'text-blue-500 bg-blue-100/60'} ${booking.status === 'Rejected' && 'text-red-500 bg-pink-100/60'} ${booking.status === 'Accepted' && 'text-emerald-500 bg-emerald-100/60'} ${booking.status === 'Hybrid' && 'text-violet-500 bg-violet-100/60'}
-                                                    `}
-                                                            >
-                                                                {booking.status}
-                                                            </p>
-                                                        </div>
-                                                    </td>
-
-                                                    {/* Calcel Button */}
-                                                    <td className='px-4 py-4 text-sm whitespace-nowrap'>
-                                                        <button
-                                                            title="Cancel"
-                                                            // onClick={() => setIsOpen(true)}
-                                                            onClick={() => handleCancelBookings(booking._id)}
-                                                            className="px-3 py-1 rounded-full 
-                                                    text-xs text-red-500 bg-pink-100/60"
-                                                            disabled={booking.status === 'Accepted'}
-                                                        >
-                                                            Cancel
-                                                        </button>
-                                                        {/* Delete Modal */}
-                                                        {/* <DeleteModal
-                                                            handleDelete={handleCancelBookings}
-                                                            closeModal={closeModal}
-                                                            isOpen={isOpen}
-                                                            id={booking?._id}
-                                                        /> */}
-                                                    </td>
-                                                    {/* Pay Button */}
-                                                    <td className='px-4 py-4 text-sm whitespace-nowrap'>
-                                                        <button title="Pay Now" className="text-purple-500 bg-purple-100/60 px-3 py-1 rounded-full 
-                                                    text-xs"
-                                                            disabled={booking.status === 'In Review'}
-                                                        >
-                                                            Pay Now
-                                                        </button>
-                                                    </td>
-                                                </tr>)
+                                            bookings?.map(booking => <MyBookingsRows
+                                                key={booking._id}
+                                                booking={booking}
+                                                handleDelete={handleCancelBookings}
+                                            ></MyBookingsRows>)
                                         }
                                     </tbody>
                                 </table>

@@ -84,7 +84,6 @@ const WishlistDataRows = ({ wishlist, handleDelete }) => {
 
 WishlistDataRows.propTypes = {
   wishlist: PropTypes.object,
-  refetch: PropTypes.func,
   handleDelete: PropTypes.func,
 }
 
