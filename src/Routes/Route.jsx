@@ -22,6 +22,7 @@ import AdminRoute from "./AdminRoute";
 import TourGuideRoute from "./TourGuideRoute";
 import About from "../Pages/About";
 import Blogs from "../Pages/Blogs";
+import Contact from "../Pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Home></Home>,
+        element: <Contact></Contact>,
       },
       {
         path: "/blogs",
