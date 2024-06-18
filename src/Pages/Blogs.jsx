@@ -1,7 +1,11 @@
 import { Helmet } from "react-helmet-async";
-import { FaRegCalendarDays, FaRegComments, FaUser } from "react-icons/fa6";
-// import code1 from "../assets/images/code.png"
 import ViewBanner from "../Components/ViewBanner";
+import { FaRegComments } from "react-icons/fa6";
+import { GoFileDirectory } from "react-icons/go";
+import { LuCalendarDays } from "react-icons/lu";
+import { RiFileCopyLine } from "react-icons/ri";
+import { IoSearchOutline } from "react-icons/io5";
+
 
 const Blogs = () => {
     return (
@@ -13,103 +17,181 @@ const Blogs = () => {
                 <ViewBanner name={'Bogs'}></ViewBanner>
             </div>
 
-            <section className="dark:bg-gray-100 dark:text-gray-800">
-                <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
+            <section className="bg-[#f9f9f9] text-gray-800 pt-16">
+                <div className="container mx-auto">
+                    <div className="md:flex gap-8">
 
-                    <div rel="noopener noreferrer" href="#" className="pt-10 block md:w-[870px] w-full mx-auto dark:bg-gray-50">
+                        <div rel="noopener noreferrer" href="#" className="md:p-8 p-4 rounded block md:w-[950px] w-full mx-auto bg-white shadow-custom">
 
-                        <div>
-                            <h3 className="md:text-[22px] text-lg font-semibold  px-6  mb-4 group-hover:underline group-focus:underline">What is an access token and refresh token? How do they work and where should we store them on the client side?</h3>
-                            <img src='https://job-portal-3285e.web.app/assets/code-BK-Mb3n8.png' alt="" className="object-cover mx-auto md:w-[870px] w-full rounded h-[450px] lg:col-span-7 dark:bg-gray-500" />
-                            <div className="p-6 space-y-2 lg:col-span-5">
+                            <div className="mb-10">
 
-                                <div className="flex">
-                                    <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center text-primary" ><FaRegCalendarDays className="text-lg text-primary" /> May 14, 2024</span>
-                                    <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaUser className="text-base text-primary" /> By Sohana</span>
-                                    <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaRegComments className="text-lg text-primary" /> 5k </span>
-                                </div>
-
-                                <p className="">
-                                    An access token and a refresh token are both components of an authentication and authorization system commonly used in web applications and APIs. Heres a breakdown of each:
-
-                                    <ul className="list-decimal pl-10 pt-4">
-                                        <li> <strong>Access Token:</strong> A credential used by a client to access protected resources on an API server. It is short-lived and obtained after successful authentication.
-                                        </li>
-                                        <li><strong>Refresh Token:</strong> A credential used to obtain a new access token once the current one expires. It is long-lived and helps maintain user sessions without frequent reauthentication.
-                                        </li>
-                                    </ul>
-
-                                    <div className="pt-4">
-                                        <p>
-                                            <strong>Working Mechanism:</strong> When a user logs in or authenticates for the first time, the server issues both an access token and a refresh token. The access token is sent with each request to access protected resources. When the access token expires, the client can use the refresh token to request a new access token from the server without requiring the user to log in again.
-
-                                        </p>
-                                        <p> <strong>Storage:</strong> Access tokens should be stored on the client side, typically in memory or local storage, to include them in requests easily. However, it is crucial to ensure that they are not exposed to unauthorized access. Refresh tokens, being more sensitive, should be stored securely on the server side.
-                                        </p>
+                                <img src='https://demo.ovatheme.com/tripgo/wp-content/uploads/2022/07/blog-05.jpg' alt="" className="object-cover mx-auto md:w-[950px] w-full h-[450px] lg:col-span-7 bg-gray-500 mb-7" />
+                                <h3 className="md:text-3xl text-lg font-semibold my-5 hover:text-[#FD4C5C] cursor-pointer">
+                                    How to travel with paper map</h3>
+                                <div className=" lg:col-span-5">
+                                    <div className="mb-5 flex">
+                                        <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
+                                            <LuCalendarDays className="text-base text-[#FF4C5C]" />
+                                            July 1, 2024</span>
+                                        <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-[#999]" >
+                                            <GoFileDirectory className="text-base text-[#FF4C5C]" />
+                                            Tips and Tricks</span>
+                                        <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
+                                            <FaRegComments className="text-lg text-[#FF4C5C]" />
+                                            0 Comments </span>
                                     </div>
-                                </p>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-            </section>
-
-            <section className="dark:bg-gray-100 dark:text-gray-800">
-                <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-
-                    <div rel="noopener noreferrer" href="#" className="pt-10 block md:w-[870px] w-full mx-auto dark:bg-gray-50">
-
-                        <h3 className="md:text-[22px] text-lg font-semibold  px-6  mb-4 group-hover:underline group-focus:underline">What is express js? What is Nest JS</h3>
-                        <img src='https://www.split.io/wp-content/uploads/Blog-2160x1080-Building-a-CRUD-API-with-Node-js-and-Express-1920x960.png' alt="" className="object-cover mx-auto md:w-[870px] w-full rounded h-[450px] lg:col-span-7 dark:bg-gray-500" />
-                        <div className="p-6 space-y-2 lg:col-span-5">
-
-                            <div className="flex">
-                                <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaRegCalendarDays className="text-lg text-primary" /> May 14, 2024</span>
-                                <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaUser className="text-base text-primary" /> By Sohana</span>
-                                <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaRegComments className="text-lg text-primary" /> 5k </span>
-                            </div>
-
-                            <p className="">
-                                <div className="pt-4">
-                                    <p>
-                                        <strong>Express.js:</strong> Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for building web and mobile applications. It simplifies the process of creating powerful web servers and APIs by providing a thin layer of fundamental web application features, allowing developers to build upon it as needed. Express.js is widely used in the Node.js ecosystem for its simplicity and performance.
-
+                                    <p className="mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....
                                     </p>
-                                    <p className="mt-2"> <strong>Nest.js:</strong> Nest.js is a progressive Node.js framework for building efficient, reliable, and scalable server-side applications. It is built with TypeScript and heavily inspired by Angular, providing a modular and well-organized structure for building complex applications. Nest.js leverages TypeScripts features to offer strong typing, dependency injection, and intuitive design patterns, making it suitable for large-scale enterprise applications.
-                                    </p>
+
+                                    <button className="btn mb-5 text-white bg-[#FD4C5C] hover:bg-[#FF0143]"> Read More</button>
                                 </div>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="dark:bg-gray-100 dark:text-gray-800">
-                <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-
-                    <div rel="noopener noreferrer" href="#" className="pt-10 block md:w-[870px] w-full mx-auto dark:bg-gray-50">
-
-                        <h3 className="md:text-[22px] text-lg font-semibold  px-6  mb-4 group-hover:underline group-focus:underline">Explain your code. </h3>
-                        <img src='https://img.freepik.com/free-photo/programming-background-concept_23-2150170137.jpg' alt="" className="object-cover mx-auto md:w-[870px] w-full rounded h-[450px] lg:col-span-7 dark:bg-gray-500" />
-                        <div className="p-6 space-y-2 lg:col-span-5">
-
-                            <div className="flex">
-                                <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaRegCalendarDays className="text-lg text-primary" /> May 14, 2024</span>
-                                <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaUser className="text-base text-primary" /> By Sohana</span>
-                                <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center  text-primary" ><FaRegComments className="text-lg text-primary" /> 5k </span>
                             </div>
 
-                            <p className="">
+                            <div className="mb-10">
 
-                                <div className="pt-4">
-                                    <p>
-                                        In our code, we utilize Express.js to create a RESTful API for managing user authentication and authorization. We implement JSON Web Tokens (JWT) for handling access tokens and refresh tokens securely. The authentication process involves validating user credentials, generating JWT tokens (access and refresh tokens), and securely storing the refresh token on the server side.
+                                <img src='https://demo.ovatheme.com/tripgo/wp-content/uploads/2022/07/blog-07.jpg' alt="" className="object-cover mx-auto md:w-[950px] w-full h-[450px] lg:col-span-7 bg-gray-500 mb-7" />
+                                <h3 className="md:text-3xl text-lg font-semibold my-5 cursor-pointer hover:text-[#FD4C5C] ">Introducing this amazing tour</h3>
+                                <div className=" lg:col-span-5">
+                                    <div className="mb-5 flex">
+                                        <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
+                                            <LuCalendarDays className="text-base text-[#FF4C5C]" />
+                                            July 1, 2024</span>
+                                        <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-[#999]" >
+                                            <GoFileDirectory className="text-base text-[#FF4C5C]" />
+                                            Travel</span>
+                                        <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
+                                            <FaRegComments className="text-lg text-[#FF4C5C]" />
+                                            0 Comments </span>
+                                    </div>
+
+                                    <p className="mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....
                                     </p>
+
+                                    <button className="btn mb-5 text-white bg-[#FD4C5C] hover:bg-[#FF0143]"> Read More</button>
                                 </div>
-                            </p>
+                            </div>
+
+                            <div className="mb-10">
+
+                                <img src='https://demo.ovatheme.com/tripgo/wp-content/uploads/2022/07/blog-04.jpg' alt="" className="object-cover mx-auto md:w-[950px] w-full h-[450px] lg:col-span-7 bg-gray-500 mb-7" />
+                                <h3 className="md:text-3xl text-lg font-semibold my-5 cursor-pointer hover:text-[#FD4C5C] ">
+                                    Most Beautiful Islands in Asia</h3>
+                                <div className=" lg:col-span-5">
+                                    <div className="mb-5 flex">
+                                        <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
+                                            <LuCalendarDays className="text-base text-[#FF4C5C]" />
+                                            July 1, 2024</span>
+                                        <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-[#999]" >
+                                            <GoFileDirectory className="text-base text-[#FF4C5C]" />
+                                            Off Topic</span>
+                                        <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
+                                            <FaRegComments className="text-lg text-[#FF4C5C]" />
+                                            0 Comments </span>
+                                    </div>
+
+                                    <p className="mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....
+                                    </p>
+
+                                    <button className="btn mb-5 text-white bg-[#FD4C5C] hover:bg-[#FF0143]"> Read More</button>
+                                </div>
+                            </div>
+
+                            <div className="mb-10">
+
+                                <img src='https://demo.ovatheme.com/tripgo/wp-content/uploads/2022/07/blog-02.jpg' alt="" className="object-cover mx-auto md:w-[950px] w-full h-[450px] lg:col-span-7 bg-gray-500 mb-7" />
+                                <h3 className="md:text-3xl text-lg font-semibold my-5 hover:text-[#FD4C5C] ">
+                                    Best Nature Weekend Tour in Bangladesh</h3>
+                                <div className=" lg:col-span-5">
+                                    <div className="mb-5 flex">
+                                        <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
+                                            <LuCalendarDays className="text-base text-[#FF4C5C]" />
+                                            July 1, 2024</span>
+                                        <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-[#999]" >
+                                            <GoFileDirectory className="text-base text-[#FF4C5C]" />
+                                            Tips and Tricks</span>
+                                        <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
+                                            <FaRegComments className="text-lg text-[#FF4C5C]" />
+                                            0 Comments </span>
+                                    </div>
+
+                                    <p className="mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....
+                                    </p>
+
+                                    <button className="btn mb-5 text-white bg-[#FD4C5C] hover:bg-[#FF0143]"> Read More</button>
+                                </div>
+                            </div>
+
                         </div>
+
+                        <div className="flex-1">
+                            <div className=" pb-6">
+                                <label className="input input-bordered flex items-center gap-2">
+                                    <input type="text" className="grow" placeholder="Search..." />
+                                    <IoSearchOutline className="text-lg" />
+                                </label>
+                            </div>
+
+                            <div className="bg-white rounded-lg mb-6">
+                                <h2 className="border font-semibold text-xl p-4 rounded-t-lg">Blog Categories</h2>
+                                <div className="border border-t-0 p-4 rounded-b-lg">
+                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Food</span> </h2>
+                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Off Topic</span> </h2>
+                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Tips and Tricks</span> </h2>
+                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Travel</span> </h2>
+                                </div>
+                            </div>
+
+                            <div className="bg-white rounded-lg">
+                                <h2 className="border font-semibold text-xl p-4 rounded-t-lg">Popular Post</h2>
+                                <div className="border border-t-0 p-4 rounded-b-lg">
+
+                                    <div className="flex items-center gap-4 mb-2.5">
+                                        <div className="avatar">
+                                            <div className="w-[75px] rounded-lg">
+                                                <img src="https://demo.ovatheme.com/tripgo/wp-content/uploads/2022/07/blog-05-100x100.jpg" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h2 className="text-[16px] font-semibold hover:text-[#FD4C5C] cursor-pointer pb-1">How to travel with paper map</h2>
+                                            <p className="hover:text-[#FD4C5C] cursor-pointer">July 1, 2024</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-4 mb-2.5">
+                                        <div className="avatar">
+                                            <div className="w-[75px] rounded-lg">
+                                                <img src="https://demo.ovatheme.com/tripgo/wp-content/uploads/2022/07/blog-07.jpg" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h2 className="text-[16px] font-semibold hover:text-[#FD4C5C] cursor-pointer pb-1">Introducing this amazing tour</h2>
+                                            <p className="hover:text-[#FD4C5C] cursor-pointer">July 1, 2024</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-4 mb-2.5">
+                                        <div className="avatar">
+                                            <div className="w-[75px] rounded-lg">
+                                                <img src="https://demo.ovatheme.com/tripgo/wp-content/uploads/2022/07/blog-04.jpg" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h2 className="text-[16px] font-semibold hover:text-[#FD4C5C] cursor-pointer pb-1">Most Beautiful Islands in Asia</h2>
+                                            <p className="hover:text-[#FD4C5C] cursor-pointer">July 1, 2024</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
                     </div>
+
                 </div>
             </section>
 
