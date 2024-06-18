@@ -20,6 +20,8 @@ import AllStories from "../Components/Stories/AllStories";
 import PrivetRoute from "./PrivetRoute";
 import AdminRoute from "./AdminRoute";
 import TourGuideRoute from "./TourGuideRoute";
+import About from "../Pages/About";
+import Blogs from "../Pages/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,22 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "community",
+        element: <Home></Home>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/contact",
+        element: <Home></Home>,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
       },
       {
         path: "/login",

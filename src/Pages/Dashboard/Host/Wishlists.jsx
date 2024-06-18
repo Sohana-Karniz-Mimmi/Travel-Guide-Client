@@ -5,12 +5,14 @@ import toast from 'react-hot-toast'
 import useAuth from '../../../Hook/useAuth'
 import useAxiosSecure from '../../../Hook/useAxiosSecure'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-// import LoadingSpinner from '../../../Components/Shared/LoadingSpinner'
+import LoadingSpinner from '../../../Components/Shared/LoadingSpinner'
+import useRole from '../../../Hook/useRole'
 const Wishlists = () => {
   const { user } = useAuth()
   const axiosSecure = useAxiosSecure()
+  // eslint-disable-next-line no-unused-vars
+  const [role, isLoading] = useRole()
   //   Fetch Wishlist Data
   // eslint-disable-next-line no-unused-vars
   const [itemsPerPage, setItemsPerPage] = useState(10)
@@ -19,28 +21,28 @@ const Wishlists = () => {
   const [wishlists, setWishlists] = useState([])
 
 
-  // Fetch bookings data
-  const fetchBookings = async () => {
+  // Fetch Wishlist data
+  const fetchWishlists = async () => {
     if (user?.email) {
       const { data } = await axiosSecure(`/wishlist/${user?.email}?page=${currentPage}&size=${itemsPerPage}`);
       setWishlists(data);
     }
   };
 
-  // Fetch bookings count
-  const fetchBookingsCount = async () => {
+  // Fetch Wishlist count
+  const fetchWishlistsCount = async () => {
     if (user?.email) {
-      const { data } = await axios(`${import.meta.env.VITE_API_URL}/wishlist/count/${user?.email}`);
+      const { data } = await axiosSecure(`/wishlist/count/${user?.email}`);
       setCount(data.count);
     }
   };
 
   useEffect(() => {
-    fetchBookings();
+    fetchWishlists();
   }, [user?.email, currentPage, itemsPerPage]);
 
   useEffect(() => {
-    fetchBookingsCount();
+    fetchWishlistsCount();
   }, [user?.email]);
 
   //   Fetch users Data
@@ -53,7 +55,8 @@ const Wishlists = () => {
   //   const getCount = async () => {
   //     const { data } = await axios(
   //       `${import.meta.env.VITE_API_URL}/wishlist/count/${user?.email}`
-  //     )
+  //     )import useRole from './../../../Hook/useRole';
+
 
   //     setCount(data.count)
   //   }
@@ -95,7 +98,7 @@ const Wishlists = () => {
     onSuccess: async data => {
       console.log(data)
       // refetch()
-      await fetchBookings();
+      await fetchWishlists();
       toast.success('Successfully deleted.')
     },
   })
@@ -109,7 +112,7 @@ const Wishlists = () => {
       console.log(err)
     }
   }
-  // if (isLoading) return <LoadingSpinner />
+  if (isLoading) return <LoadingSpinner />
   return (
     <>
       <Helmet>

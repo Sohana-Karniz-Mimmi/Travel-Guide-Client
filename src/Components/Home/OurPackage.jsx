@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import OurPackagesCard from "./OurPackagesCard";
 import { Link } from 'react-router-dom';
+import LoadingSpinner from '../Shared/LoadingSpinner';
 
 
 const OurPackage = () => {
@@ -32,11 +33,7 @@ const OurPackage = () => {
     }
 
     if (isLoading) {
-        return <>
-            <div className="flex items-center justify-center space-x-2 h-screen">
-                <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-[#FD4C5C]"></div>
-            </div>
-        </>
+        return <LoadingSpinner></LoadingSpinner>
     }
 
     // console.log(tourPackages);

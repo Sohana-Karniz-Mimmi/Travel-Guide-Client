@@ -1,15 +1,18 @@
 import { Helmet } from 'react-helmet-async'
-// import { useQuery } from '@tanstack/react-query'
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-// import LoadingSpinner from '../../../Components/Shared/LoadingSpinner'
 import UserDataRow from '../../../Components/Dashboard/TableRows/UserDataRow'
-import useAxiosSecure from './../../../Hook/useAxiosSecure';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import useAuth from '../../../Hook/useAuth';
+// import LoadingSpinner from '../../../Components/Shared/LoadingSpinner'
+// import useAxiosSecure from './../../../Hook/useAxiosSecure';
+// import useAuth from '../../../Hook/useAuth';
+// import useRole from '../../../Hook/useRole';
 const ManageUsers = () => {
-  const axiosSecure = useAxiosSecure()
-  const { user } = useAuth()
+
+  // const axiosSecure = useAxiosSecure()
+  // const { user, loading } = useAuth()
+  // eslint-disable-next-line no-unused-vars
+  // const [role, isLoading] = useRole()
 
   /****Use Search and filter****/
   // eslint-disable-next-line no-unused-vars
@@ -19,57 +22,47 @@ const ManageUsers = () => {
   const [filter, setFilter] = useState('')
   const [search, setSearch] = useState('')
   const [searchText, setSearchText] = useState('')
-  // console.log(search)
   const [users, setUsers] = useState([])
 
-  // Fetch bookings data
+  // Fetch Wishlist data
   const fetchBookings = async () => {
-    if (user?.email) {
-      const { data } = await axiosSecure(`/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`);
-      setUsers(data);
-    }
-  };
 
-  // Fetch bookings count
-  const fetchBookingsCount = async () => {
-    if (user?.email) {
-      const { data } = await axios(
-        `${import.meta.env.VITE_API_URL
-        }/users-count?filter=${filter}&search=${search}`
-      )
-      setCount(data.count);
-    }
+    const { data } = await axios(
+      `${import.meta.env.VITE_API_URL
+      }/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`
+    )
+    setUsers(data)
   };
 
   useEffect(() => {
     fetchBookings();
-  }, [users, user?.email, search, filter, currentPage, itemsPerPage]);
+  }, [currentPage, filter, itemsPerPage, search]);
+
+
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const { data } = await axios(
+  //       `${
+  //         import.meta.env.VITE_API_URL
+  //       }/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`
+  //     )
+  //     setUsers(data)
+  //   }
+  //   getData()
+  // }, [currentPage, filter, itemsPerPage, search])
+
 
   useEffect(() => {
-    fetchBookingsCount();
-  }, [filter, search, user?.email]);
+    const getCount = async () => {
+      const { data } = await axios(
+        `${import.meta.env.VITE_API_URL
+        }/users-count?filter=${filter}&search=${search}`
+      )
 
-
-  //   Fetch users Data
-  // useEffect(() => {
-  //   axiosSecure(`/users?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&search=${search}`)
-  //     .then((res) => setUsers(res.data))
-  // }, [search, filter, currentPage, itemsPerPage])
-
-  // console.log(users);
-
-  // useEffect(() => {
-  //   const getCount = async () => {
-  //     const { data } = await axios(
-  //       `${import.meta.env.VITE_API_URL
-  //       }/users-count?filter=${filter}&search=${search}`
-  //     )
-
-  //     setCount(data.count)
-  //   }
-  //   getCount()
-  // }, [filter, search])
-
+      setCount(data.count)
+    }
+    getCount()
+  }, [filter, search])
 
   // console.log(count)
   const numberOfPages = Math.ceil(count / itemsPerPage)
@@ -93,7 +86,7 @@ const ManageUsers = () => {
 
 
   // console.log(users)
-  // if (loading) return <LoadingSpinner />
+  // if (isLoading || loading) return <LoadingSpinner />
   return (
     <>
       <div className='container mx-auto px-4 sm:px-8'>
@@ -109,11 +102,12 @@ const ManageUsers = () => {
           <div>
             <select
               onChange={e => {
-                setFilter(e.target.value);
+                setFilter(e.target.value)
+                setCurrentPage(1)
               }}
               value={filter}
-              name='category'
-              id='category'
+              name='role'
+              id='role'
               className='border px-4 py-3 rounded-sm'
             >
               <option value=''>Filter By Role</option>

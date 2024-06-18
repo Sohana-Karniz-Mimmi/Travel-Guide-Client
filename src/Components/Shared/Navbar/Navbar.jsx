@@ -46,20 +46,20 @@ const Navbar = () => {
             isActive ? 'p-0 text-[#FD4C5C] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#FD4C5C]'
                 :
                 'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#FD4C5C] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#FD4C5C]'
-        } to={'/appliedJobs'}> Community </NavLink> </li>
+        } to={'/community'}> Community </NavLink> </li>
 
 
         <li> <NavLink className={({ isActive }) =>
             isActive ? 'p-0 text-[#FD4C5C] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#FD4C5C]'
                 :
                 'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#FD4C5C] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#FD4C5C]'
-        } to={'/addJob'}> About Us </NavLink> </li>
+        } to={'/about'}> About Us </NavLink> </li>
 
         <li> <NavLink className={({ isActive }) =>
             isActive ? 'p-0 text-[#FD4C5C] pb-1 rounded-none text-[16px] border-b-2 font-medium mt-2 border-[#FD4C5C]'
                 :
                 'font-medium p-0 transition-all duration-200 ease-in-out hover:text-[#FD4C5C] hover:pb-1 hover:rounded-none text-[16px] hover:border-b-2 mt-2 border-[#FD4C5C]'
-        } to={'/myJobs'}> Contact Us </NavLink> </li>
+        } to={'/contact'}> Contact Us </NavLink> </li>
 
         {/* </>} */}
 
@@ -161,8 +161,7 @@ const Navbar = () => {
                     user ? <>
                         <div onClick={() => setIsOpenMenu(!isOpenMenu)} className="btn btn-ghost btn-circle avatar text-white">
                             <div className=" w-12 rounded-full ">
-                                {/* <img alt={"User"} src={user.photoURL} /> */}
-                                <img alt={"User"} src={logo} />
+                                <img alt={"User"} src={user.photoURL} />
                             </div>
                         </div>
                         {

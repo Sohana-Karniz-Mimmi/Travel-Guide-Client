@@ -15,10 +15,10 @@ import axios from 'axios';
 
 const OurPackagesCard = ({ tourPackage }) => {
     // console.log(tourPackage);
-    const {user} = useAuth()
+    const { user } = useAuth()
     const {
         _id,
-         image1,
+        image1,
         image2,
         image3,
         image4,
@@ -37,12 +37,13 @@ const OurPackagesCard = ({ tourPackage }) => {
     const { mutateAsync } = useMutation({
         mutationFn: async wishlist => {
             // const { data } = await axiosSecure.post(`/wishlist`, wishlist)
-            const { data } =  await axios.post(`${import.meta.env.VITE_API_URL}/wishlist`, wishlist)
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/wishlist`, wishlist)
             return data
         },
         onSuccess: () => {
             console.log('Data Saved Successfully')
             toast.success('Added to Wishlist')
+            setBgColor(false);
             //   setLoading(false)
         },
     })
@@ -64,7 +65,6 @@ const OurPackagesCard = ({ tourPackage }) => {
 
     // Function to handle button click
     const handleClick = async () => {
-        setBgColor(false);
         console.table(wishlist);
         try {
             await mutateAsync(wishlist)

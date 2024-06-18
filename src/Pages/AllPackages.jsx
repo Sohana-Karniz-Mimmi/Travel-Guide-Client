@@ -7,6 +7,7 @@ import AllPackagesCard from "../Components/Home/AllPackagesCard";
 import ViewBanner from "../Components/ViewBanner";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import LoadingSpinner from "../Components/Shared/LoadingSpinner";
 
 
 
@@ -59,12 +60,7 @@ const AllPackages = () => {
 
     
     if (isLoading) {
-        return (
-            <div className="flex items-center justify-center space-x-2 h-screen">
-                <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-[#FD4C5C]">
-                </div>
-            </div>
-        );
+        return <LoadingSpinner></LoadingSpinner>
     }
 
 

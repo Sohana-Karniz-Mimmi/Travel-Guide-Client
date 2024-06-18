@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
-import BlogsBanner from "../Components/BlogsBanner";
 import { FaRegCalendarDays, FaRegComments, FaUser } from "react-icons/fa6";
-import code1 from "../assets/images/code.png"
+// import code1 from "../assets/images/code.png"
+import ViewBanner from "../Components/ViewBanner";
 
 const Blogs = () => {
     return (
@@ -10,7 +10,7 @@ const Blogs = () => {
                 <title>Blogs - Job-Portal</title>
             </Helmet>
             <div>
-                <BlogsBanner></BlogsBanner>
+                <ViewBanner name={'Bogs'}></ViewBanner>
             </div>
 
             <section className="dark:bg-gray-100 dark:text-gray-800">
@@ -20,7 +20,7 @@ const Blogs = () => {
 
                         <div>
                             <h3 className="md:text-[22px] text-lg font-semibold  px-6  mb-4 group-hover:underline group-focus:underline">What is an access token and refresh token? How do they work and where should we store them on the client side?</h3>
-                            <img src={code1} alt="" className="object-cover mx-auto md:w-[870px] w-full rounded h-[450px] lg:col-span-7 dark:bg-gray-500" />
+                            <img src='https://job-portal-3285e.web.app/assets/code-BK-Mb3n8.png' alt="" className="object-cover mx-auto md:w-[870px] w-full rounded h-[450px] lg:col-span-7 dark:bg-gray-500" />
                             <div className="p-6 space-y-2 lg:col-span-5">
 
                                 <div className="flex">
@@ -33,9 +33,9 @@ const Blogs = () => {
                                     An access token and a refresh token are both components of an authentication and authorization system commonly used in web applications and APIs. Heres a breakdown of each:
 
                                     <ul className="list-decimal pl-10 pt-4">
-                                        <li> <strong>Access Token:</strong> A credential used by a client to access protected resources on an API server. It's short-lived and obtained after successful authentication.
+                                        <li> <strong>Access Token:</strong> A credential used by a client to access protected resources on an API server. It is short-lived and obtained after successful authentication.
                                         </li>
-                                        <li><strong>Refresh Token:</strong> A credential used to obtain a new access token once the current one expires. It's long-lived and helps maintain user sessions without frequent reauthentication.
+                                        <li><strong>Refresh Token:</strong> A credential used to obtain a new access token once the current one expires. It is long-lived and helps maintain user sessions without frequent reauthentication.
                                         </li>
                                     </ul>
 
@@ -44,7 +44,7 @@ const Blogs = () => {
                                             <strong>Working Mechanism:</strong> When a user logs in or authenticates for the first time, the server issues both an access token and a refresh token. The access token is sent with each request to access protected resources. When the access token expires, the client can use the refresh token to request a new access token from the server without requiring the user to log in again.
 
                                         </p>
-                                        <p> <strong>Storage:</strong> Access tokens should be stored on the client side, typically in memory or local storage, to include them in requests easily. However, it's crucial to ensure that they are not exposed to unauthorized access. Refresh tokens, being more sensitive, should be stored securely on the server side.
+                                        <p> <strong>Storage:</strong> Access tokens should be stored on the client side, typically in memory or local storage, to include them in requests easily. However, it is crucial to ensure that they are not exposed to unauthorized access. Refresh tokens, being more sensitive, should be stored securely on the server side.
                                         </p>
                                     </div>
                                 </p>
@@ -76,7 +76,7 @@ const Blogs = () => {
                                         <strong>Express.js:</strong> Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for building web and mobile applications. It simplifies the process of creating powerful web servers and APIs by providing a thin layer of fundamental web application features, allowing developers to build upon it as needed. Express.js is widely used in the Node.js ecosystem for its simplicity and performance.
 
                                     </p>
-                                    <p className="mt-2"> <strong>Nest.js:</strong> Nest.js is a progressive Node.js framework for building efficient, reliable, and scalable server-side applications. It is built with TypeScript and heavily inspired by Angular, providing a modular and well-organized structure for building complex applications. Nest.js leverages TypeScript's features to offer strong typing, dependency injection, and intuitive design patterns, making it suitable for large-scale enterprise applications.
+                                    <p className="mt-2"> <strong>Nest.js:</strong> Nest.js is a progressive Node.js framework for building efficient, reliable, and scalable server-side applications. It is built with TypeScript and heavily inspired by Angular, providing a modular and well-organized structure for building complex applications. Nest.js leverages TypeScripts features to offer strong typing, dependency injection, and intuitive design patterns, making it suitable for large-scale enterprise applications.
                                     </p>
                                 </div>
                             </p>
