@@ -23,6 +23,8 @@ import TourGuideRoute from "./TourGuideRoute";
 import About from "../Pages/About";
 import Blogs from "../Pages/Blogs";
 import Contact from "../Pages/Contact";
+import Community from "../Pages/Community/Community";
+import PostDetail from "../Pages/Community/PostDetail";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: "community",
-        element: <Home></Home>,
+        element: <Community></Community>,
+      },
+      {
+        path: "posts/:id",
+        element: <PostDetail></PostDetail>,
       },
       {
         path: "/about",
