@@ -46,7 +46,7 @@ const Banner = () => {
                                         <div>Your jouney starts here</div>
                                 </h1>
                                 <p className="md:text-xl text-sm mt-4 mb-10 max-w-2xl ">
-                                Discover and book amazing travel experiences with Tripgo
+                                Discover and book amazing travel experiences with Travel Guide
                                 </p>
                                 <button className='border border-[#FD4C5C] py-[9px] bg-[#FD4C5C] hover:bg-transparent px-6 font-semibold'> Explore Destinations </button>
                             </div>
@@ -78,7 +78,7 @@ const Banner = () => {
                                         <div>Your jouney starts here</div>
                                 </h1>
                                 <p className="md:text-xl text-sm mt-4 mb-10 max-w-2xl ">
-                                Discover and book amazing travel experiences with Tripgo
+                                Discover and book amazing travel experiences with Travel Guide
                                 </p>
                                 <button className='border border-[#FD4C5C] py-[9px] bg-[#FD4C5C] hover:bg-transparent px-6 font-semibold'> Explore Destinations </button>
                             </div>
@@ -111,7 +111,7 @@ const Banner = () => {
                                         <div>Your jouney starts here</div>
                                 </h1>
                                 <p className="md:text-xl text-sm mt-4 mb-10 max-w-2xl ">
-                                Discover and book amazing travel experiences with Tripgo
+                                Discover and book amazing travel experiences with Travel Guide
                                 </p>
                                 <button className='border border-[#FD4C5C] py-[9px] bg-[#FD4C5C] hover:bg-transparent px-6 font-semibold'> Explore Destinations </button>
                             </div>

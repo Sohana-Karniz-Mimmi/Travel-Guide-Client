@@ -56,21 +56,21 @@ const About = () => {
                 <div className="md:flex justify-between gap-[70px]">
                     <div className="shadow-custom p-6 rounded-xl mb-5">
                         <h2 className="text-xl font-medium mb-3 text-[#FD4C5C]">Our Mission</h2>
-                        <p className="text-[#aaa6a6]">With over $2 Billion in sales, Our agency is the industry’s top luxury producer with over 27 years of experience in marketing Seattles’s most prestigious waterfront properties. Council.</p>
+                        <p className="text-[#686565]">With over $2 Billion in sales, Our agency is the industry’s top luxury producer with over 27 years of experience in marketing Seattles’s most prestigious waterfront properties. Council.</p>
                     </div>
                     <div className="shadow-custom p-6 rounded-xl mb-5">
                         <h2 className="text-xl font-medium mb-3 text-[#FD4C5C]">Our Vision</h2>
-                        <p className="text-[#aaa6a6]">Due to our unparalleled results, expertise and dedication, we rank amongst the Top 6 agencies in Seattle and our area. She is also and is an elite member to Corcoran’s Presidents Council. </p>
+                        <p className="text-[#686565]">Due to our unparalleled results, expertise and dedication, we rank amongst the Top 6 agencies in Seattle and our area. She is also and is an elite member to Corcoran’s Presidents Council. </p>
                     </div>
                 </div>
                 <div className="md:flex justify-between gap-10">
                     <div className="shadow-custom p-6 rounded-xl mb-5">
                         <h2 className="text-xl font-medium mb-3 text-[#FD4C5C]">Our Values</h2>
-                        <p className="text-[#aaa6a6]">With her years of experience, impressive property portfolio, celebrity clientele, and unparalleled knowledge of the market and pedigree estates, Simone estimable business is sophisticated and renowned </p>
+                        <p className="text-[#686565]">With her years of experience, impressive property portfolio, celebrity clientele, and unparalleled knowledge of the market and pedigree estates, Simone estimable business is sophisticated and renowned </p>
                     </div>
                     <div className="shadow-custom p-6 rounded-xl mb-5">
                         <h2 className="text-xl font-medium mb-3 text-[#FD4C5C]">Our Resources</h2>
-                        <p className="text-[#aaa6a6]">With her years of experience, impressive property portfolio, celebrity clientele, and unparalleled knowledge of the market and pedigree estates, Simone estimable business is sophisticated and renowned. </p>
+                        <p className="text-[#686565]">With her years of experience, impressive property portfolio, celebrity clientele, and unparalleled knowledge of the market and pedigree estates, Simone estimable business is sophisticated and renowned. </p>
                     </div>
                 </div>
             </div>

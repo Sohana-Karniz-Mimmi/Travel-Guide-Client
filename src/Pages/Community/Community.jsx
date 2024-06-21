@@ -1,5 +1,5 @@
 import ViewBanner from "../../Components/ViewBanner";
-import CommunityPage from "./CommunityPage";
+// import CommunityPage from "./CommunityPage";
 import { PiUserCirclePlusThin } from "react-icons/pi";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import BlogPostCard from "./BlogPostCard";
@@ -17,7 +17,7 @@ const Community = () => {
 
             <section className="bg-[#f9f9f9] text-gray-800 py-16">
                 <Container>
-                    <CommunityPage></CommunityPage>
+                    {/* <CommunityPage></CommunityPage> */}
                     <div className="container mx-auto">
                         <div className="md:flex gap-8">
 

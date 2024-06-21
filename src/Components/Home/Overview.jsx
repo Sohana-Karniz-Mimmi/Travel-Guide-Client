@@ -21,7 +21,7 @@ const Overview = () => {
                     <img
                         className="object-cover w-full h-full rounded-xl"
                         src="https://media1.thrillophilia.com/filestore/5rij0vbesu1vpkkzc8erfzgi24bt_880px-Kuakata_beach.jpg?w=753&h=450&dpr=1.0"
-                        alt="Our official team work"
+                        alt="Beautiful Beach"
                     />
                     <button onClick={handleShowVideo} className="absolute inset-0 flex items-center justify-center
                      top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/45 w-full h-full pt-6 pl-6 pr-8 pb-8 lg:pb-0 lg:px-10 lg:pt-11 rounded-2xl">
@@ -36,13 +36,13 @@ const Overview = () => {
                     <div className="flex justify-end">
                         <div className="md:w-5/12">
                             <div className="">
-                                <p className="section_subtitle text-[#FD4C5C] text-lg font-semibold">What we are</p>
-                                <h2 className="mb-4 text-[#363636] text-4xl font-bold">We are dynamic team of creative people</h2>
+                                <i className="section_subtitle text-[#FD4C5C] text-lg font-semibold">Who We Are</i>
+                                <h2 className="mb-4 text-[#363636] text-4xl font-bold">Discover the World with Us</h2>
                                 <div className="mt-5 flex ">
                                     <SlBadge className="text-[#FD4C5C] text-8xl px-2 -mt-8" />
                                     <div>
-                                        <h4 className="text-2xl font-semibold">We are Perfect Solution</h4>
-                                        <p className="mt-2 text-lg">We provide consulting services in the area of IFRS and management reporting, helping companies to reach their highest level. We optimize business processes, making them easier.</p>
+                                        <h4 className="text-2xl font-semibold">Your Perfect Travel Companion</h4>
+                                        <p className="mt-2 text-lg">Join us in exploring the most beautiful destinations around the globe. From pristine beaches to breathtaking mountains, we curate unforgettable travel experiences for you. Let's create memories together.</p>
                                         <button className="font-medium mt-4 bg-[#FD4C5C] text-white border-[#FD4C5C] border pt-[11.2px] px-[24px] py-2 rounded-full block w-fit hover:bg-[#F42626] transition-all duration-300">GET STARTED</button>
                                     </div>
                                 </div>
@@ -55,13 +55,12 @@ const Overview = () => {
             {showIframe && (
                 <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-80 z-50">
                     <div className="relative bg-black px-2 rounded shadow-lg">
-                        <button onClick={handleCloseVideo} className="absolute -top-8 right-[5px] text-3xl font-bold"><img src={closeIcon} alt="" /></button>
+                        <button onClick={handleCloseVideo} className="absolute -top-8 right-[5px] text-3xl font-bold"><img src={closeIcon} alt="Close" /></button>
                         <iframe
                             className="w-[850px] h-[480px]"
                             src="https://www.youtube.com/embed/4-I2f2h-fDk?si=m06vS7-AYrlLW7FJ"
                             frameBorder="0"
                             allow="autoplay; fullscreen"
-                            // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             allowFullScreen
                             title="YouTube video player"
                         ></iframe>

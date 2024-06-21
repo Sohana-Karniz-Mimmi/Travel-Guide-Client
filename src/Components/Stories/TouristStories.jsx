@@ -29,7 +29,7 @@ const TouristStories = () => {
           <div key={story.id} className="border p-4 rounded-lg">
             <img src={story.image} alt={story.title} className="w-full h-48 object-cover rounded mb-4" />
             <h3 className="text-xl font-bold mb-2">{story.title}</h3>
-            <p className="mb-4">{story.description}</p>
+            <p className="mb-4">{story.description.slice(0, 50)}</p>
             <Link to={`/stories/${story._id}`} className="text-blue-500 hover:underline">Read More</Link>
           </div>
         ))}

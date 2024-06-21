@@ -1,26 +1,26 @@
 [
-    {
-        "image1": "http://wahabali.com/work/travelu/images/Guides/img-01.jpg",
+  {
+      "image": "http://wahabali.com/work/travelu/images/Guides/img-01.jpg",
       "name": "Sohana Sheikh",
       "role": "Tour Guide",
-      "description": "A village rich in culture and tradition, offering unique experiences."
-    },
-    {
-        "image2": "http://wahabali.com/work/travelu/images/Guides/img-02.jpg",
+      "description": "Meet Sohana, an experienced guide with a deep knowledge of local culture and traditions. Join her for an unforgettable journey through the village's rich heritage."
+  },
+  {
+      "image": "http://wahabali.com/work/travelu/images/Guides/img-02.jpg",
       "name": "Soharab Hasan",
       "role": "Tour Guide",
-      "description": "A village rich in culture and tradition, offering unique experiences."
-    },
-    {
-        "image3": "http://wahabali.com/work/travelu/images/Guides/img-03.jpg",
+      "description": "Soharab is passionate about sharing the unique experiences of the village with travelers. Discover hidden gems and learn about the local way of life with his expert guidance."
+  },
+  {
+      "image": "http://wahabali.com/work/travelu/images/Guides/img-03.jpg",
       "name": "Jane Suttherland",
       "role": "Tour Guide",
-      "description": "A village rich in culture and tradition, offering unique experiences."
-    },
-    {
-        "image3": "http://wahabali.com/work/travelu/images/Guides/img-03.jpg",
+      "description": "Jane is a seasoned tour guide with a love for storytelling. She brings the village's history and culture to life, making every tour an engaging adventure."
+  },
+  {
+      "image": "http://wahabali.com/work/travelu/images/Guides/img-03.jpg",
       "name": "Jane Suttherland",
       "role": "Tour Guide",
-      "description": "A village rich in culture and tradition, offering unique experiences."
-    }
+      "description": "Jane is a seasoned tour guide with a love for storytelling. She brings the village's history and culture to life, making every tour an engaging adventure."
+  }
 ]
