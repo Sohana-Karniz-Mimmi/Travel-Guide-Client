@@ -7,7 +7,7 @@ import { GrLogout } from 'react-icons/gr'
 // import { NavLink } from 'react-router-dom'
 import { AiOutlineBars } from 'react-icons/ai'
 import { CgProfile } from "react-icons/cg";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import ToggleBtn from '../../Shared/Button/ToggleBtn'
 import MenuItem from './Menu/MenuItem'
 import NormalUser from './Menu/NormalUser'
@@ -19,6 +19,7 @@ import logo from "../../../assets/images/logo2.png";
 
 const Sidebar = () => {
   const { logOut } = useAuth()
+  const navigate = useNavigate();
   const [isActive, setActive] = useState(false)
   // const [toggle, setToggle] = useState(true)
   const [role, isLoading] = useRole()
@@ -27,6 +28,17 @@ const Sidebar = () => {
   const handleToggle = () => {
     setActive(!isActive)
   }
+
+  const handleLogoutBtn = () => {
+    logOut()
+    navigate('/')
+        .then(() => {
+            console.log("Sing Out Successfully");
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
   
   return (
     <>
@@ -96,7 +108,7 @@ const Sidebar = () => {
         <div>
           <hr />
           <button
-            onClick={logOut}
+            onClick={handleLogoutBtn}
             className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
           >
             <GrLogout className='w-5 h-5' />

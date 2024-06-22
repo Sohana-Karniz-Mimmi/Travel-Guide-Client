@@ -55,7 +55,7 @@ const TourType = () => {
                             <img className='w-14' src={tourType.icon} alt="" />
                         </div>
                         <div>
-                            <h1 className='md:text-[30px] text-[20px] font-bold'>3,560</h1>
+                            <h1 className='md:text-[30px] text-[20px] font-bold'>{tourType.package}</h1>
                             <p className='md:text-[15px] text-[12px]'>{tourType.type_name}</p>
                         </div>
                     </Link>)

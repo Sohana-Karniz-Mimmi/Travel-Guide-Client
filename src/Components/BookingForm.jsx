@@ -122,10 +122,10 @@ const BookingForm = ({tourPackage}) => {
                                 <div className="relative">
                                     <select {...register("guideName", { required: true })} name="guideName" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]">
                                         <option value="">Select Guide...</option>
-                                        <option value="Sohana">Sohana</option>
-                                        <option value="Soharab Hasan">Soharab Hasan</option>
-                                        <option value="Part Time">Part Time</option>
-                                        <option value="Hybrid">Hybrid</option>
+                                        <option value="Sohana">Soharab Hasan</option>
+                                        <option value="Soharab Hasan">Sohana Sheikh</option>
+                                        <option value="Part Time">Fahad Rahman</option>
+                                        <option value="Hybrid">Sayem Hasan</option>
                                     </select>
                                     {/* {errors.guideName && <span className="text-red-600">Please Enter Your Country</span>} */}
 

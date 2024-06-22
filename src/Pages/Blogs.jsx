@@ -11,10 +11,10 @@ const Blogs = () => {
     return (
         <div>
             <Helmet>
-                <title>Blogs - Job-Portal</title>
+                <title>Community - Job-Portal</title>
             </Helmet>
             <div>
-                <ViewBanner name={'TOUR BLOG'}></ViewBanner>
+                <ViewBanner name={'COMMUNITY POSTS'}></ViewBanner>
             </div>
 
             <section className="bg-[#f9f9f9] text-gray-800 pt-16">
@@ -27,7 +27,7 @@ const Blogs = () => {
 
                                 <img src='https://demo.ovatheme.com/tripgo/wp-content/uploads/2022/07/blog-05.jpg' alt="" className="object-cover mx-auto md:w-[950px] w-full h-[450px] lg:col-span-7 bg-gray-500 mb-7" />
                                 <h3 className="md:text-3xl text-lg font-semibold my-5 hover:text-[#FD4C5C] cursor-pointer">
-                                    How to travel with paper map</h3>
+                                    Building a Collaborative Tech Community</h3>
                                 <div className=" lg:col-span-5">
                                     <div className="mb-5 flex">
                                         <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
@@ -35,14 +35,14 @@ const Blogs = () => {
                                             July 1, 2024</span>
                                         <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-[#999]" >
                                             <GoFileDirectory className="text-base text-[#FF4C5C]" />
-                                            Tips and Tricks</span>
+                                            Community Tips</span>
                                         <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
                                             <FaRegComments className="text-lg text-[#FF4C5C]" />
-                                            0 Comments </span>
+                                            10 Comments </span>
                                     </div>
 
                                     <p className="mb-5">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....
+                                        Discover the best practices for building and nurturing a collaborative tech community. Learn how to engage members, foster inclusivity, and create impactful collaborations....
                                     </p>
 
                                     <button className="btn mb-5 text-white bg-[#FD4C5C] hover:bg-[#FF0143]"> Read More</button>
@@ -52,7 +52,7 @@ const Blogs = () => {
                             <div className="mb-10">
 
                                 <img src='https://demo.ovatheme.com/tripgo/wp-content/uploads/2022/07/blog-07.jpg' alt="" className="object-cover mx-auto md:w-[950px] w-full h-[450px] lg:col-span-7 bg-gray-500 mb-7" />
-                                <h3 className="md:text-3xl text-lg font-semibold my-5 cursor-pointer hover:text-[#FD4C5C] ">Introducing this amazing tour</h3>
+                                <h3 className="md:text-3xl text-lg font-semibold my-5 cursor-pointer hover:text-[#FD4C5C] ">How to Host a Successful Tech Meetup</h3>
                                 <div className=" lg:col-span-5">
                                     <div className="mb-5 flex">
                                         <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
@@ -60,14 +60,14 @@ const Blogs = () => {
                                             July 1, 2024</span>
                                         <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-[#999]" >
                                             <GoFileDirectory className="text-base text-[#FF4C5C]" />
-                                            Travel</span>
+                                            Event Planning</span>
                                         <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
                                             <FaRegComments className="text-lg text-[#FF4C5C]" />
-                                            0 Comments </span>
+                                            5 Comments </span>
                                     </div>
 
                                     <p className="mb-5">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....
+                                        Hosting a tech meetup can be a great way to bring people together. This guide covers everything from finding the right venue to engaging your audience and making your event memorable....
                                     </p>
 
                                     <button className="btn mb-5 text-white bg-[#FD4C5C] hover:bg-[#FF0143]"> Read More</button>
@@ -78,7 +78,7 @@ const Blogs = () => {
 
                                 <img src='https://demo.ovatheme.com/tripgo/wp-content/uploads/2022/07/blog-04.jpg' alt="" className="object-cover mx-auto md:w-[950px] w-full h-[450px] lg:col-span-7 bg-gray-500 mb-7" />
                                 <h3 className="md:text-3xl text-lg font-semibold my-5 cursor-pointer hover:text-[#FD4C5C] ">
-                                    Most Beautiful Islands in Asia</h3>
+                                    Success Stories from Our Community</h3>
                                 <div className=" lg:col-span-5">
                                     <div className="mb-5 flex">
                                         <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
@@ -86,14 +86,14 @@ const Blogs = () => {
                                             July 1, 2024</span>
                                         <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-[#999]" >
                                             <GoFileDirectory className="text-base text-[#FF4C5C]" />
-                                            Off Topic</span>
+                                            Inspiration</span>
                                         <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
                                             <FaRegComments className="text-lg text-[#FF4C5C]" />
-                                            0 Comments </span>
+                                            2 Comments </span>
                                     </div>
 
                                     <p className="mb-5">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....
+                                        Be inspired by the success stories from our community members. From landing dream jobs to launching successful startups, these stories showcase the power of community support and collaboration....
                                     </p>
 
                                     <button className="btn mb-5 text-white bg-[#FD4C5C] hover:bg-[#FF0143]"> Read More</button>
@@ -104,7 +104,7 @@ const Blogs = () => {
 
                                 <img src='https://demo.ovatheme.com/tripgo/wp-content/uploads/2022/07/blog-02.jpg' alt="" className="object-cover mx-auto md:w-[950px] w-full h-[450px] lg:col-span-7 bg-gray-500 mb-7" />
                                 <h3 className="md:text-3xl text-lg font-semibold my-5 hover:text-[#FD4C5C] ">
-                                    Best Nature Weekend Tour in Bangladesh</h3>
+                                    Tips for Networking in Tech Communities</h3>
                                 <div className=" lg:col-span-5">
                                     <div className="mb-5 flex">
                                         <span className="border-r-2 pr-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
@@ -112,14 +112,14 @@ const Blogs = () => {
                                             July 1, 2024</span>
                                         <span className="px-1.5 border-r-2 md:text-sm text-xs flex gap-2 items-center  text-[#999]" >
                                             <GoFileDirectory className="text-base text-[#FF4C5C]" />
-                                            Tips and Tricks</span>
+                                            Networking Tips</span>
                                         <span className="pl-1.5 md:text-sm text-xs flex gap-2 items-center text-[#999]" >
                                             <FaRegComments className="text-lg text-[#FF4C5C]" />
-                                            0 Comments </span>
+                                            3 Comments </span>
                                     </div>
 
                                     <p className="mb-5">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....
+                                        Networking is crucial in tech communities. Here are some tips to help you make meaningful connections, from attending events to leveraging social media and online forums....
                                     </p>
 
                                     <button className="btn mb-5 text-white bg-[#FD4C5C] hover:bg-[#FF0143]"> Read More</button>
@@ -137,17 +137,17 @@ const Blogs = () => {
                             </div>
 
                             <div className="bg-white rounded-lg mb-6">
-                                <h2 className="border font-semibold text-xl p-4 rounded-t-lg">Blog Categories</h2>
+                                <h2 className="border font-semibold text-xl p-4 rounded-t-lg">Post Categories</h2>
                                 <div className="border border-t-0 p-4 rounded-b-lg">
-                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Food</span> </h2>
-                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Off Topic</span> </h2>
-                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Tips and Tricks</span> </h2>
-                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Travel</span> </h2>
+                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Community Tips</span> </h2>
+                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Event Planning</span> </h2>
+                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Inspiration</span> </h2>
+                                    <h2 className="flex items-center gap-4 mb-2.5"><RiFileCopyLine className="text-[#c2bdbd]" /> <span className="hover:text-[#FD4C5C] cursor-pointer">Networking Tips</span> </h2>
                                 </div>
                             </div>
 
                             <div className="bg-white rounded-lg">
-                                <h2 className="border font-semibold text-xl p-4 rounded-t-lg">Popular Post</h2>
+                                <h2 className="border font-semibold text-xl p-4 rounded-t-lg">Popular Posts</h2>
                                 <div className="border border-t-0 p-4 rounded-b-lg">
 
                                     <div className="flex items-center gap-4 mb-2.5">
@@ -157,7 +157,7 @@ const Blogs = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <h2 className="text-[16px] font-semibold hover:text-[#FD4C5C] cursor-pointer pb-1">How to travel with paper map</h2>
+                                            <h2 className="text-[16px] font-semibold hover:text-[#FD4C5C] cursor-pointer pb-1">Building a Collaborative Tech Community</h2>
                                             <p className="hover:text-[#FD4C5C] cursor-pointer">July 1, 2024</p>
                                         </div>
                                     </div>
@@ -168,7 +168,7 @@ const Blogs = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <h2 className="text-[16px] font-semibold hover:text-[#FD4C5C] cursor-pointer pb-1">Introducing this amazing tour</h2>
+                                            <h2 className="text-[16px] font-semibold hover:text-[#FD4C5C] cursor-pointer pb-1">How to Host a Successful Tech Meetup</h2>
                                             <p className="hover:text-[#FD4C5C] cursor-pointer">July 1, 2024</p>
                                         </div>
                                     </div>
@@ -179,7 +179,7 @@ const Blogs = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <h2 className="text-[16px] font-semibold hover:text-[#FD4C5C] cursor-pointer pb-1">Most Beautiful Islands in Asia</h2>
+                                            <h2 className="text-[16px] font-semibold hover:text-[#FD4C5C] cursor-pointer pb-1">Success Stories from Our Community</h2>
                                             <p className="hover:text-[#FD4C5C] cursor-pointer">July 1, 2024</p>
                                         </div>
                                     </div>
@@ -200,4 +200,3 @@ const Blogs = () => {
 };
 
 export default Blogs;
-

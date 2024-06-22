@@ -25,6 +25,7 @@ const OurPackagesCard = ({ tourPackage }) => {
         image5,
         tourists_spot_name,
         country_name,
+        location,
         description,
         price,
         tour_type } = tourPackage
@@ -105,7 +106,7 @@ const OurPackagesCard = ({ tourPackage }) => {
                         <div className="flex gap-6 font-medium text-[#9ca3a9]">
                             {/* <p className="flex gap-2 items-center"><FaRegClock /> 3 Days </p> */}
                             <p className="flex gap-2 items-center"><FaRegUserCircle /> 12+ </p>
-                            <p className="flex gap-2 items-center"><FaRegMap /> Bangladesh</p>
+                            <p className="flex gap-2 items-center"><FaRegMap /> {location}</p>
                         </div>
                         <Link className='px-6 py-1 rounded-md text-[#FF0143] group-hover:text-white transition-all duration-100 ease-in-out group-hover:bg-[#FF0143]' to={`/packages-details/${_id}`} ><GoArrowRight className="text-2xl"></GoArrowRight ></Link>
                         {/* <button className="btn bg-[#FD4C5C] text-white">View Details</button> */}

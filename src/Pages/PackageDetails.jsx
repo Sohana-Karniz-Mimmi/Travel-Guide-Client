@@ -40,7 +40,7 @@ const PackageDetails = () => {
     if (isLoading) return <LoadingSpinner />
     console.log(tourPackage)
 
-    const { image1, image2, image3, image4, image5, tour_type, tourists_spot_name, price, country_name, description } = tourPackage
+    const { image1, image2, image3, image4, image5, tour_type, tourists_spot_name, price, country_name, location, description } = tourPackage
 
 
     return (
@@ -77,7 +77,7 @@ const PackageDetails = () => {
 
                                 <h2 className="md:text-5xl text-2xl font-medium">{tourists_spot_name}</h2>
                                 <p className="md:text-[17px] text-xs flex items-center font-medium text-[#9ca3a9] gap-2">
-                                    <FaLocationDot /> {country_name}
+                                    <FaLocationDot /> {location || 'Bangladesh' }
                                 </p>
                             </div>
 

@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import useGuideName from "../../../Hook/useGuideName";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { format } from 'date-fns';
 
 
 const MyAssignedTours = () => {
@@ -26,8 +27,8 @@ const MyAssignedTours = () => {
   // console.log(search)
 
 
-   //   Fetch users Data
-   useEffect(() => {
+  //   Fetch users Data
+  useEffect(() => {
     axiosSecure(`/manage-bookings/${guideName?.name}?page=${currentPage}&size=${itemsPerPage}`)
       .then((res) => setAssignedTours(res.data))
   }, [assignedTours, currentPage, itemsPerPage])
@@ -52,8 +53,8 @@ const MyAssignedTours = () => {
     console.log(value)
     setCurrentPage(value)
   }
-  
-  
+
+
 
   // Tanstack Query
   // const { data: assignedTours = [], isLoading } = useQuery({
@@ -169,7 +170,7 @@ const MyAssignedTours = () => {
                       </td>
 
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        {new Date(assignedTour.deadline).toLocaleDateString()}
+                        {format(assignedTour.tourDate, 'dd-MM-yyyy')}
                       </td>
 
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
@@ -267,39 +268,39 @@ const MyAssignedTours = () => {
 
       {/* Pagination Section */}
       <div className='flex justify-center mt-12'>
-          {/* Previous Button */}
+        {/* Previous Button */}
+        <button
+          disabled={currentPage === 1}
+          onClick={() => handlePaginationButton(currentPage - 1)}
+          className='px-4 py-2 mx-1 text-white disabled:text-gray-500 capitalize bg-[#FD4C5C] rounded-full disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:bg-gray-200 disabled:hover:text-gray-500 hover:bg-[#FF0143] hover:text-white'
+        >
+          <div className='flex items-center -mx-1'>
+            <IoIosArrowBack />
+          </div>
+        </button>
+        {/* Numbers */}
+        {pages.map(btnNum => (
           <button
-            disabled={currentPage === 1}
-            onClick={() => handlePaginationButton(currentPage - 1)}
-            className='px-4 py-2 mx-1 text-white disabled:text-gray-500 capitalize bg-[#FD4C5C] rounded-full disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:bg-gray-200 disabled:hover:text-gray-500 hover:bg-[#FF0143] hover:text-white'
+            onClick={() => handlePaginationButton(btnNum)}
+            key={btnNum}
+            className={`hidden ${currentPage === btnNum ? 'bg-[#FD4C5C] text-white' : ''
+              } px-4 py-2 mx-1 transition-colors duration-300 transform border rounded-full sm:inline hover:bg-[#FF0143]  hover:text-white`}
           >
-            <div className='flex items-center -mx-1'>
-              <IoIosArrowBack />
-            </div>
+            {btnNum}
           </button>
-          {/* Numbers */}
-          {pages.map(btnNum => (
-            <button
-              onClick={() => handlePaginationButton(btnNum)}
-              key={btnNum}
-              className={`hidden ${currentPage === btnNum ? 'bg-[#FD4C5C] text-white' : ''
-                } px-4 py-2 mx-1 transition-colors duration-300 transform border rounded-full sm:inline hover:bg-[#FF0143]  hover:text-white`}
-            >
-              {btnNum}
-            </button>
-          ))}
-          {/* Next Button */}
-          <button
-            disabled={currentPage === numberOfPages}
-            onClick={() => handlePaginationButton(currentPage + 1)}
-            className='px-4 py-2 mx-1 text-white transition-colors duration-300 transform bg-[#FD4C5C] rounded-full hover:bg-[#FF0143] disabled:hover:bg-gray-200 disabled:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500'
-          >
-            <div className='flex items-center -mx-1'>
-              <IoIosArrowForward />
-            </div>
-          </button>
-        </div>
-      
+        ))}
+        {/* Next Button */}
+        <button
+          disabled={currentPage === numberOfPages}
+          onClick={() => handlePaginationButton(currentPage + 1)}
+          className='px-4 py-2 mx-1 text-white transition-colors duration-300 transform bg-[#FD4C5C] rounded-full hover:bg-[#FF0143] disabled:hover:bg-gray-200 disabled:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500'
+        >
+          <div className='flex items-center -mx-1'>
+            <IoIosArrowForward />
+          </div>
+        </button>
+      </div>
+
     </section>
   )
 }
