@@ -5,7 +5,7 @@ const discussions = [
     {
         title: 'Top 10 Budget-Friendly Destinations in Europe',
         author: 'Zunaid Ahammed',
-        comment: 'Amazing list! I have been to a few of these places and they are indeed budget-friendly...',
+        comment: 'Amazing list! I have been to a few of these places and they are...',
         authorImg: 'https://cdn.hashnode.com/res/hashnode/image/upload/v1707678584203/bba791c5-703b-463e-b1c6-8194e0f8b099.jpeg?w=64&h=64&fit=crop&crop=faces&auto=compress,format&format=webp',
         replies: 2,
         likes: 31,
@@ -21,7 +21,7 @@ const discussions = [
     {
         title: 'Traveling Solo: Pros and Cons',
         author: 'Richard Careaga',
-        comment: 'Great insights on solo traveling. I have traveled alone several times and it’s truly liberating...',
+        comment: 'Great insights on solo traveling. I have traveled alone several ...',
         authorImg: 'https://cdn.hashnode.com/res/hashnode/image/upload/v1685904144525/db84146b-ea36-4602-9d4d-e57311f4c0be.jpeg?w=64&h=64&fit=crop&crop=faces&auto=compress,format&format=webp',
         replies: 4,
         likes: 44,

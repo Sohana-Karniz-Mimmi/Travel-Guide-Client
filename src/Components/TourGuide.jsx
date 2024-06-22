@@ -3,22 +3,34 @@ import useAxiosCommon from "../Hook/useAxiosCommon";
 import LoadingSpinner from "./Shared/LoadingSpinner";
 import TourGuideCard from "./TourGuideCard";
 import Guide from "../assets/images/guide.png";
+// import { useState } from "react";
+// import useRole from "../Hook/useRole";
 
 const TourGuide = () => {
 
     const axiosCommon = useAxiosCommon()
-
-    const { data: guides = [], isLoading } = useQuery({
-        queryKey: ['guides'],
+    const { data: users = [], isLoading} = useQuery({
+        queryKey: ['users'],
         queryFn: async () => {
-            const { data } = await axiosCommon.get(`/tour-guide`)
+            const { data } = await axiosCommon.get(`/all-users`)
             return data
         },
     })
 
-    if (isLoading) return <LoadingSpinner />
+    const tourGuides = users.filter(user => user.role === "tour_guide");
 
-    console.log(guides);
+    console.log(tourGuides);
+
+
+    // const { data: guides = [], isLoading } = useQuery({
+    //     queryKey: ['guides'],
+    //     queryFn: async () => {
+    //         const { data } = await axiosCommon.get(`/tour-guide`)
+    //         return data
+    //     },
+    // })
+
+    if (isLoading) return <LoadingSpinner />
 
     return (
         <div>
@@ -48,7 +60,7 @@ const TourGuide = () => {
                     <div className="-mx-4 grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
 
                         {
-                            guides.map(guide => <TourGuideCard key={guide._id} guide={guide}></TourGuideCard>)
+                            tourGuides.slice(0, 4).map(guide => <TourGuideCard key={guide._id} guide={guide}></TourGuideCard>)
                         }
                     </div>
                 </div>

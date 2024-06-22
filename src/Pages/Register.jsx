@@ -84,6 +84,7 @@ const Register = () => {
                 email: email,
                 role: 'normal_user',
                 status: 'Verified',
+                image: photo,
             }
             const { data } = await axios.put(
                 `${import.meta.env.VITE_API_URL}/user`,
@@ -107,6 +108,7 @@ const Register = () => {
                     const saveUser = {
                         name: result?.user?.displayName,
                         email: result?.user?.email,
+                        image: result?.user?.photoURL,
                         role: 'normal_user',
                         status: 'Verified',
                     }

@@ -6,21 +6,34 @@ import 'react-datepicker/dist/react-datepicker.css'
 // import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 // import AddJobBanner from "../Components/AddJobBanner";
 import useAuth from "../Hook/useAuth";
 import LoadingSpinner from "./Shared/LoadingSpinner";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import toast from 'react-hot-toast'
+import useAxiosCommon from '../Hook/useAxiosCommon';
 
-const BookingForm = ({tourPackage}) => {
+const BookingForm = ({ tourPackage }) => {
     const { user, loading } = useAuth()
     const navigate = useNavigate()
     const axiosSecure = useAxiosSecure()
-    
-
     const [tourDate, setTourDate] = useState(new Date())
     // const [deadline, setDeadline] = useState(new Date())
+
+    const axiosCommon = useAxiosCommon()
+    const { data: users = [], isLoading } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const { data } = await axiosCommon.get(`/all-users`)
+            return data
+        },
+    })
+
+    const tourGuidesName = users.filter(user => user.role === "tour_guide");
+    console.log(tourGuidesName);
+
+
 
     // React Hook Form
     const {
@@ -31,44 +44,44 @@ const BookingForm = ({tourPackage}) => {
     const displayName = user?.displayName
     const photo = user?.photoURL
 
-    
+
     // Tanstack Query for post the data   
     const { mutateAsync } = useMutation({
         mutationFn: async bookingData => {
-          const { data } = await axiosSecure.post(`/booking`, bookingData)
-          return data
+            const { data } = await axiosSecure.post(`/booking`, bookingData)
+            return data
         },
         onSuccess: () => {
-          console.log('Data Saved Successfully')
-          toast.success('Booking Added Successfully!')
-          navigate('/dashboard/my-bookings')
-        //   setLoading(false)
+            console.log('Data Saved Successfully')
+            toast.success('Booking Added Successfully!')
+            navigate('/dashboard/my-bookings')
+            //   setLoading(false)
         },
-      })
+    })
 
-        const handleSubmitForm = async data => {
-            // data.preventDefault();
-            console.log(data);
-            const {  guideName, tourPrice, photo } = data
-            const price = parseFloat(tourPrice)
-    
-            
-            try {
-                const bookingData = {
-                     touristName: displayName, touristEmail: email, guideName, tourDate, price, photo, status: 'In Review', tour_type: tourPackage.tour_type
-               }
-                console.table(bookingData)
-          
-                //   Post request to server
-                await mutateAsync(bookingData)
-              } catch (err) {
-                console.log(err)
-                toast.error(err.message)
-              }
+    const handleSubmitForm = async data => {
+        // data.preventDefault();
+        console.log(data);
+        const { guideName, tourPrice, photo } = data
+        const price = parseFloat(tourPrice)
+
+
+        try {
+            const bookingData = {
+                touristName: displayName, touristEmail: email, guideName, tourDate, price, photo, status: 'In Review', tour_type: tourPackage.tour_type
             }
+            console.table(bookingData)
+
+            //   Post request to server
+            await mutateAsync(bookingData)
+        } catch (err) {
+            console.log(err)
+            toast.error(err.message)
+        }
+    }
 
 
-    if(loading) return <LoadingSpinner></LoadingSpinner>
+    if (isLoading || loading) return <LoadingSpinner></LoadingSpinner>
 
 
     return (
@@ -122,11 +135,16 @@ const BookingForm = ({tourPackage}) => {
                                 <div className="relative">
                                     <select {...register("guideName", { required: true })} name="guideName" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]">
                                         <option value="">Select Guide...</option>
-                                        <option value="Sohana">Soharab Hasan</option>
-                                        <option value="Soharab Hasan">Sohana Sheikh</option>
-                                        <option value="Part Time">Fahad Rahman</option>
-                                        <option value="Hybrid">Sayem Hasan</option>
+                                        {
+                                            tourGuidesName.map(tourGuide => (
+                                                <option key={tourGuide._id} value={tourGuide.name}>{tourGuide.name}</option>
+                                            ))
+                                        }
                                     </select>
+                                    {/* <option value="Sohana">Soharab Hasan</option>
+                                        <option value="Soharab Hasan">Sohana Sheikh</option>
+                                        <option value="Fahad Rahman">Fahad Rahman</option>
+                                        <option value="Sayem Hasan">Sayem Hasan</option> */}
                                     {/* {errors.guideName && <span className="text-red-600">Please Enter Your Country</span>} */}
 
                                 </div>

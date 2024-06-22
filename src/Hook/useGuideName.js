@@ -9,7 +9,7 @@ const useGuideName = () => {
     queryKey: ['guideName', user?.displayName],
     enabled: !loading && !!user?.email,
     queryFn: async () => {
-      const { data } = await axiosSecure(`/tour-guides/${user?.displayName}`)
+      const { data } = await axiosSecure(`/all/users/name/${user?.displayName}`)
       return data
     },
   })
