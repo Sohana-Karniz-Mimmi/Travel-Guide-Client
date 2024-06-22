@@ -68,7 +68,7 @@ const AllPackages = () => {
     return (
         <div>
             <Helmet>
-                <title>All Tourist Spot - Turio</title>
+                <title>All Packages - Travel-Guide</title>
             </Helmet>
             <div  >
                 <ViewBanner name={'All Packages'}></ViewBanner>

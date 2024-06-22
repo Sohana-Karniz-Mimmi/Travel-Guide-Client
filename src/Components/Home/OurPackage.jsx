@@ -40,7 +40,7 @@ const OurPackage = () => {
 
     return (
         <div>
-            <div className="barlow-condensed- roboto mt-12 mb-10 md:mt-20 container max-w-6xl mx-auto space-y-6 sm:space-y-12">
+            <div className="barlow-condensed-regular  mt-12 mb-10 md:mt-20 container max-w-6xl mx-auto space-y-6 sm:space-y-12">
 
                 {/* <div className="text-center mb-12">
                     <h2 data-aos="fade-down" data-aos-duration="1000" className="font-semibold  text-3xl lg:text-[44px] lg:mb-4 mb-2">Most Popular Tourists Spots</h2>

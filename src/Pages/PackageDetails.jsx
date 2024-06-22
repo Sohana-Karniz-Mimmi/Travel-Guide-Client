@@ -47,7 +47,7 @@ const PackageDetails = () => {
         <div>
 
             <Helmet>
-                <title>Gallery- Dream Home</title>
+                <title>{tourists_spot_name} || Travel-Guide</title>
             </Helmet>
 
             <div>

@@ -39,7 +39,7 @@ const AllJobs = () => {
         <div>
 
             <Helmet>
-                <title>All Jobs - Job-Portal</title>
+                <title>All Jobs - Travel-Guide</title>
             </Helmet>
 
             <div>

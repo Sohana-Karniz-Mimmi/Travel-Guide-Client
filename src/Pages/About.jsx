@@ -9,7 +9,7 @@ const About = () => {
     return (
         <div className="">
             <Helmet>
-                <title>About Us- Dream Home</title>
+                <title>About Us - Travel-Guide</title>
             </Helmet>
             <ScrollRestoration />
             <div className="text-white bg-black ">

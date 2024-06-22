@@ -79,7 +79,7 @@ const OurPackagesCard = ({ tourPackage }) => {
 
     return (
         <div>
-            <div className=" max-w-sm mx-auto group rounded border-2 lg::w-[365px]">
+            <div className="barlow-condensed-regular max-w-sm mx-auto group rounded border-2 lg::w-[365px]">
 
                 <div className="overflow-hidden relative">
                     <img role="presentation" className="object-cover transition-all group-hover:scale-110 duration-700 ease-in-out w-full rounded h-56 bg-gray-500" src={image1 || errorImage} />

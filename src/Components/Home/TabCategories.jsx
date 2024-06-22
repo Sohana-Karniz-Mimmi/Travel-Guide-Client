@@ -50,7 +50,7 @@ const TabCategories = () => {
     <Tabs>
       <div className=' container py-10 mx-auto md:px-10 px-1'>
 
-        <div>
+        <div className='roboto' >
           <h1 className='text-xl font-semibold text-center text-gray-800 capitalize lg:text-4xl '>
             Our Tourism
           </h1>

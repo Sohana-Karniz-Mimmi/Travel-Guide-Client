@@ -71,7 +71,7 @@ const AddPackage = () => {
 
     return (
         <> <Helmet>
-            <title>Add Job - Job-Portal</title>
+            <title>Add Packages - Travel-Guide</title>
         </Helmet>
 
             {/* <div>

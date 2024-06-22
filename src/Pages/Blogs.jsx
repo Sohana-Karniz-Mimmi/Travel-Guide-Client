@@ -11,7 +11,7 @@ const Blogs = () => {
     return (
         <div>
             <Helmet>
-                <title>Community - Job-Portal</title>
+                <title>Blogs - Travel-Guide</title>
             </Helmet>
             <div>
                 <ViewBanner name={'Blogs'}></ViewBanner>

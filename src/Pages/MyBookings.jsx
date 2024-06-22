@@ -82,7 +82,7 @@ const MyBookings = () => {
     return (
         <>
             <Helmet>
-                <title>Applied Jobs- Job-Portal</title>
+                <title>Bookings - Travel-Guide</title>
             </Helmet>
 
             <section className='container px-4 mx-auto py-12'>

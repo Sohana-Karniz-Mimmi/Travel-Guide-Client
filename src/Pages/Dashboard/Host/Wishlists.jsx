@@ -116,7 +116,7 @@ const Wishlists = () => {
   return (
     <>
       <Helmet>
-        <title>My Listings</title>
+        <title>Wishlists || Travel-Guide</title>
       </Helmet>
 
       <div className='container mx-auto px-4 sm:px-8'>

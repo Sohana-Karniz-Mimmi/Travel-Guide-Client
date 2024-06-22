@@ -145,44 +145,51 @@ const ManageUsers = () => {
               <table className='min-w-full leading-normal'>
                 <thead className='bg-gray-50'>
                   <tr>
+                    {/* <th
+                      scope='col'
+                      className='pr-5 pl-10 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                    >
+                      #
+                    </th> */}
                     <th
                       scope='col'
-                      className='px-5 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='pr-5 pl-10 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
                       Name
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='pr-5 pl-10 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
                       Email
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='pr-5 pl-10 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
                       Role
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='pr-5 pl-10 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
                       Status
                     </th>
 
                     <th
                       scope='col'
-                      className='px-5 py-3 text-center border-b border-gray-200 text-gray-800  text-sm uppercase font-normal'
+                      className='pl-6 pr-12 py-3 text-center border-b border-gray-200 text-gray-800  text-sm uppercase font-normal'
                     >
                       Action
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {users?.map(user => (
+                  {users?.map((user, indx) => (
                     <UserDataRow
                       key={user?._id}
                       user={user}
+                      indx={indx}
                       refetch={fetchBookings}
                     />
                   ))}

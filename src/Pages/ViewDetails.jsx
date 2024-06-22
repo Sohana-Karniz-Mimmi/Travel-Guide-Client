@@ -17,7 +17,7 @@ const ViewDetails = () => {
     return (
         <div className=" relative">
             <Helmet>
-                <title>{job_title} - Job-Portal</title>
+                <title>{job_title} - Travel-Guide</title>
             </Helmet>
             <div>
                 <DetailsBanner></DetailsBanner>

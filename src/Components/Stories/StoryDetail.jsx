@@ -31,7 +31,7 @@ const StoryDetail = () => {
 
   console.log(story);
 
-  const shareUrl = `https://job-portal-3285e.web.app/`;
+  const shareUrl = `https://Travel-Guide-3285e.web.app/`;
   // const shareUrl = `${window.location.origin}${location.pathname}`;
 
   if (isLoading) return <LoadingSpinner />

@@ -86,7 +86,7 @@ const BookingForm = ({ tourPackage }) => {
 
     return (
         <> <Helmet>
-            <title>Add Job - Job-Portal</title>
+            <title>Bookings - Travel-Guide</title>
         </Helmet>
 
             {/* <div>

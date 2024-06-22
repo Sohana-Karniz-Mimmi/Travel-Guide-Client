@@ -6,9 +6,10 @@ import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast'
 import { IoEyeOffOutline } from "react-icons/io5";
 import useAuth from "../Hook/useAuth";
-import login from '../assets/images/login.jpg';
 import Navbar from "../Components/Shared/Navbar/Navbar";
 import axios from "axios";
+import login from '../assets/images/bg_login.jpg';
+import logo from "../assets/images/logo2.png";
 
 const Login = () => {
 
@@ -40,7 +41,7 @@ const Login = () => {
                 const user = { email }
 
                 //get access token
-                // axios.post('https://job-portal-bdserver.vercel.app/jwt', user, { withCredentials: true })
+                // axios.post('https://Travel-Guide-bdserver.vercel.app/jwt', user, { withCredentials: true })
                 //     .then(data => {
                 //         console.log(data.data);
                 //         if (data.data.success) {
@@ -128,7 +129,7 @@ const Login = () => {
     return (
         <>
             <Helmet>
-                <title>Login - Job-Portal</title>
+                <title>Login - Travel-Guide</title>
             </Helmet>
 
             <div className=" bg-cover bg-center bg-no-repeat h-[800px]" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${login})` }}>
@@ -139,13 +140,15 @@ const Login = () => {
 
                 <div className="font-[sans-serif] text-[#333] ">
                     <div className=" flex flex-col items-center justify-center">
-                        <div className="mx-auto md:w-[448px] w-full p-4">
+                        <div className="mx-auto md:w-[400px] w-full p-4">
 
                             {/* Form */}
                             <div className="md:max-w-md w-full dark:bg-white border-2 sm:px-6 p-[30px] rounded-lg">
                                 <form onSubmit={handleSubmit(handleLoginForm)}>
                                     <div className="pt-3 pb-5">
-                                        <h3 className="text-center text-3xl font-semibold ">Login Now</h3>
+                                        <div className="font-bold text-lg md:text-3xl gap-3 flex items-center mx-auto">
+                                            <img className="relative mx-auto" src={logo} alt="logo" />
+                                        </div>
                                     </div>
                                     <div>
                                         <label className="text-[15px] block mb-2 font-semibold">E-Mail Address*</label>
@@ -193,7 +196,7 @@ const Login = () => {
                                     <div className="mt-6">
                                         <button className=" w-full relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
                                             <span className="w-full h-full bg-[#FD4C5C] absolute"></span>
-                                            <span className="relative md:px-6 md:py-3 px-3 py-2 transition-all ease-out rounded-md group-hover:bg-opacity-0 duration-400">
+                                            <span className="relative md:px-6 md:py-2 px-3 py-2 transition-all ease-out rounded-md group-hover:bg-opacity-0 duration-400">
                                                 <span className="relative text-white md:text-[16px] text-sm">Login</span>
                                             </span>
                                         </button>
@@ -204,7 +207,7 @@ const Login = () => {
                                     </div>
                                     <p className="mb-8 mt-6 text-sm text-gray-400 text-center">or continue with</p>
                                 </form>
-                                
+
                                 <div>
                                 </div>
                                 <div className="space-x-8 mb-6 flex justify-center">
