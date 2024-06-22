@@ -20,7 +20,7 @@ const GuideProfileDetails = () => {
     } = useQuery({
         queryKey: ['tourGuide', id],
         queryFn: async () => {
-            const { data } = await axiosCommon.get(`/tour-guide/${id}`)
+            const { data } = await axiosCommon.get(`/all-users/${id}`)
             return data
         },
     })
