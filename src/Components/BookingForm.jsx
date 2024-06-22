@@ -136,7 +136,7 @@ const BookingForm = ({tourPackage}) => {
                             <div className="col-span-full sm:col-span-3">
                                 <label className="lato font-semibold text-base text-[#333] block mb-2">Price</label>
                                 <div className="salaryRange">
-                                    <input {...register("tourPrice", { required: true })} name="tourPrice" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Salary" />
+                                    <input {...register("tourPrice", { required: true })} name="tourPrice" type="text" required className="w-full border rounded-lg border-gray-300 focus:border-[#333] px-2 py-[9px] outline-none bg-transparent text-[15px]" placeholder="Price" />
                                     {/* {errors.tourPrice && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
 
                                 </div>

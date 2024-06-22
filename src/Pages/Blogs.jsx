@@ -14,7 +14,7 @@ const Blogs = () => {
                 <title>Community - Job-Portal</title>
             </Helmet>
             <div>
-                <ViewBanner name={'COMMUNITY POSTS'}></ViewBanner>
+                <ViewBanner name={'Blogs'}></ViewBanner>
             </div>
 
             <section className="bg-[#f9f9f9] text-gray-800 pt-16">

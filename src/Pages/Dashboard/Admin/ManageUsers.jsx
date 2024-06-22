@@ -172,7 +172,7 @@ const ManageUsers = () => {
 
                     <th
                       scope='col'
-                      className='px-5 py-3  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3 text-center border-b border-gray-200 text-gray-800  text-sm uppercase font-normal'
                     >
                       Action
                     </th>

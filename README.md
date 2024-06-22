@@ -3,7 +3,7 @@
 ## Admin Information
 - **Admin Email:** sohana@gmail.com
 - **Admin Password:** 123456Ss
-- **Live Site URL:** [Travel Guide Live Site](https://travel-guide-839c4.web.app/)
+- **Live Site URL:** [Travel Guide](https://travel-guide-839c4.web.app/)
 
 ## About Travel Guide
 

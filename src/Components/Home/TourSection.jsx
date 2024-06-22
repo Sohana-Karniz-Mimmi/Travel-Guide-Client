@@ -9,7 +9,7 @@ const TourSection = ({tourPackage}) => {
         _id,
          image1,
         tourists_spot_name,
-        country_name,
+        location,
         price,
         tour_type } = tourPackage
     
@@ -25,7 +25,7 @@ const TourSection = ({tourPackage}) => {
                 <div className="p-6 space-y-2">
                     <h3 className="text-2xl  font-semibold  ">{tourists_spot_name}</h3>
                     <div className="flex justify-between">
-                        <span className="text-[#9ca3a9] font-medium flex items-center gap-2"><IoLocationOutline /> {country_name}</span>
+                        <span className="text-[#9ca3a9] font-medium flex items-center gap-2"><IoLocationOutline /> {location}</span>
                     </div>
                     <div className=" flex justify-between items-center">
 

@@ -11,13 +11,13 @@ const Footer = () => {
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 sm:w-2/3 lg:w-3/12">
               <div className="mb-10 w-full">
-                <Link className="mb-6 inline-block max-w-[160px]">
+                <Link className="mb-10 inline-block max-w-[160px]">
                   <Link to={'/'} className="font-bold text-3xl md:text-4xl gap-3 flex items-center">
-                  <img className="relative" src={logo} alt="logo" />
-                    </Link>
+                    <img className="relative" src={logo} alt="logo" />
+                  </Link>
                 </Link>
                 <p className="mb-7 text-[#a1a6ab] text-body-color">
-                  Unlock your career potential with Travel Guide - your gateway to endless job opportunities.
+                  Discover your next adventure with Travel Guide - your trusted companion for exploring new destinations and experiences.
                 </p>
                 <p className="flex md:justify-start justify-center items-center text-sm font-medium text-dark dark:text-[#a1a6ab]">
                   <span className="mr-3 text-primary">
@@ -61,8 +61,8 @@ const Footer = () => {
               <NavLink link="/#" label="User Strategy" />
             </LinkGroup>
             <LinkGroup header="About Us">
-              <NavLink link="/#" label="Our Story" />
-              <NavLink link="/#" label="Travel Blog & Tips" />
+              <NavLink link="/all-stories" label="Our Story" />
+              <NavLink link="/blogs" label="Travel Blog & Tips" />
               <NavLink link="/#" label="Success History" />
               <NavLink link="/#" label="Be Our Partner" />
             </LinkGroup>

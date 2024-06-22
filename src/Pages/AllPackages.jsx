@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react";
 // import { RiArrowDropDownLine } from "react-icons/ri";
 import { Helmet } from "react-helmet-async";
-import AllPackagesCard from "../Components/Home/AllPackagesCard";
+// import AllPackagesCard from "../Components/Home/AllPackagesCard";
 import ViewBanner from "../Components/ViewBanner";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../Components/Shared/LoadingSpinner";
+import OurPackagesCard from "../Components/Home/OurPackagesCard";
 
 
 
@@ -91,7 +92,7 @@ const AllPackages = () => {
                 <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
 
                     {
-                        allTourPackages?.map(touristsSpot => <AllPackagesCard key={touristsSpot._id} touristsSpot={touristsSpot} ></AllPackagesCard>)
+                        allTourPackages?.map(touristsSpot => <OurPackagesCard key={touristsSpot._id} tourPackage={touristsSpot} ></OurPackagesCard>)
                     }
 
                     {/* ************** */}

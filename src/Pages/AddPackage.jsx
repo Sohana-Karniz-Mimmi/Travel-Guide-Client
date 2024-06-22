@@ -49,11 +49,11 @@ const AddPackage = () => {
 
             const tourPackages = {
                 tourists_spot_name, country_name, price: salary, tour_type, description, location,
-                image1:image_url,
-                image2:image_url2,
-                image3:image_url3,
-                image4:image_url4,
-                image5:image_url5,
+                image1: image_url,
+                image2: image_url2,
+                image3: image_url3,
+                image4: image_url4,
+                image5: image_url5,
             }
             // console.log(tourPackages)
 
@@ -163,7 +163,7 @@ const AddPackage = () => {
 
                             {/* 3rd Row images  */}
                             <div className="col-span-full sm:col-span-3">
-                                <label className=" font-semibold text-base text-[#333] block mb-2">Photo URL</label>
+                                <label className=" font-semibold text-base text-[#333] block mb-2">Main Image</label>
                                 <div className="relative">
                                     <input
                                         {...register("image", { required: true })}
@@ -174,12 +174,10 @@ const AddPackage = () => {
                                         className="w-full border rounded-lg border-gray-300 focus:border-[#FD4C5C] px-2 py-[9px] outline-none bg-transparent text-[15px]"
                                         required
                                     />
-                                    {/* {errors.photo2 && <span className="text-red-600">Please Enter Your Photo URL</span>} */}
-
                                 </div>
                             </div>
                             <div className="col-span-full sm:col-span-3">
-                                <label className=" font-semibold text-base text-[#333] block mb-2">Photo URL</label>
+                                <label className=" font-semibold text-base text-[#333] block mb-2">Image 1</label>
                                 <div className="relative">
                                     <input
                                         {...register("image2", { required: true })}
@@ -196,7 +194,7 @@ const AddPackage = () => {
                             </div>
                             {/* 4rd Row images  */}
                             <div className="col-span-full sm:col-span-3">
-                                <label className=" font-semibold text-base text-[#333] block mb-2">Photo URL</label>
+                                <label className=" font-semibold text-base text-[#333] block mb-2">Image 2</label>
                                 <div className="relative">
                                     <input
                                         {...register("image3", { required: true })}
@@ -212,7 +210,7 @@ const AddPackage = () => {
                                 </div>
                             </div>
                             <div className="col-span-full sm:col-span-3">
-                                <label className=" font-semibold text-base text-[#333] block mb-2">Photo URL</label>
+                                <label className=" font-semibold text-base text-[#333] block mb-2">Image 3L</label>
                                 <div className="relative">
                                     <input
                                         {...register("image4", { required: true })}
@@ -229,7 +227,7 @@ const AddPackage = () => {
                             </div>
 
                             <div className="col-span-full sm:col-span-3">
-                                <label className=" font-semibold text-base text-[#333] block mb-2">Photo URL</label>
+                                <label className=" font-semibold text-base text-[#333] block mb-2">Image 4</label>
                                 <div className="relative">
                                     <input
                                         {...register("image5", { required: true })}

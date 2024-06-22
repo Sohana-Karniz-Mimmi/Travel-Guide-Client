@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { FaRegCalendarDays } from "react-icons/fa6";
+// import { FaRegCalendarDays } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { HiOutlineUserGroup } from 'react-icons/hi';
 import { IoLocationOutline } from "react-icons/io5";
@@ -11,7 +11,7 @@ const AllPackagesCard = ({touristsSpot}) => {
         _id,
         image1,
         tourists_spot_name,
-        country_name,
+        location,
         price,
         tour_type } = touristsSpot
     
@@ -30,13 +30,13 @@ const AllPackagesCard = ({touristsSpot}) => {
                     </div>
                     <h3 className="text-2xl font-semibold ">{tourists_spot_name}</h3>
                     <div className="flex justify-between">
-                        <span className="text-[#9ca3a9] font-medium flex items-center gap-2"><IoLocationOutline /> {country_name}</span>
+                        <span className="text-[#9ca3a9] font-medium flex items-center gap-2"><IoLocationOutline /> {location}</span>
                     </div>
                     <div className="text-[#9ca3a9] font-medium">
                         <p className='flex items-center gap-2'><HiOutlineUserGroup /> Total Visitor Per Year <span className='font-bold'>5000</span></p>
                     </div>
                     <div className=" flex justify-between items-center">
-                        <span className="font-bold text-lg flex items-center gap-2"><FaRegCalendarDays /> 10 Days</span>
+                        {/* <span className="font-bold text-lg flex items-center gap-2"><FaRegCalendarDays /> 10 Days</span> */}
                         <h2 className="text-2xl font-semibold text-[#FD4C5C]">
                             ${price}
                         </h2>

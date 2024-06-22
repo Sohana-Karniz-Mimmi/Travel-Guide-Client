@@ -7,7 +7,7 @@ import { AiOutlineSafetyCertificate } from 'react-icons/ai';
 
 // { touristsSpot }
 const MatchTypeCard = ({ matchingPackage }) => {
-    const { _id, image1, tourists_spot_name, tour_type, description, price, country_name } = matchingPackage;
+    const { _id, image1, tourists_spot_name, tour_type, description, price, location } = matchingPackage;
     console.log(matchingPackage);
     return (
         <div>
@@ -21,12 +21,12 @@ const MatchTypeCard = ({ matchingPackage }) => {
                 <div className="p-6 space-y-2">
                     <h3 className="text-2xl font-semibold ">{tourists_spot_name}</h3>
                     <div className="flex justify-between">
-                        <span className="text-gray-700 flex items-center gap-2"><IoLocationOutline className='text-black' /> {country_name} </span>
+                        <span className="text-gray-700 flex items-center gap-2"><IoLocationOutline className='text-black' /> {location} </span>
                         <h3 className="z-10 bg-[#FD4C5C] text-sm font-medium text-white rounded-md py-1 px-[10px] xs:text-xl md:text-sm flex items-center gap-2">
                         <AiOutlineSafetyCertificate className='text-lg' />{tour_type}</h3>
                     </div>
                     <div className="text-gray-500 text-[15px]">
-                        <p className='flex items-center gap-2'>{description.slice(0, 135)}</p>
+                        <p className='flex items-center gap-2'>{description.slice(0, 132)}...</p>
                     </div>
                     <div className=" flex justify-between items-center">
                         <h2 className="text-2xl font-semibold text-[#FD4C5C]">

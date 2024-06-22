@@ -1,51 +1,58 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import UpdateUserModal from '../../Modal/UpdateUserModal'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import useAuth from '../../../Hook/useAuth'
 import useAxiosSecure from '../../../Hook/useAxiosSecure'
-// refetch
+import UserUpdateModal from '../../Modal/UserUpdateModal'
+import AdminRoleUpdateModal from '../../Modal/AdminRoleUpdateModal'
+
 const UserDataRow = ({ user, refetch }) => {
   const { user: loggedInUser } = useAuth()
-
-  const [isOpen, setIsOpen] = useState(false)
   const axiosSecure = useAxiosSecure()
+
   const { mutateAsync } = useMutation({
     mutationFn: async role => {
-      const { data } = await axiosSecure.patch(
-        `/users/update/${user?.email}`,
-        role
-      )
+      const { data } = await axiosSecure.patch(`/users/update/${user?.email}`, role)
       return data
     },
     onSuccess: data => {
       refetch()
       console.log(data)
       toast.success('User role updated successfully!')
-      setIsOpen(false)
+    },
+    onError: error => {
+      toast.error(error.message)
     },
   })
 
-  //   modal handler
-  const modalHandler = async selected => {
+  const handleRoleChange = async (newRole) => {
     if (loggedInUser.email === user.email) {
       toast.error('Action Not Allowed')
-      return setIsOpen(false)
+      return
     }
 
     const userRole = {
-      role: selected,
+      role: newRole,
       status: 'Verified',
     }
 
     try {
       await mutateAsync(userRole)
     } catch (err) {
-      console.log(err)
       toast.error(err.message)
     }
   }
+
+  // for modal state management
+  const [isUserModalOpen, setIsUserModalOpen] = useState(false)
+  const [isAdminModalOpen, setIsAdminModalOpen] = useState(false)
+
+  const closeModal = () => {
+    setIsUserModalOpen(false)
+    setIsAdminModalOpen(false)
+  }
+
   return (
     <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
@@ -59,35 +66,37 @@ const UserDataRow = ({ user, refetch }) => {
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         {user?.status ? (
-          <p
-            className={`${
-              user.status === 'Verified' ? 'text-green-500' : 'text-yellow-500'
-            } whitespace-no-wrap`}
-          >
+          <p className={`${user.status === 'Verified' ? 'text-green-500' : 'text-yellow-500'} whitespace-no-wrap`}>
             {user.status}
           </p>
         ) : (
           <p className='text-red-500 whitespace-no-wrap'>Unavailable</p>
         )}
       </td>
-
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className=' py-5 border-b border-gray-200 bg-white text-sm'>
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={() => setIsAdminModalOpen(true)}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-600 leading-tight'
         >
-          <span
-            aria-hidden='true'
-            className='absolute inset-0 bg-emerald-100 opacity-50 rounded-full'
-          ></span>
-          <span className='relative'>Update Role</span>
+          <span aria-hidden='true' className='absolute inset-0 bg-emerald-100 opacity-50 rounded-full'></span>
+          <span className='relative'>Make Admin</span>
         </button>
-        {/* Update User Modal */}
-        <UpdateUserModal
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          modalHandler={modalHandler}
-          user={user}
+        <AdminRoleUpdateModal
+          isOpen={isAdminModalOpen}
+          closeModal={closeModal}
+          handleRoleChange={() => handleRoleChange('admin')}
+        />
+        <button
+          onClick={() => setIsUserModalOpen(true)}
+          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-600 leading-tight ml-3'
+        >
+          <span aria-hidden='true' className='absolute inset-0 bg-blue-100 opacity-50 rounded-full'></span>
+          <span className='relative'>Make Tour Guide</span>
+        </button>
+        <UserUpdateModal
+          isOpen={isUserModalOpen}
+          closeModal={closeModal}
+          handleRoleChange={() => handleRoleChange('tour_guide')}
         />
       </td>
     </tr>
@@ -95,8 +104,8 @@ const UserDataRow = ({ user, refetch }) => {
 }
 
 UserDataRow.propTypes = {
-  user: PropTypes.object,
-  refetch: PropTypes.func,
+  user: PropTypes.object.isRequired,
+  refetch: PropTypes.func.isRequired,
 }
 
 export default UserDataRow
