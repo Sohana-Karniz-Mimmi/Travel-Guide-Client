@@ -1,87 +1,67 @@
 # Travel Guide - Explore Bangladesh
 
-## Admin Information
-- **Admin Email:** sohana@gmail.com
-- **Admin Password:** 123456Ss
 - **Live Site URL:** [Travel Guide](https://travel-guide-839c4.web.app/)
 
-## About Travel Guide
+## Project Overview
+- **Concept**: An online platform providing comprehensive travel information for tourists.
+- **Problem Solved**: Helps travelers plan trips by offering detailed descriptions of destinations, cultural insights, and travel tips.
 
-The Travel Guide is your ultimate travel companion for exploring the rich and diverse attractions of Bangladesh. Whether you're looking for famous landmarks or hidden gems, our platform provides comprehensive and detailed information to help you plan the perfect trip.
+## Features
+- **Destination Details**: In-depth information on tourist attractions, landmarks, and hidden gems.
+- **Cultural Insights**: Information on local cuisine, traditions, and activities.
+- **User Roles**: Includes functionalities for tourists, tour guides, and admins.
 
-## Key Features
+## Technology Used
+- **Frontend**:  React, React Tabs, React Share, Framer Motion. Tailwind CSS
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: Firebase
 
-1. **Detailed Destination Guides:**
-   - In-depth descriptions of popular tourist attractions in Bangladesh.
-   - Insights into local culture, cuisine, and activities.
-
-2. **Responsive Design:**
-   - Optimized for mobile, tablet, and desktop views to ensure a seamless user experience on any device.
-
-3. **User Roles:**
-   - Different roles including Normal User/Tourist, Tour Guide, and Admin with tailored dashboards and functionalities.
-
-4. **Tour Packages:**
-   - Browse and book from a variety of tour packages, each with detailed information, attractive photos, and pricing.
-
-5. **Wishlist Feature:**
-   - Users can add preferred trips to their wishlist for easy access and planning.
-
-6. **Tour Guide Profiles:**
-   - Detailed profiles of tour guides, including their contact information, experience, and reviews.
-
-7. **Tourist Stories:**
-   - A section dedicated to sharing travel experiences and stories from other tourists, with options to share on social media.
-
-8. **Secure Booking:**
-   - A protected booking form that ensures users can book tours securely once logged in.
-
-9. **Real-time Notifications:**
-   - Sweet alerts and toast notifications for all CRUD operations, successful logins, and sign-ups to enhance user interaction.
-
-10. **Advanced Search and Filter:**
-    - Admin can manage users effectively with advanced search by name/email and filter by role, using MongoDB operators.
-
-## Technology Stack
+## How to Clone and Run Locally
 
 ### Frontend
-- [React](https://reactjs.org/)
-- [React Router DOM](https://reactrouter.com/web/guides/quick-start)
-- [React Datepicker](https://reactdatepicker.com/)
-- [React Share](https://www.npmjs.com/package/react-share)
-- [React Tabs](https://www.npmjs.com/package/react-tabs)
-- [React Sweetalert2](https://www.npmjs.com/package/react-sweetalert2)
-- [React Hot Toast](https://react-hot-toast.com/)
-- [React Icons](https://react-icons.github.io/react-icons/)
-- [React Spinners](https://www.npmjs.com/package/react-spinners)
-- [React Player](https://www.npmjs.com/package/react-player)
-- [React Helmet Async](https://www.npmjs.com/package/react-helmet-async)
-- [React Tooltip](https://www.npmjs.com/package/react-tooltip)
-- [Swiper](https://swiperjs.com/)
-- [Framer Motion](https://www.framer.com/motion/)
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/Sohana-Karniz-Mimmi/Travel-Guide-Client.git
 
-### State Management and Data Fetching
-- [React Hook Form](https://react-hook-form.com/)
-- [Tanstack React Query](https://tanstack.com/query/latest)
-- [Axios](https://axios-http.com/)
-- [Localforage](https://localforage.github.io/localForage/)
-- [Match Sorter](https://www.npmjs.com/package/match-sorter)
-- [Date FNS](https://date-fns.org/)
+2. **Navigate to frontend directory**:
+   ```sh
+   cd Travel Guide/frontend
+
+3. **Install dependencies**:
+   ```sh
+   npm install
+
+4. **Set up environment variables**:
+   - Create a .env file in the frontend directory. 
+   - Add necessary Firebase config keys.
+
+5. **Start the development server**:
+   ```sh
+   npm run dev
+
+6. **Access the frontend website**:
+   - Open your browser and go to http://localhost:5000.
 
 ### Backend
-- [Node.js](https://nodejs.org/)
-- [Express.js](https://expressjs.com/)
-- [MongoDB](https://www.mongodb.com/)
+1. **Navigate to backend directory**:
+   ```sh
+   cd Travel Guide/backend
 
-### Authentication
-- [JWT (JSON Web Tokens)](https://jwt.io/)
-- [Firebase](https://firebase.google.com/)
+2. **Install dependencies**:
+   ```sh
+   npm install
 
-### Animation and Effects
-- [Framer Motion](https://www.framer.com/motion/)
+3. **Set up environment variables**:  
+   - Create a .env file in the  backend directory..  
+   - Add MongoDB credentials and any other necessary configurations.
 
-### Miscellaneous
-- [Prop Types](https://www.npmjs.com/package/prop-types)
-- [Headless UI React](https://headlessui.dev/)
-- [Sort By](https://www.npmjs.com/package/sort-by)
+4. **Access the backend API**:
+   ```sh
+   npm start
+
+
+5. **Access the frontend website**:
+   - Open your browser and go to http://localhost:8000.
+
 
